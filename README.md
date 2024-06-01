@@ -1,15 +1,7 @@
 
-
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
-  <svg xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30" fill="none">
-    <circle cx="12.0143" cy="12.5143" r="12.0143" fill="#3575E2" fillOpacity="0.4" />
-    <circle cx="16.9857" cy="17.4857" r="12.0143" fill="#3575E2" />
-  </svg>
-
+  <img src="client/public/assets/images/job-portal-logo.png" width="69" height="66"></img>
   <h3 align="center">Employ-Mee</h3>
-
   <p align="center">
     Empower your career journey with our job portal, where you can effortlessly create and post job opportunities to connect with top talent or find your next dream job.
     <br />
@@ -18,7 +10,6 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -46,10 +37,9 @@
 
 
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Product Name Screen Shot](client/public/assets/images/job-portal-landing-page.png)
 
 Welcome to our job portal, a dynamic platform designed to facilitate seamless connections between job seekers and employers. Here’s a detailed overview of our website’s features and functionality:
 
@@ -112,7 +102,6 @@ Here are list of major frameworks/libraries used to bootstrap project.
 
 
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -210,8 +199,6 @@ Make sure you have the following software installed on your system:
     Open your web browser and go to `http://localhost:3000` to see the application in action.
 
 
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -237,8 +224,6 @@ Your Name - Amaan Shaikh amaanshaikh.gg@gmail.com
 Project Link: [https://github.com/amaan-10/job-portal](https://github.com/amaan-10/job-portal)
 
 
-
-<!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
 List of resources that are find helpful and would like to give credit to:
@@ -251,23 +236,6 @@ List of resources that are find helpful and would like to give credit to:
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
 
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
 [Node.js]: https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white
 [Node-url]: https://nodejs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

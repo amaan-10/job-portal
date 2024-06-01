@@ -1,7 +1,7 @@
 
 <div align="center">
-  <img src="client/public/assets/images/job-portal-logo.png" width="69" height="66"></img>
-  <h3 align="center">Employ-Mee</h3>
+  <img src="client/public/assets/images/job-portal-logo.png" width="69" height="66"/>
+  <h3 algin="center">Employ-Mee</h3>
   <p align="center">
     Empower your career journey with our job portal, where you can effortlessly create and post job opportunities to connect with top talent or find your next dream job.
     <br />
@@ -13,12 +13,8 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About The Project</a> </li>
+    <li><a href="#built-with">Built With</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -27,9 +23,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
@@ -91,7 +85,7 @@ Use the `README.md` to get started.
 
 
 
-### Built With
+## Built With
 
 Here are list of major frameworks/libraries used to bootstrap project.
 
@@ -101,12 +95,11 @@ Here are list of major frameworks/libraries used to bootstrap project.
 * [![MongoDB][MongoDB-logo]][MongoDB-url]
 
 
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Prerequisites
+### Prerequisites
 
 Make sure you have the following software installed on your system:
 

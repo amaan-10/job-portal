@@ -1,4 +1,5 @@
 {
+  "homepage": "https://amaan-10.github.io/job-portal",
   "name": "client",
   "version": "0.1.0",
   "proxy": "http://localhost:8080",
@@ -24,6 +25,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

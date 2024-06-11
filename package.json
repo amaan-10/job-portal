@@ -1,5 +1,5 @@
 {
-  "homepage":"https://amaan-10.github.io/job-portal",
+  "homepage": "https://amaan-10.github.io/job-portal",
   "name": "job-portal",
   "version": "1.0.0",
   "description": "job board website",
@@ -25,6 +25,7 @@
     "express-async-errors": "^3.1.1",
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^7.1.5",
+    "gh-pages": "^6.1.1",
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.30.1",

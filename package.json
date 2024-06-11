@@ -1,10 +1,13 @@
 {
+  "homepage":"https://amaan-10.github.io/job-portal",
   "name": "job-portal",
   "version": "1.0.0",
   "description": "job board website",
   "main": "server.js",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix ./client",

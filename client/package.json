@@ -1,5 +1,5 @@
 {
-  "homepage": "https://amaan-10.github.io/job-portal/client",
+  "homepage": "https://amaan-10.github.io/job-portal",
   "name": "client",
   "version": "0.1.0",
   "proxy": "http://localhost:8080",

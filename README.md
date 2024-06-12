@@ -245,8 +245,8 @@ List of resources that are find helpful and would like to give credit to:
 
 **For User Login (*dummy*):**
 <br>
-username : test@test.com
+**username :** test@test.com
 <br>
-password : 123456
+**password :** 123456
 
 *you can register for new account and then login*

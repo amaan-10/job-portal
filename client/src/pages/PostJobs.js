@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../url";
 const PostJobs = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const {
@@ -13,7 +14,7 @@ const PostJobs = () => {
   const onSubmit = (data) => {
     data.skills = selectedOption;
     // console.log(data);
-    fetch("http://localhost:8080/api/v1/job/create-job", {
+    fetch(`${BASE_URL}/api/v1/job/create-job`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

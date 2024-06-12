@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import Spinner from "../components/shared/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
+import { BASE_URL } from "../url";
 
 const MyJob = () => {
   const [jobs, setJobs] = useState([]);
@@ -16,7 +17,7 @@ const MyJob = () => {
   const dispach = useDispatch();
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/job/get-job", {
+    fetch(`${BASE_URL}/api/v1/job/get-job`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

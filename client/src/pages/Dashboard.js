@@ -4,13 +4,14 @@ import Card from "../components/shared/Card";
 import Jobs from "../components/shared/Jobs";
 import Sidebar from "../components/shared/Sidebar";
 import Newsletter from "../components/shared/Newsletter";
+import { BASE_URL } from "../url";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/v1/job/get-job", {
+    fetch(`${BASE_URL}/api/v1/job/get-job`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

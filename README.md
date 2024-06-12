@@ -1,6 +1,7 @@
 
 <div align="center">
   <img src="client/public/assets/images/job-portal-logo.png" width="69" height="66"/>
+  <br>
   <h3 algin="center">Employ-Mee</h3>
   <p align="center">
     Empower your career journey with our job portal, where you can effortlessly create and post job opportunities to connect with top talent or find your next dream job.

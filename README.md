@@ -244,7 +244,9 @@ List of resources that are find helpful and would like to give credit to:
 [Job-Portal Website Link](https://website-job-portal.netlify.app/)
 
 **For User Login (*dummy*):**
+
 username : test@test.com
+
 password : 123456
 
 *you can register for new account and then login*

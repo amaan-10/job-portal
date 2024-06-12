@@ -246,7 +246,7 @@ List of resources that are find helpful and would like to give credit to:
 **For User Login (*dummy*):**
 
 username : test@test.com
-
+<br>
 password : 123456
 
 *you can register for new account and then login*

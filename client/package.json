@@ -2,7 +2,7 @@
   
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:8080",
+  "proxy": "https://job-portal-9ixl.onrender.com",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",

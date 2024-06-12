@@ -7,6 +7,7 @@ import InputForm from "../components/shared/InputForm";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Spinner from "../components/shared/Spinner";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../url";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +22,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       dispach(showLoading());
-      const { data } = await axios.post("/api/v1/auth/login", {
+      const { data } = await axios.post(`${BASE_URL}/api/v1/auth/login`, {
         email,
         password,
       });

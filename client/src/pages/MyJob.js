@@ -52,7 +52,7 @@ const MyJob = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     let s = searchParams.get("search");
-    fetch(`http://localhost:8080/api/v1/job/get-job?search=${s}`, {
+    fetch(`${BASE_URL}/api/v1/job/get-job?search=${s}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -68,7 +68,7 @@ const MyJob = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:8080/api/v1/job/delete-job/${id}`, {
+    fetch(`${BASE_URL}/api/v1/job/delete-job/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

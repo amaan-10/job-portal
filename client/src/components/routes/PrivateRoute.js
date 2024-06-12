@@ -4,6 +4,7 @@ import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { setUser } from "../../redux/features/auth/authSlice";
+import { BASE_URL } from "../../url";
 
 const PrivateRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
@@ -12,7 +13,7 @@ const PrivateRoute = ({ children }) => {
     try {
       dispatch(showLoading());
       const { data } = await axios.post(
-        "/api/v1/user/getUser",
+        `${BASE_URL}/api/v1/user/getUser`,
         { token: localStorage.getItem("token") },
         {
           headers: { authorization: `Bearer ${localStorage.getItem("token")}` },

@@ -7,6 +7,7 @@ import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import axios from "axios";
 import Spinner from "../components/shared/Spinner";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../url";
 
 const RegisterPage = () => {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ const RegisterPage = () => {
         return toast.error("Please Provide all Fields");
       }
       dispatch(showLoading());
-      const { data } = await axios.post("/api/v1/auth/register", {
+      const { data } = await axios.post(`${BASE_URL}/api/v1/auth/register`, {
         name,
         lastName,
         email,

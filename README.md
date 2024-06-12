@@ -26,6 +26,7 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#deployment">Deployment</a></li>
   </ol>
 </details>
 
@@ -237,3 +238,13 @@ List of resources that are find helpful and would like to give credit to:
 [Bootstrap-url]: https://getbootstrap.com
 [MongoDB-logo]: https://img.shields.io/badge/MongoDB-4ea94b?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]: https://www.mongodb.com/
+
+## Deployment
+
+[Job-Portal Website Link](https://website-job-portal.netlify.app/)
+
+**For User Login (*dummy*):**
+username : test@test.com
+password : 123456
+
+*you can register for new account and then login*

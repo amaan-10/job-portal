@@ -1,7 +1,6 @@
 
 <div align="center">
-  <img src="client/public/assets/images/job-portal-logo.png" width="69" height="66"/>
-  <h3 algin="center">Employ-Mee</h3>
+  <img src="client/public/assets/images/job-portal-logo.png" width="69" height="66"/>  <h3 algin="center">Employ-Mee</h3>
   <p align="center">
     Empower your career journey with our job portal, where you can effortlessly create and post job opportunities to connect with top talent or find your next dream job.
     <br />
@@ -26,6 +25,7 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#deployment">Deployment</a></li>
   </ol>
 </details>
 
@@ -237,3 +237,15 @@ List of resources that are find helpful and would like to give credit to:
 [Bootstrap-url]: https://getbootstrap.com
 [MongoDB-logo]: https://img.shields.io/badge/MongoDB-4ea94b?style=for-the-badge&logo=mongodb&logoColor=white
 [MongoDB-url]: https://www.mongodb.com/
+
+## Deployment
+
+### Employ-Mee : [Job-Portal Website Link](https://website-job-portal.netlify.app/)
+
+**For User Login (*dummy*):**
+<br>
+**username :** test@test.com
+<br>
+**password :** 123456
+
+*you can register for new account and then login*

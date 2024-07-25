@@ -28,7 +28,7 @@ const PrivateRoute = ({ children }) => {
     } catch (error) {
       localStorage.clear();
       dispatch(hideLoading());
-      console.log(error);
+      // console.log(error);
     }
   };
   useEffect(() => {

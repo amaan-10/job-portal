@@ -35,7 +35,7 @@ const LoginPage = () => {
     } catch (error) {
       dispach(hideLoading());
       toast.error(error.response.data.error);
-      console.log(error);
+      // console.log(error);
     }
   };
   return (

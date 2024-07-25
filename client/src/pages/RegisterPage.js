@@ -41,7 +41,7 @@ const RegisterPage = () => {
     } catch (error) {
       dispatch(hideLoading());
       toast.error("Invalid Form Details, Please try again!");
-      console.log(error);
+      // console.log(error);
     }
   };
 

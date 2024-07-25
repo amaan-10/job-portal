@@ -28,7 +28,7 @@ const MyJob = () => {
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
-        console.log(data);
+        // console.log(data);
         dispach(hideLoading());
       });
   }, []);
@@ -63,7 +63,7 @@ const MyJob = () => {
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
-        console.log(jobs);
+        // console.log(jobs);
       });
   };
 
@@ -79,7 +79,7 @@ const MyJob = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          console.log(data);
+          // console.log(data);
           dispach(showLoading());
           toast.success("Job Deleted Successfully!");
           setTimeout(function () {

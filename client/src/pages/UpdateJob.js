@@ -37,7 +37,7 @@ const UpdateJob = () => {
         setJobs(data);
       });
   }, []);
-  console.log(jobs);
+  // console.log(jobs);
   const onSubmit = (data) => {
     data.skills = selectedOption;
     // console.log(data);
@@ -60,7 +60,7 @@ const UpdateJob = () => {
         } else {
           toast.error(job.error);
         }
-        console.log(job);
+        // console.log(job);
       });
     dispach(hideLoading());
   };

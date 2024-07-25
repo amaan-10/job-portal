@@ -39,7 +39,7 @@ const Dashboard = () => {
   const filterItems = jobs.filter(
     (job) => job.position.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
-  console.log(filterItems);
+  // console.log(filterItems);
 
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -64,7 +64,7 @@ const Dashboard = () => {
           createdAt >= selected ||
           workType.toLowerCase() === selected.toLowerCase()
       );
-      console.log(filteredJobs);
+      // console.log(filteredJobs);
     }
 
     return filteredJobs.map((data, i) => <Card key={i} data={data} />);

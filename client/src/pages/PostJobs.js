@@ -29,7 +29,7 @@ const PostJobs = () => {
         } else {
           toast.error(job.error);
         }
-        console.log(job);
+        // console.log(job);
         reset();
       });
   };

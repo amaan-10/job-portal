@@ -4,8 +4,8 @@ import { faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const Banner = ({ query, handleInput }) => {
   return (
-    <div className="  max-w-screen-2xl mx-auto xl:px-24 px-5 md:py-20 py-5 ">
-      <h1 style={{ fontWeight: "600" }} className=" text-black mb-3">
+    <div className="  max-w-screen-2xl mx-auto xl:px-24 px-5 md:py-20 pt-3 pt-md-5 pb-5 ">
+      <h1 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
         Find your <span style={{ color: "blue" }}> new job </span> today.
       </h1>
       <p className="text-lg text-black-70 mb-8">

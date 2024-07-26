@@ -68,7 +68,7 @@ const Navbar = () => {
             <span>Employ-Mee</span>
           </a>
           <ul
-            className="d-none d-md-flex gap-3 gap-md-4 gap-lg-5 mb-0"
+            className="d-none d-md-flex gap-3 gap-md-4 gap-lg-5 p-0 m-0"
             style={{ listStyleType: "none" }}
           >
             {navItems.map(({ path, title }) => (
@@ -102,7 +102,7 @@ const Navbar = () => {
               <>
                 <Link
                   to="/login"
-                  className="mx-2 py-2 px-4 border rounded"
+                  className="login-btn mx-2 py-2 px-3 px-lg-4 border rounded"
                   style={{
                     textDecoration: "none",
                     fontSize: "medium",
@@ -113,7 +113,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-primary mx-2 py-2 px-4 border rounded"
+                  className="signup-btn bg-primary ms-1 py-2 px-3 px-lg-4 border rounded"
                   style={{
                     textDecoration: "none",
                     fontSize: "medium",

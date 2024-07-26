@@ -4,13 +4,7 @@
   box-sizing: border-box;
 }
 
-.form-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
+/* loader */
 .spin{
   display: flex;
   justify-content: center;
@@ -39,6 +33,33 @@
 animation-delay: 1s;
 }
 
+/* navigation bar */
+
+@media (max-width: 890px){
+  nav a span{
+    font-size: 22px;
+  }
+  a#nav{
+    font-size: 14px;
+  }
+  
+
+}
+
+@media (max-width: 800px){
+  a#nav{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px){
+  nav a span{
+    font-size: 23px;
+  }
+
+}
+
+
 #nav{
   color: black;
   text-decoration: none;
@@ -49,10 +70,12 @@ animation-delay: 1s;
   color: blue;
 }
 
+/* homepage */
+
 .div-conatiner{
   background-color: #f7f8fa;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 2rem;
   height: 100%;
   width: 100%;
   padding-right: 15px;
@@ -62,7 +85,8 @@ animation-delay: 1s;
 .title-heading{
   font-size: 42px;
   font-weight: 700;
-  padding-bottom: 1rem;
+  padding: 14px;
+
 }
 
 .description{
@@ -73,15 +97,46 @@ animation-delay: 1s;
 
 .img-fluid{
   max-width: 100%;
-  height: 450px;
   margin-top: 16px;
 } 
 
-@media (max-width: 425px){
-  .description{
-    color: #2196f3;
-  }
 
+@media (max-width: 768px){
+  .title-heading{
+    font-size: 34px;
+  }
+  .description{
+    font-size: 14px
+  };
+  
+}
+
+@media (max-width: 465px){
+  .title-heading{
+    font-size: 28px;
+  }
+  .description{
+    font-size: 13px
+  };
+  
+}
+
+@media (max-width: 393px){
+  .title-heading{
+    font-size: 23px;
+  }
+  .description{
+    font-size: 12px
+  };
+  
+}
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 
@@ -184,6 +239,7 @@ animation-delay: 1s;
     font-size: 0.875rem;
     line-height: 1.5;
     border-radius: 0.1875rem;
+    width: 175px;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
 
@@ -723,7 +779,3 @@ label.valid {
   .social-label {
     margin-right: 0px;
     margin-bottom: 10px; } }
-
-.d-none{
-  display: none;
-}

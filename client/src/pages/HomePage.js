@@ -21,12 +21,12 @@ const HomePage = () => {
         </h6>
         <div>
           <Link to="/dashboard">
-            <button className="btn btn-opacity-light mr-1">
+            <button className="btn btn-opacity-light m-1">
               Job Seekers Portal
             </button>
           </Link>
           <Link to="/post-job">
-            <button className="btn btn-opacity-success ml-1">
+            <button className="btn btn-opacity-success m-1">
               Employers Portal
             </button>
           </Link>

@@ -44,12 +44,14 @@ const LoginPage = () => {
         <Spinner />
       ) : (
         <div className="main">
-          {/* Sing in  Form */}
+          {/* Sign in  Form */}
           <section className="sign-in">
             <div className="container">
               <div className="signin-content">
-                <div className="signin-image">
-                  <img src="/assets/images/register-img.jpg" alt="sign in" />
+                <div className="left-sign-in d-flex flex-column w-100">
+                  <div className="signin-image">
+                    <img src="/assets/images/register-img.jpg" alt="sign in" />
+                  </div>
                   <div className="signup-image-link">
                     <Link to="/register">Create an account</Link>
                   </div>

@@ -642,8 +642,7 @@ label.valid {
   font-size: 18px; }
 
 .signin-content {
-  padding-top: 67px;
-  padding-bottom: 87px; }
+  padding: 67px 30px;}
 
 .social-login {
   align-items: center;
@@ -698,21 +697,21 @@ label.valid {
   background: #e72734; }
 
 .signin-form {
-  margin-right: 90px;
-  margin-left: 80px; }
+  margin: 0px 30px 0px 0px;
+}
 
 .signin-image {
   margin-left: 110px;
   margin-right: 20px;
   margin-top: 10px; }
 
-/* @media screen and (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
   .container {
     width: calc( 100% - 30px);
     max-width: 100%; } }
 @media screen and (min-width: 1024px) {
   .container {
-    max-width: 1200px; } } */
+    max-width: 1200px; } }
 @media screen and (max-width: 768px) {
   .signup-content, .signin-content {
     flex-direction: column;
@@ -734,6 +733,14 @@ label.valid {
     padding: 0 30px; }
 
   .signin-image {
+    margin: 10px 10px;
+    order: 2;
+    -moz-order: 2;
+    -webkit-order: 2;
+    -o-order: 2;
+    -ms-order: 2; }
+
+  .left-sign-in {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 50px;

@@ -35,8 +35,8 @@ const PostJobs = () => {
   };
 
   return (
-    <div className=" conatiner-xl mx-auto px-xl-4 px-5 pl-4 m-5">
-      <div className="create-job-container p-sm-5">
+    <div className=" conatiner-xl mx-auto px-5 pl-4 m-5">
+      <div className="job-container p-sm-5">
         <h3 className="text-center pt-3 pb-4 m-0">Create Job</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4">

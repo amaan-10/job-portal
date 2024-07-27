@@ -91,45 +91,30 @@ const MyJob = () => {
   };
 
   return (
-    <div className=" mx-auto px-xl-4 px-5 pl-4 my-5">
-      <div
-        style={{
-          paddingTop: "2.5rem",
-          paddingBottom: "2.5rem",
-          background: "#EFEFEF",
-          paddingLeft: "4rem",
-          paddingRight: "4rem",
-        }}
-        className="md-px-3"
-      >
-        <h3 className="text-center p-5">All My Jobs</h3>
-        <div className="d-flex justify-content-center mb-2">
-          <input
-            onChange={(e) => setSearch({ search: e.target.value })}
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search By: Position"
-            className="form-control py-2 pl-4 border-1 w-50 focus-outline-none mb-4 w-full"
-          />
-          <button
-            onClick={handleSearch}
-            className="bg-primary text-white font-medium border-0 px-4 py-2 rounded-1 mb-4"
-          >
-            Search
-          </button>
+    <div className=" conatiner-xl mx-auto px-5 pl-4 m-5">
+      <div className="job-container p-sm-5">
+        <h3 className="text-center pt-3 pb-4 m-0">All My Jobs</h3>
+        <div className="d-flex flex-md-row flex-column justify-content-center">
+          <div className="d-flex flex-md-row flex-column justify-content-center col-md-8 col-12 mb-2">
+            <input
+              onChange={(e) => setSearch({ search: e.target.value })}
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search By: Position"
+              className="form-control py-2 pl-4 border-1 focus-outline-none mb-3 "
+            />
+            <button
+              onClick={handleSearch}
+              className="bg-primary text-white font-medium border-0 px-4 py-2 rounded-1 mb-3"
+            >
+              Search
+            </button>
+          </div>
         </div>
         <div className="d-flex flex-wrap align-items-center">
           <div className="position-relative w-full px-2 max-w-full flex-grow-1 flex-1">
-            <h3
-              style={{
-                fontSize: "1rem",
-                lineHeight: "1.5rem",
-                fontWeight: 600,
-              }}
-            >
-              All Jobs
-            </h3>
+            <h3 className=" fs-5 fw-semibold lh-1">All Jobs</h3>
           </div>
           <div className="position-relative w-full px-2 max-w-full flex-grow-1 flex-1 text-end">
             <Link to="/post-job">
@@ -146,7 +131,7 @@ const MyJob = () => {
         {loading ? (
           <Spinner />
         ) : (
-          <table className="table table-hover border">
+          <table className="table table-responsive-sm table-hover border">
             <thead>
               <tr>
                 <th className="px-3" scope="col">

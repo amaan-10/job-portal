@@ -140,6 +140,12 @@ animation-delay: 1s;
 }
 
 
+.create-job-container{
+  padding: 1.5rem;
+  background: #EFEFEF;
+}
+
+
 
 @keyframes push {
     0% {

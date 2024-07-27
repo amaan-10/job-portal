@@ -67,17 +67,8 @@ const UpdateJob = () => {
 
   return (
     <div className=" conatiner-xl mx-auto px-xl-4 px-5 pl-4 m-5">
-      <div
-        style={{
-          paddingTop: "2.5rem",
-          paddingBottom: "2.5rem",
-          background: "#EFEFEF",
-          paddingLeft: "4rem",
-          paddingRight: "4rem",
-        }}
-        className="md-px-3"
-      >
-        <h3 className="text-center p-5">Create Job</h3>
+      <div className="create-job-container p-sm-5">
+        <h3 className="text-center pt-3 pb-4 m-0">Create Job</h3>
         {loading ? (
           <Spinner />
         ) : (
@@ -85,7 +76,7 @@ const UpdateJob = () => {
             {jobs.map((job) => (
               <>
                 <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4">
-                  <div className="col-lg-6 col-md-12">
+                  <div className="col-lg-6 col-12">
                     <p className="d-block mb-2 text-lg">Job Title</p>
                     <input
                       type="text"
@@ -95,7 +86,7 @@ const UpdateJob = () => {
                       className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
                     />
                   </div>
-                  <div className="col-lg-6 col-md-12">
+                  <div className="col-lg-6 col-12">
                     <p className="d-block mb-2 text-lg">Company Name</p>
                     <input
                       type="text"
@@ -107,7 +98,7 @@ const UpdateJob = () => {
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4">
-                  <div className="col-lg-6 col-md-12">
+                  <div className="col-lg-6 col-12">
                     <p className="d-block mb-2 text-lg">Job Type</p>
                     <select
                       {...register("workType")}
@@ -120,7 +111,7 @@ const UpdateJob = () => {
                       <option value="contract">Contract</option>
                     </select>
                   </div>
-                  <div className="col-lg-6 col-md-12">
+                  <div className="col-lg-6 col-12">
                     <p className="d-block mb-2 text-lg">Work Location</p>
                     <input
                       type="text"

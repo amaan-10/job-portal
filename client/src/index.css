@@ -458,7 +458,10 @@ body {
   margin-bottom: 33px; }
 
 .signup-image {
-  margin-top: 20px; }
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+ }
 
 .form-submit {
   display: inline-block;
@@ -488,7 +491,9 @@ body {
   font-size: 14px;
   color: #222;
   display: block;
-  text-align: center; }
+  text-align: center;
+  margin-bottom: 20px;
+ }
 
 .term-service {
   font-size: 13px;
@@ -743,12 +748,18 @@ label.valid {
   .left-sign-in {
     margin-left: 0px;
     margin-right: 0px;
-    margin-top: 50px;
+    margin-top: 30px;
     order: 2;
     -moz-order: 2;
     -webkit-order: 2;
     -o-order: 2;
     -ms-order: 2; }
+
+    .signup-image{
+      display: flex;
+      flex-direction: column-reverse;
+
+    }
 
   .signup-form, .signup-image, .signin-form, .signin-image {
     width: auto; }

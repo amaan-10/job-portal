@@ -191,6 +191,33 @@ animation-delay: 1s;
   
 }
 
+.dashboard-job-columns{
+  padding: 0rem 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  background: #FAFAFA;
+  display: grid;
+}
+
+@media (max-width:768px) {
+  
+  .dashboard-job-columns{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    
+  }
+  
+}
+
+@media (max-width:576px) {
+  
+  .dashboard-job-columns{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    
+  }
+  
+}
+
+
 
 @keyframes push {
     0% {

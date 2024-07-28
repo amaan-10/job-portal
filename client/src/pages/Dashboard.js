@@ -75,18 +75,7 @@ const Dashboard = () => {
   return (
     <div>
       <Banner query={query} handleInput={handleInput} />
-      <div
-        style={{
-          paddingTop: "3rem",
-          paddingBottom: "3rem",
-          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
-          gap: "1rem",
-          background: "#FAFAFA",
-          display: "grid",
-          paddingLeft: "3rem",
-          paddingRight: "3rem",
-        }}
-      >
+      <div className="dashboard-job-columns">
         <div className=" bg-white p-4 rounded-1">
           <Sidebar handleChange={handleChange} handleClick={handleClick} />
         </div>

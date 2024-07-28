@@ -1,4 +1,5 @@
 import {
+  faBriefcaseClock,
   faCalendarDays,
   faClock,
   faLocationDot,
@@ -51,20 +52,19 @@ const Card = ({ data }) => {
               lineHeight: "1.5rem",
               display: "flex",
               alignItems: "center",
-              gap: "24px",
               padding: "2px 0px",
             }}
-            className="text-muted"
+            className=" d-flex gap-lg-2 flex-wrap text-muted"
           >
-            <span className="d-flex  align-items-center gap-2">
+            <span className="d-flex  align-items-center pe-3 gap-2">
               <FontAwesomeIcon className="text-muted" icon={faLocationDot} />
               {workLocation}
             </span>
-            <span className="d-flex text-muted align-items-center gap-2">
-              <FontAwesomeIcon className="text-muted" icon={faClock} />
+            <span className="d-flex text-muted align-items-center pe-3 gap-2">
+              <FontAwesomeIcon className="text-muted" icon={faBriefcaseClock} />
               {workType}
             </span>
-            <span className="d-flex text-muted align-items-center gap-2">
+            <span className="d-flex text-muted align-items-center pe-3 gap-2">
               <FontAwesomeIcon className="text-muted" icon={faCalendarDays} />
               {date}
             </span>

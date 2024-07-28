@@ -54,7 +54,7 @@ animation-delay: 1s;
 
 @media (max-width: 768px){
   nav a span{
-    font-size: 23px;
+    font-size: 20px;
   }
 
 }

@@ -146,8 +146,50 @@ animation-delay: 1s;
 }
 
 
+.scroll-bar{
+  transform: rotate(180deg);
+}
+
+.scroll-bar-inside{
+  transform: rotate(180deg);
+}
+
+.top-scrollbar{
+  height: 5px;
+}
+
+@media (max-width:768px) {
+  
+  .scroll-content{
+    width: 100%;
+  }
+  
+}
+
+@media (max-width:700px) {
+  
+  .scroll-content{
+    width: 125%;
+  }
+  
+}
 
 
+@media (max-width:530px) {
+  
+  .scroll-content{
+    width: 160%;
+  }
+  
+}
+
+@media (max-width:425px) {
+  
+  .scroll-content{
+    width: 200%;
+  }
+  
+}
 
 
 @keyframes push {

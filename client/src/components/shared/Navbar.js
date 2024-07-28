@@ -42,8 +42,8 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="max-w-screen-2xl conatiner mx-auto xl:px-24 px-5 pt-4 pb-3">
-        <nav className="d-flex justify-content-between align-items-center py-6">
+      <header className=" max-w-screen-2xl conatiner mx-auto xl:px-24 px-3 px-md-5 pt-4 pb-3">
+        <nav className="d-flex justify-content-between align-items-center">
           <a
             href="/"
             className="d-flex align-items-center gap-2 fs-4 text-dark"

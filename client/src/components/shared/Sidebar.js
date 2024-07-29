@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import RadioForm from "./RadioForm";
+import { faFilter, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Sidebar = ({ handleChange, handleClick }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const now = new Date();
   const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000);
   const oneWeekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
@@ -14,151 +21,176 @@ const Sidebar = ({ handleChange, handleClick }) => {
   const threeMonthAgoDate = threeMonthAgo.toISOString().slice(0, 10);
 
   return (
-    <div className="mt-4">
-      <h3
-        style={{
-          fontSize: "20px",
-          fontStyle: "normal",
-          fontWeight: "600",
-          lineHeight: "30px",
-        }}
-      >
-        Filters
-      </h3>
-
-      <h4
-        style={{
-          fontSize: "16px",
-          fontStyle: "normal",
-          fontWeight: "400",
-          lineHeight: "30px",
-          paddingBottom: "12px",
-        }}
-      >
-        Location
-      </h4>
-      <div>
-        <RadioForm
-          handleChange={handleChange}
-          value=""
-          title="All"
-          name="test"
-        />
-
-        <RadioForm
-          handleChange={handleChange}
-          value="China"
-          title="China"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value="Poland"
-          title="Poland"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value="United States"
-          title="United States"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value="Pune"
-          title="Pune"
-          name="test"
-        />
+    <div className="mt-sm-4">
+      <div className=" display-flex">
+        <h3
+          style={{
+            fontSize: "22px",
+            fontStyle: "normal",
+            fontWeight: "600",
+            lineHeight: "30px",
+            marginBottom: "0px",
+          }}
+        >
+          Filters
+        </h3>
+        <div className="d-sm-none w-100">
+          <button
+            onClick={handleMenu}
+            className="bg-transparent border-0"
+            style={{ paddingLeft: "90%" }}
+          >
+            {menuOpen ? (
+              <FontAwesomeIcon
+                className=" text-black"
+                style={{ width: 20, height: 20 }}
+                icon={faXmark}
+              />
+            ) : (
+              <FontAwesomeIcon
+                className=" text-black"
+                style={{ width: 20, height: 20 }}
+                icon={faFilter}
+              />
+            )}
+          </button>
+        </div>
       </div>
+      <div className={`${menuOpen ? "" : "d-none"} mt-2`}>
+        <h4
+          style={{
+            fontSize: "16px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "30px",
+            paddingBottom: "12px",
+          }}
+        >
+          Location
+        </h4>
+        <div>
+          <RadioForm
+            handleChange={handleChange}
+            value=""
+            title="All"
+            name="test"
+          />
 
-      <h4
-        style={{
-          fontSize: "16px",
-          fontStyle: "normal",
-          fontWeight: "400",
-          lineHeight: "30px",
-          paddingBottom: "12px",
-        }}
-      >
-        Date of Posting
-      </h4>
-      <div>
-        <RadioForm
-          handleChange={handleChange}
-          value=""
-          title="All time"
-          name="test"
-        />
+          <RadioForm
+            handleChange={handleChange}
+            value="China"
+            title="China"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value="Poland"
+            title="Poland"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value="United States"
+            title="United States"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value="Pune"
+            title="Pune"
+            name="test"
+          />
+        </div>
 
-        <RadioForm
-          handleChange={handleChange}
-          value={oneDayAgoDate}
-          title="Last 24 hour"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value={oneWeekAgoDate}
-          title="Last 7 days"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value={oneMonthAgoDate}
-          title="Last 30 days"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value={threeMonthAgoDate}
-          title="Last 3 months"
-          name="test"
-        />
-      </div>
+        <h4
+          style={{
+            fontSize: "16px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "30px",
+            paddingBottom: "12px",
+          }}
+        >
+          Date of Posting
+        </h4>
+        <div>
+          <RadioForm
+            handleChange={handleChange}
+            value=""
+            title="All time"
+            name="test"
+          />
 
-      <h4
-        style={{
-          fontSize: "16px",
-          fontStyle: "normal",
-          fontWeight: "400",
-          lineHeight: "30px",
-          paddingBottom: "12px",
-        }}
-      >
-        Work Type
-      </h4>
-      <div>
-        <RadioForm
-          handleChange={handleChange}
-          value=""
-          title="All Type"
-          name="test"
-        />
+          <RadioForm
+            handleChange={handleChange}
+            value={oneDayAgoDate}
+            title="Last 24 hour"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value={oneWeekAgoDate}
+            title="Last 7 days"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value={oneMonthAgoDate}
+            title="Last 30 days"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value={threeMonthAgoDate}
+            title="Last 3 months"
+            name="test"
+          />
+        </div>
 
-        <RadioForm
-          handleChange={handleChange}
-          value="full-time"
-          title="Full-Time"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value="part-time"
-          title="Part-time"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value="internship"
-          title="Internship"
-          name="test"
-        />
-        <RadioForm
-          handleChange={handleChange}
-          value="contaract"
-          title="Contract"
-          name="test"
-        />
+        <h4
+          style={{
+            fontSize: "16px",
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: "30px",
+            paddingBottom: "12px",
+          }}
+        >
+          Work Type
+        </h4>
+        <div>
+          <RadioForm
+            handleChange={handleChange}
+            value=""
+            title="All Type"
+            name="test"
+          />
+
+          <RadioForm
+            handleChange={handleChange}
+            value="full-time"
+            title="Full-Time"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value="part-time"
+            title="Part-time"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value="internship"
+            title="Internship"
+            name="test"
+          />
+          <RadioForm
+            handleChange={handleChange}
+            value="contaract"
+            title="Contract"
+            name="test"
+          />
+        </div>
       </div>
     </div>
   );

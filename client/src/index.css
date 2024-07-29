@@ -202,8 +202,7 @@ animation-delay: 1s;
 @media (max-width:768px) {
   
   .dashboard-job-columns{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    
+    grid-template-columns: repeat(3, minmax(0, 1fr));    
   }
   
 }
@@ -212,7 +211,7 @@ animation-delay: 1s;
   
   .dashboard-job-columns{
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    
+    padding-right: 0rem;
   }
   
 }

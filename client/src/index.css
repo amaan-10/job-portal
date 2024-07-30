@@ -227,7 +227,6 @@ animation-delay: 1s;
 }
 
 
-
 @keyframes push {
     0% {
       transform: translate(-50% , 100%)  scale(1);

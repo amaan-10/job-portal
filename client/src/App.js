@@ -83,7 +83,15 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="*"
+          element={
+            <>
+              <Navbar />
+              <NotFound />
+            </>
+          }
+        />
       </Routes>
     </>
   );

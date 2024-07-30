@@ -38,10 +38,10 @@ const Dashboard = () => {
     setQuery(event.target.value);
   };
 
-  const handleLocation = (event) => {
-    event.preventDefault();
-    setQuery(event.target.value);
-  };
+  // const handleLocation = (event) => {
+  //   event.preventDefault();
+  //   setQuery(event.target.value);
+  // };
 
   // console.log(query);
 
@@ -50,9 +50,9 @@ const Dashboard = () => {
   );
   // console.log(filterJobPosition);
 
-  const filterLocation = jobs.filter(
-    (job) => job.workLocation.toLowerCase().indexOf(query.toLowerCase()) !== -1
-  );
+  // const filterLocation = jobs.filter(
+  //   (job) => job.workLocation.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  // );
   // console.log(filterLocation);
 
   const handleChange = (e) => {
@@ -107,17 +107,16 @@ const Dashboard = () => {
     return filteredJobsPage.map((data, i) => <Card key={i} data={data} />);
   };
 
-  const value = jobs.length;
   const result = filteredPositionData(jobs, selectedCategory, query);
 
-  const filteredLocationData = (jobs, selected, query) => {
-    let filteredLocation = jobs;
+  // const filteredLocationData = (jobs, selected, query) => {
+  //   let filteredLocation = jobs;
 
-    if (query) {
-      filteredLocation = filterLocation;
-    }
-    return filteredLocation.map((data, i) => <Card key={i} data={data} />);
-  };
+  //   if (query) {
+  //     filteredLocation = filterLocation;
+  //   }
+  //   return filteredLocation.map((data, i) => <Card key={i} data={data} />);
+  // };
 
   return (
     <div>
@@ -158,17 +157,13 @@ const Dashboard = () => {
                 Previous
               </button>
               <span className="mx-2">
-                Page {currentPage} of{" "}
-                {Math.ceil(filterJobPosition.length / itemsPerPage)}
+                Page {currentPage} of {Math.ceil(jobsValue / itemsPerPage)}
               </span>
               <button
                 className="border-0 bg-transparent mx-3"
                 id="hover"
                 onClick={nextPage}
-                disabled={
-                  currentPage ===
-                  Math.ceil(filterJobPosition.length / itemsPerPage)
-                }
+                disabled={currentPage === Math.ceil(jobsValue / itemsPerPage)}
               >
                 Next
               </button>

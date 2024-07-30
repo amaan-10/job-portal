@@ -50,83 +50,78 @@ const RegisterPage = () => {
       {loading ? (
         <Spinner />
       ) : (
-        <div className="form-container">
-          <div className="main">
-            <section className="signup">
-              <div className="container">
-                <div className="signup-content">
-                  <div className="signup-form">
-                    <h2 className="form-title">Sign up</h2>
-                    <form
-                      className="register-form"
-                      id="register-form"
-                      onSubmit={handleSubmit}
-                    >
-                      <InputForm
-                        htmlFor="name"
-                        icon={faUser}
-                        type={"text"}
-                        name="name"
-                        value={name}
-                        placeholder={"Enter First Name"}
-                        handleChange={(e) => setName(e.target.value)}
-                      />
-                      <InputForm
-                        htmlFor="lastName"
-                        icon={faUser}
-                        type={"text"}
-                        name="lastName"
-                        value={lastName}
-                        placeholder={"Enter Last Name"}
-                        handleChange={(e) => setLastName(e.target.value)}
-                      />
-                      <InputForm
-                        htmlFor="email"
-                        icon={faEnvelope}
-                        type={"email"}
-                        name="email"
-                        value={email}
-                        placeholder={"Enter Email"}
-                        handleChange={(e) => setEmail(e.target.value)}
-                      />
-                      <InputForm
-                        htmlFor="password"
-                        icon={faLock}
-                        type={"password"}
-                        name="password"
-                        value={password}
-                        placeholder={"Enter Password"}
-                        handleChange={(e) => setPassword(e.target.value)}
-                        autocomplete="off"
-                      />
-                      <div className="form-group form-button">
-                        <button
-                          type="submit"
-                          name="signup"
-                          id="signup"
-                          className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
-                          placeholder="Sign Up"
-                        >
-                          Register
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="signup-image">
-                    <figure>
-                      <img
-                        src="./assets/images/signup-image.jpg"
-                        alt="sign up"
-                      />
-                    </figure>
-                    <div className="signup-image-link">
-                      <Link to="/login">I am already member</Link>
+        <div className="main">
+          <section className="signup">
+            <div className="container">
+              <div className="signup-content">
+                <div className="signup-form">
+                  <h2 className="form-title">Sign up</h2>
+                  <form
+                    className="register-form"
+                    id="register-form"
+                    onSubmit={handleSubmit}
+                  >
+                    <InputForm
+                      htmlFor="name"
+                      icon={faUser}
+                      type={"text"}
+                      name="name"
+                      value={name}
+                      placeholder={"Enter First Name"}
+                      handleChange={(e) => setName(e.target.value)}
+                    />
+                    <InputForm
+                      htmlFor="lastName"
+                      icon={faUser}
+                      type={"text"}
+                      name="lastName"
+                      value={lastName}
+                      placeholder={"Enter Last Name"}
+                      handleChange={(e) => setLastName(e.target.value)}
+                    />
+                    <InputForm
+                      htmlFor="email"
+                      icon={faEnvelope}
+                      type={"email"}
+                      name="email"
+                      value={email}
+                      placeholder={"Enter Email"}
+                      handleChange={(e) => setEmail(e.target.value)}
+                    />
+                    <InputForm
+                      htmlFor="password"
+                      icon={faLock}
+                      type={"password"}
+                      name="password"
+                      value={password}
+                      placeholder={"Enter Password"}
+                      handleChange={(e) => setPassword(e.target.value)}
+                      autocomplete="off"
+                    />
+                    <div className="form-group form-button">
+                      <button
+                        type="submit"
+                        name="signup"
+                        id="signup"
+                        className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
+                        placeholder="Sign Up"
+                      >
+                        Register
+                      </button>
                     </div>
+                  </form>
+                </div>
+                <div className="signup-image">
+                  <figure className="d-flex justify-content-center">
+                    <img src="./assets/images/signup-image.jpg" alt="sign up" />
+                  </figure>
+                  <div className="signup-image-link">
+                    <Link to="/login">I am already member</Link>
                   </div>
                 </div>
               </div>
-            </section>
-          </div>
+            </div>
+          </section>
         </div>
       )}
     </>

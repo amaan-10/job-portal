@@ -154,71 +154,72 @@ const MyJob = () => {
             </Link>
           </div>
         </div>
-
-        {loading ? (
-          <Spinner />
-        ) : (
-          <div className="position-relative w-100">
-            <div
-              className="top-scrollbar overflow-x-auto overflow-y-hidden mb-2"
-              ref={setTopScrollbar}
-            >
-              <div className="scroll-content"></div>
-            </div>
-            <div
-              className="scroll-content-wrapper overflow-auto"
-              ref={setContentWrapper}
-            >
-              <div className="scroll-content">
-                <table className="table table-responsive table-hover border">
-                  <thead>
-                    <tr>
-                      <th className="px-3" scope="col">
-                        NO.
-                      </th>
-                      <th scope="col">COMPANY NAME</th>
-                      <th scope="col">POSITION</th>
-                      <th scope="col">WORK TYPE</th>
-                      <th scope="col">EDIT</th>
-                      <th scope="col">DELETE</th>
-                    </tr>
-                  </thead>
-
-                  <tbody>
-                    {currentJobs.map((job, index) => (
-                      <tr key={index}>
-                        <th className="p-3 px-4" scope="row">
-                          {index + 1}
+        <div className="d-flex justify-content-center">
+          {loading ? (
+            <Spinner />
+          ) : (
+            <div className="position-relative w-100">
+              <div
+                className="top-scrollbar overflow-x-auto overflow-y-hidden mb-2"
+                ref={setTopScrollbar}
+              >
+                <div className="scroll-content"></div>
+              </div>
+              <div
+                className="scroll-content-wrapper overflow-auto"
+                ref={setContentWrapper}
+              >
+                <div className="scroll-content">
+                  <table className="table table-responsive table-hover border">
+                    <thead>
+                      <tr>
+                        <th className="px-3" scope="col">
+                          NO.
                         </th>
-                        <td className="py-3">{job.company}</td>
-                        <td className="py-3">{job.position}</td>
-                        <td className="py-3">{job.workType}</td>
-                        <td>
-                          <button className="border-0 py-2 bg-transparent whitespace-nowrap">
-                            <Link
-                              style={{ color: "black" }}
-                              to={`/update-job/${job?._id}`}
-                            >
-                              Edit
-                            </Link>
-                          </button>
-                        </td>
-                        <td>
-                          <button
-                            onClick={() => handleDelete(job._id)}
-                            className=" border-0 bg-danger py-2 px-4 text-white rounded-1"
-                          >
-                            Delete
-                          </button>
-                        </td>
+                        <th scope="col">COMPANY NAME</th>
+                        <th scope="col">POSITION</th>
+                        <th scope="col">WORK TYPE</th>
+                        <th scope="col">EDIT</th>
+                        <th scope="col">DELETE</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+
+                    <tbody>
+                      {currentJobs.map((job, index) => (
+                        <tr key={index}>
+                          <th className="p-3 px-4" scope="row">
+                            {index + 1}
+                          </th>
+                          <td className="py-3">{job.company}</td>
+                          <td className="py-3">{job.position}</td>
+                          <td className="py-3">{job.workType}</td>
+                          <td>
+                            <button className="border-0 py-2 bg-transparent whitespace-nowrap">
+                              <Link
+                                style={{ color: "black" }}
+                                to={`/update-job/${job?._id}`}
+                              >
+                                Edit
+                              </Link>
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              onClick={() => handleDelete(job._id)}
+                              className=" border-0 bg-danger py-2 px-4 text-white rounded-1"
+                            >
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
         <div className="d-flex justify-content-center text-black space-x-4">
           {currentPage > 1 && (
             <button

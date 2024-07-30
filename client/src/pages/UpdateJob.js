@@ -69,6 +69,7 @@ const UpdateJob = () => {
     <div className=" conatiner-xl mx-auto px-md-5 mt-2 mt-md-5">
       <div className="job-container p-sm-5">
         <h3 className="text-center pt-3 pb-4 m-0">Create Job</h3>
+
         {loading ? (
           <Spinner />
         ) : (

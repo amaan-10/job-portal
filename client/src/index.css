@@ -5,17 +5,19 @@
 }
 
 /* loader */
+
 .spin{
   display: flex;
   justify-content: center;
-  margin-top: 20%;
 }
+
 .loader {
   width: 60px;
   height: 60px;
-  position: relative;
+  position: sticky;
   overflow: hidden;
   bottom: 150px;
+
 }
 .loader:before , .loader:after {
   content: "";

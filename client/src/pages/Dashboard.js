@@ -5,10 +5,13 @@ import Jobs from "../components/shared/Jobs";
 import Sidebar from "../components/shared/Sidebar";
 import Newsletter from "../components/shared/Newsletter";
 import { BASE_URL } from "../url";
+import { current } from "@reduxjs/toolkit";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [jobs, setJobs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/v1/job/get-job`, {
@@ -31,15 +34,26 @@ const Dashboard = () => {
   const [query, setQuery] = useState("");
 
   const handleInput = (event) => {
+    event.preventDefault();
+    setQuery(event.target.value);
+  };
+
+  const handleLocation = (event) => {
+    event.preventDefault();
     setQuery(event.target.value);
   };
 
   // console.log(query);
 
-  const filterItems = jobs.filter(
+  const filterJobPosition = jobs.filter(
     (job) => job.position.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
-  // console.log(filterItems);
+  // console.log(filterJobPosition);
+
+  const filterLocation = jobs.filter(
+    (job) => job.workLocation.toLowerCase().indexOf(query.toLowerCase()) !== -1
+  );
+  // console.log(filterLocation);
 
   const handleChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -49,11 +63,31 @@ const Dashboard = () => {
     setSelectedCategory(e.target.value);
   };
 
-  const filteredData = (jobs, selected, query) => {
+  const pageRange = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return { startIndex, endIndex };
+  };
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filterJobPosition.length / itemsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  let jobsValue = 0;
+
+  const filteredPositionData = (jobs, selected, query) => {
     let filteredJobs = jobs;
 
     if (query) {
-      filteredJobs = filterItems;
+      filteredJobs = filterJobPosition;
     }
 
     if (selected) {
@@ -64,13 +98,26 @@ const Dashboard = () => {
           createdAt >= selected ||
           workType.toLowerCase() === selected.toLowerCase()
       );
-      // console.log(filteredJobs);
     }
+    jobsValue = filteredJobs.length;
 
-    return filteredJobs.map((data, i) => <Card key={i} data={data} />);
+    const { startIndex, endIndex } = pageRange();
+    const filteredJobsPage = filteredJobs.slice(startIndex, endIndex);
+
+    return filteredJobsPage.map((data, i) => <Card key={i} data={data} />);
   };
 
-  const result = filteredData(jobs, selectedCategory, query);
+  const value = jobs.length;
+  const result = filteredPositionData(jobs, selectedCategory, query);
+
+  const filteredLocationData = (jobs, selected, query) => {
+    let filteredLocation = jobs;
+
+    if (query) {
+      filteredLocation = filterLocation;
+    }
+    return filteredLocation.map((data, i) => <Card key={i} data={data} />);
+  };
 
   return (
     <div>
@@ -84,7 +131,7 @@ const Dashboard = () => {
           style={{ gridColumn: "span 2 / span 2" }}
         >
           {result.length > 0 ? (
-            <Jobs result={result} />
+            <Jobs result={result} jobsValue={jobsValue} />
           ) : (
             <>
               <h3
@@ -100,7 +147,7 @@ const Dashboard = () => {
               <p>No data Found..!!</p>
             </>
           )}
-          {/* {result.length > 0 ? (
+          {result.length > 0 ? (
             <div className="d-flex justify-content-center my-4 ">
               <button
                 className="border-0 bg-transparent mx-3"
@@ -112,14 +159,15 @@ const Dashboard = () => {
               </button>
               <span className="mx-2">
                 Page {currentPage} of{" "}
-                {Math.ceil(filterItems.length / itemsPerPage)}
+                {Math.ceil(filterJobPosition.length / itemsPerPage)}
               </span>
               <button
                 className="border-0 bg-transparent mx-3"
                 id="hover"
                 onClick={nextPage}
                 disabled={
-                  currentPage === Math.ceil(filterItems.length / itemsPerPage)
+                  currentPage ===
+                  Math.ceil(filterJobPosition.length / itemsPerPage)
                 }
               >
                 Next
@@ -127,7 +175,7 @@ const Dashboard = () => {
             </div>
           ) : (
             ""
-          )} */}
+          )}
         </div>
         <div className="">
           <Newsletter />

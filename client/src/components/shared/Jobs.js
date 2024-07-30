@@ -1,6 +1,6 @@
 import React from "react";
 
-const Jobs = ({ result }) => {
+const Jobs = ({ result, jobsValue }) => {
   return (
     <>
       <>
@@ -13,7 +13,7 @@ const Jobs = ({ result }) => {
               lineHeight: "30px",
             }}
           >
-            {result.length} Jobs
+            {jobsValue} Jobs
           </h3>
         </div>
         <section>{result}</section>

@@ -29,8 +29,7 @@ const Banner = ({ query, handleInput }) => {
               icon={faSearch}
               style={{
                 position: "absolute",
-                marginLeft: "0.8rem",
-                marginTop: "0.8rem",
+                margin: "0.8rem",
                 color: "#9CA3AF",
               }}
             />
@@ -43,7 +42,7 @@ const Banner = ({ query, handleInput }) => {
               placeholder="Location"
               style={{ paddingLeft: "2rem" }}
               className="form-control d-block flex-1 border-2 bg-transparent text-gray-900 placeholder-text-gray-400 focus-right-0 form-control-sm form-control-sm-leading-6"
-              onChange={handleCompany}
+              onChange={handleLocation}
               value={query1}
             />
             <FontAwesomeIcon
@@ -59,6 +58,7 @@ const Banner = ({ query, handleInput }) => {
           <button
             type="submit"
             className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
+            disabled
           >
             Search
           </button>

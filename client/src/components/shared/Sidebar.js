@@ -21,7 +21,7 @@ const Sidebar = ({ handleChange, handleClick }) => {
   const threeMonthAgoDate = threeMonthAgo.toISOString().slice(0, 10);
 
   return (
-    <div className="mt-sm-4">
+    <div className="mt-sm-1">
       <div className=" display-flex">
         <h3
           style={{
@@ -56,7 +56,7 @@ const Sidebar = ({ handleChange, handleClick }) => {
           </button>
         </div>
       </div>
-      <div className={`${menuOpen ? "" : "d-none"} mt-2`}>
+      <div className={`${menuOpen ? "" : "d-none d-sm-block"} mt-2`}>
         <h4
           style={{
             fontSize: "16px",

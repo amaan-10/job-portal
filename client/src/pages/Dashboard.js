@@ -188,7 +188,7 @@ const Dashboard = () => {
             ""
           )}
         </div>
-        <div className="">
+        <div className="newsletter">
           <Newsletter />
         </div>
       </div>

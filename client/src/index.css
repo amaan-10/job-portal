@@ -194,7 +194,7 @@ animation-delay: 1s;
 }
 
 .dashboard-job-columns{
-  padding: 0rem 1rem;
+  padding: 0rem 1rem 1rem 1rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1rem;
   background: #FAFAFA;
@@ -206,6 +206,10 @@ animation-delay: 1s;
   .dashboard-job-columns{
     grid-template-columns: repeat(3, minmax(0, 1fr));    
   }
+
+  .newsletter{
+    grid-column: span 3/span 3;
+  }
   
 }
 
@@ -214,6 +218,10 @@ animation-delay: 1s;
   .dashboard-job-columns{
     grid-template-columns: repeat(1, minmax(0, 1fr));
     padding-right: 0rem;
+  }
+
+  .newsletter{
+    grid-column: span 1/span 1;
   }
   
 }

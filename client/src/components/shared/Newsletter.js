@@ -36,10 +36,11 @@ const Newsletter = () => {
             fontStyle: "normal",
             fontWeight: "400",
             marginTop: "12px",
+            textAlign: "center",
           }}
         >
-          Ut esse eiusmod aute. Sit enim lab dolore. Aute ea fugiat commodo ea
-          foes.
+          Reach out via email to explore career options and find the perfect fit
+          for your skills and aspirations.
         </p>
         <div className=" w-100 my-2">
           <input
@@ -83,10 +84,11 @@ const Newsletter = () => {
             fontStyle: "normal",
             fontWeight: "400",
             marginTop: "12px",
+            textAlign: "center",
           }}
         >
-          Ut esse eiusmod aute. Sit enim lab dolore. Aute ea fugiat commodo ea
-          foes.
+          Receive real-time alerts on important updates, ensuring you never miss
+          out on crucial information.
         </p>
         <div className=" w-100 my-2">
           <input

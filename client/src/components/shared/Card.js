@@ -14,10 +14,9 @@ const Card = ({ data }) => {
   const date = createdAt.substring(0, 10);
   return (
     <section
+      className=" my-3 mx-1 p-3"
       style={{
-        margin: "20px",
         border: "2px solid #ededed",
-        padding: "20px",
         cursor: "pointer",
         borderRadius: "8px",
       }}

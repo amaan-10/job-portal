@@ -122,12 +122,28 @@ const Dashboard = () => {
     <div>
       <Banner query={query} handleInput={handleInput} />
       <div className="dashboard-job-columns">
-        <div className=" bg-white p-4 rounded-1">
+        <div
+          className=" bg-white p-4 "
+          style={{
+            borderRadius: "8px",
+            border: "2px solid rgba(20, 20, 20, 0.05)",
+            background: "#FFF",
+            padding: "15px",
+            boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+          }}
+        >
           <Sidebar handleChange={handleChange} handleClick={handleClick} />
         </div>
         <div
-          className=" bg-white p-4 rounded-1 me-3 me-sm-0"
-          style={{ gridColumn: "span 2 / span 2" }}
+          className="  bg-white p-3 p-md-4 me-3 me-sm-0"
+          style={{
+            borderRadius: "8px",
+            border: "2px solid rgba(20, 20, 20, 0.05)",
+            background: "#FFF",
+            padding: "15px",
+            boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+            gridColumn: "span 2 / span 2",
+          }}
         >
           {result.length > 0 ? (
             <Jobs result={result} jobsValue={jobsValue} />

@@ -145,6 +145,7 @@ animation-delay: 1s;
 .job-container{
   padding: 1.5rem;
   background: #EFEFEF;
+  border-radius: 10px;
 }
 
 
@@ -164,6 +165,11 @@ animation-delay: 1s;
   
   .scroll-content{
     width: 100%;
+  }
+
+  .notfound-svg{
+    width: 149px;
+    height: 150px;
   }
   
 }

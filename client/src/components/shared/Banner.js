@@ -20,7 +20,7 @@ const Banner = ({ query, handleInput }) => {
               name="title"
               id="title"
               placeholder="What position you are looking for?"
-              style={{ paddingLeft: "2rem" }}
+              style={{ paddingLeft: "2rem", lineHeight: "1.8rem" }}
               className="form-control d-block flex-1 border-2 bg-transparent text-gray-900 placeholder-text-gray-400 focus-right-0 form-control-sm form-control-sm-leading-6"
               onChange={handleInput}
               value={query}

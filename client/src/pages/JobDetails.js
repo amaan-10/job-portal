@@ -1,4 +1,12 @@
 import React, { useEffect, useState } from "react";
+import {
+  faBriefcaseClock,
+  faCalendarDays,
+  faClock,
+  faLocationDot,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BASE_URL } from "../url";
 import { useParams } from "react-router-dom";
 
@@ -18,20 +26,27 @@ const JobDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
-        console.log(data);
       });
   }, []);
 
-  console.log(jobs);
   return (
     <div>
       {jobs.map((job) => (
-        <div>
-          <h1>Job Details</h1>
+        <div className="p-4 p-sm-5">
+          <h3>Job Details</h3>
           <p>{job.company}</p>
-          <p>{job.position}</p>
-          <p>{job.workLocation}</p>
-          <p>{job.workType}</p>
+          <p>
+            <FontAwesomeIcon className="pe-2" icon={faUser} />
+            {job.position}
+          </p>
+          <p>
+            <FontAwesomeIcon className="pe-2" icon={faLocationDot} />
+            {job.workLocation}
+          </p>
+          <p>
+            <FontAwesomeIcon className="pe-2" icon={faBriefcaseClock} />
+            {job.workType}
+          </p>
           <p>{job.description}</p>
         </div>
       ))}

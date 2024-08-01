@@ -14,6 +14,7 @@ import Navbar from "./components/shared/Navbar";
 import Banner from "./components/shared/Banner";
 import MyJob from "./pages/MyJob";
 import UpdateJob from "./pages/UpdateJob";
+import JobDetails from "./pages/JobDetails";
 
 function App() {
   return (
@@ -80,6 +81,15 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <UpdateJob />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/job-details"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <JobDetails />
             </PrivateRoute>
           }
         />

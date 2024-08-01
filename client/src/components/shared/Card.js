@@ -9,11 +9,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Card = ({ data }) => {
-  const { company, position, workLocation, createdAt, workType, description } =
-    data;
+  const {
+    _id,
+    company,
+    position,
+    workLocation,
+    createdAt,
+    workType,
+    description,
+  } = data;
+
   const date = createdAt.substring(0, 10);
   return (
-    <Link to="/job-details" className=" text-decoration-none">
+    <Link to={`/job-details/${_id}`} className=" text-decoration-none">
       <section
         className=" my-3 mx-1 p-3"
         style={{

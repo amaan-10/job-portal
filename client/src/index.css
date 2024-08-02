@@ -313,8 +313,12 @@ animation-delay: 1s;
   text-decoration: underline; 
   }
 
+.hover{
+  text-decoration: none;
+}
+
 .hover:hover{
-  color: blue;
+  color: rgb(81, 81, 255);
   text-decoration: underline;
 }
 

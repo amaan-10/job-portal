@@ -85,7 +85,10 @@ const Card = ({ data }) => {
               style={{
                 paddingTop: "6px",
                 fontSize: "14px",
-                lineHeight: "1.5rem",
+                textOverflow: "ellipsis",
+                overflow: "hidden",
+                lineClamp: "2",
+                whiteSpace: "nowrap",
               }}
             >
               {description}

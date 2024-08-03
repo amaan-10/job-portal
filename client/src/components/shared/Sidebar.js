@@ -78,20 +78,20 @@ const Sidebar = ({ handleChange, handleClick }) => {
 
           <RadioForm
             handleChange={handleChange}
-            value="China"
-            title="China"
+            value="Bengaluru"
+            title="Bengaluru"
             name="test"
           />
           <RadioForm
             handleChange={handleChange}
-            value="Poland"
-            title="Poland"
+            value="Delhi"
+            title="Delhi"
             name="test"
           />
           <RadioForm
             handleChange={handleChange}
-            value="United States"
-            title="United States"
+            value="Hyderabad"
+            title="Hyderabad"
             name="test"
           />
           <RadioForm

@@ -102,7 +102,7 @@ const PostJobs = () => {
               <p className="d-block mb-2 text-lg">About the Organisation</p>
               <input
                 type="text"
-                placeholder="About..."
+                placeholder="Ex. https://company-link.com"
                 {...register("about")}
                 className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
               />

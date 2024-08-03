@@ -43,7 +43,7 @@ const JobDetails = () => {
       </div>
       {jobs.map((job) => (
         <div className="d-flex flex-column flex-md-row">
-          <div className="px-md-5 px-3  pe-md-0 col-md-9 col-12 py-4 ">
+          <div className="px-md-5 px-3  pe-md-0 col-lg-9 col-md-8 col-12 py-4 ">
             <h3>Job Details</h3>
             <div
               className=" bg-white p-3 p-md-4 me-3 me-sm-0"
@@ -58,21 +58,21 @@ const JobDetails = () => {
               <h4 className=" fw-semibold ">{job.company}</h4>
               <h5>{job.position}</h5>
               <div className="d-flex flex-wrap">
-                <div className="pt-4 pe-5">
+                <div className="pt-4 pe-5 me-5">
                   <h6>Work Type </h6>
                   <p>
                     <FontAwesomeIcon className="pe-2" icon={faBriefcaseClock} />
                     {job.workType}
                   </p>
                 </div>
-                <div className="pt-4 pe-5">
+                <div className="pt-4 pe-5 me-5">
                   <h6>Work Location </h6>
                   <p>
                     <FontAwesomeIcon className="pe-2" icon={faLocationDot} />
                     {job.workLocation}
                   </p>
                 </div>
-                <div className="pt-4 pe-5">
+                <div className="pt-4 ">
                   {job.workType === "internship" ? (
                     <h6>Stipend</h6>
                   ) : (
@@ -131,7 +131,7 @@ const JobDetails = () => {
               </div>
             </div>
           </div>
-          <div className="px-md-4 px-5 mt-md-5 col-md-3  py-md-5 ">
+          <div className="px-sm-4 px-3 mt-md-5 col-lg-3 col-md-4  py-md-3 ">
             <h6> Registration Schedule</h6>
             <div
               className=" bg-white p-3 mb-3 p-md-3 me-3 me-sm-0"
@@ -139,12 +139,11 @@ const JobDetails = () => {
                 borderRadius: "8px",
                 border: "2px solid rgba(20, 20, 20, 0.05)",
                 background: "#FFF",
-                padding: "15px",
                 boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
               }}
             >
-              <p>Opens: {job.openingAt}</p>
-              <p>Closes: {job.closesAt}</p>
+              <div>Opens: {job.openingAt}</div>
+              <div>Closes: {job.closesAt}</div>
             </div>
             <h6> About the Company</h6>
             <div
@@ -157,7 +156,12 @@ const JobDetails = () => {
                 boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
               }}
             >
-              <span>{job.about}</span>
+              <>Website </>
+              <span>
+                <a href={job.about} target="_blank">
+                  {job.about}
+                </a>
+              </span>
             </div>
           </div>
         </div>

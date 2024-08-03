@@ -6,6 +6,12 @@ import Sidebar from "../components/shared/Sidebar";
 import Newsletter from "../components/shared/Newsletter";
 import { BASE_URL } from "../url";
 import { current } from "@reduxjs/toolkit";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowDownWideShort,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import RadioForm from "../components/shared/RadioForm";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -118,6 +124,26 @@ const Dashboard = () => {
   //   return filteredLocation.map((data, i) => <Card key={i} data={data} />);
   // };
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleSort = (value) => {
+    fetch(`${BASE_URL}/api/v1/job/get-job?sort=${value}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setJobs(data);
+      });
+  };
+
   return (
     <div>
       <Banner query={query} handleInput={handleInput} />
@@ -146,7 +172,93 @@ const Dashboard = () => {
           }}
         >
           {result.length > 0 ? (
-            <Jobs result={result} jobsValue={jobsValue} />
+            <>
+              <button
+                onClick={handleMenu}
+                className="bg-transparent border-0 float-end"
+              >
+                {menuOpen ? (
+                  <FontAwesomeIcon
+                    className=" text-black"
+                    style={{ width: 18, height: 18 }}
+                    icon={faXmark}
+                  />
+                ) : (
+                  <>
+                    <span
+                      style={{
+                        fontSize: "16px",
+                        fontWeight: "600",
+                        paddingRight: "8px",
+                      }}
+                    >
+                      Sort
+                    </span>
+                    <FontAwesomeIcon
+                      style={{ width: 16, height: 16 }}
+                      icon={faArrowDownWideShort}
+                    />
+                  </>
+                )}
+              </button>
+              <div className={`${menuOpen ? "" : "d-none"} mt-2`}>
+                <h4
+                  style={{
+                    fontSize: "16px",
+                    fontStyle: "normal",
+                    fontWeight: "500",
+                    lineHeight: "30px",
+                    paddingBottom: "12px",
+                  }}
+                >
+                  Sort
+                </h4>
+                <div>
+                  <label className="sidebar-label-container">
+                    <input
+                      type="radio"
+                      name={"latest"}
+                      value={"latest"}
+                      onChange={() => handleSort("latest")}
+                    />
+                    <span className="checkmark"></span>
+                    {"Latest"}
+                  </label>
+                  <label className="sidebar-label-container">
+                    <input
+                      type="radio"
+                      name={"oldest"}
+                      value={"oldest"}
+                      onChange={() => handleSort("oldest")}
+                    />
+                    <span className="checkmark"></span>
+                    {"oldest"}
+                  </label>
+                  <label className="sidebar-label-container">
+                    <input
+                      type="radio"
+                      name={"a-z"}
+                      value={"a-z"}
+                      onChange={() => handleSort("a-z")}
+                    />
+                    <span className="checkmark"></span>
+                    {"a-z"}
+                  </label>
+                  <label className="sidebar-label-container">
+                    <input
+                      type="radio"
+                      name={"z-a"}
+                      value={"z-a"}
+                      onChange={() => handleSort("z-a")}
+                    />
+                    <span className="checkmark"></span>
+                    {"z-a"}
+                  </label>
+                </div>
+              </div>
+
+              <Jobs result={result} jobsValue={jobsValue} />
+            </>
           ) : (
             <>
               <h3

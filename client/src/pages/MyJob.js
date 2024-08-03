@@ -17,7 +17,7 @@ const MyJob = () => {
   const dispach = useDispatch();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/v1/job/get-job`, {
+    fetch(`${BASE_URL}/api/v1/job/get-my-job`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

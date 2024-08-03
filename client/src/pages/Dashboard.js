@@ -20,7 +20,7 @@ const Dashboard = () => {
   const itemsPerPage = 10;
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/v1/job/get-job`, {
+    fetch(`${BASE_URL}/api/v1/job/get-all-job`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -130,7 +130,7 @@ const Dashboard = () => {
   };
 
   const handleSort = (value) => {
-    fetch(`${BASE_URL}/api/v1/job/get-job?sort=${value}`, {
+    fetch(`${BASE_URL}/api/v1/job/get-all-job?sort=${value}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -201,12 +201,12 @@ const Dashboard = () => {
                   </>
                 )}
               </button>
-              <div className={`${menuOpen ? "" : "d-none"} mt-2`}>
+              <div className={`${menuOpen ? "" : "d-none"}`}>
                 <h4
                   style={{
                     fontSize: "16px",
                     fontStyle: "normal",
-                    fontWeight: "500",
+                    fontWeight: "600",
                     lineHeight: "30px",
                     paddingBottom: "12px",
                   }}
@@ -217,19 +217,19 @@ const Dashboard = () => {
                   <label className="sidebar-label-container">
                     <input
                       type="radio"
-                      name={"latest"}
+                      name={"test"}
                       value={"latest"}
-                      onChange={() => handleSort("latest")}
+                      onClick={() => handleSort("latest")}
                     />
                     <span className="checkmark"></span>
-                    {"Latest"}
+                    {"latest"}
                   </label>
                   <label className="sidebar-label-container">
                     <input
                       type="radio"
-                      name={"oldest"}
+                      name={"test"}
                       value={"oldest"}
-                      onChange={() => handleSort("oldest")}
+                      onClick={() => handleSort("oldest")}
                     />
                     <span className="checkmark"></span>
                     {"oldest"}
@@ -237,9 +237,9 @@ const Dashboard = () => {
                   <label className="sidebar-label-container">
                     <input
                       type="radio"
-                      name={"a-z"}
+                      name={"test"}
                       value={"a-z"}
-                      onChange={() => handleSort("a-z")}
+                      onClick={() => handleSort("a-z")}
                     />
                     <span className="checkmark"></span>
                     {"a-z"}
@@ -247,9 +247,9 @@ const Dashboard = () => {
                   <label className="sidebar-label-container">
                     <input
                       type="radio"
-                      name={"z-a"}
+                      name={"test"}
                       value={"z-a"}
-                      onChange={() => handleSort("z-a")}
+                      onClick={() => handleSort("z-a")}
                     />
                     <span className="checkmark"></span>
                     {"z-a"}

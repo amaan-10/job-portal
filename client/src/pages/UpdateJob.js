@@ -23,7 +23,7 @@ const UpdateJob = () => {
   } = useForm();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/v1/job/get-job?id=${id}`, {
+    fetch(`${BASE_URL}/api/v1/job/get-my-job?id=${id}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

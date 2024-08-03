@@ -27,22 +27,12 @@ const PostJobs = () => {
         if (job.success) {
           toast.success("Job Created Successfully");
         } else {
-          toast.error(job.error);
+          toast.error(job.error.message);
         }
-        // console.log(job);
         reset();
+        // console.log(job);
       });
   };
-
-  const [currentDateTime, setCurrentDateTime] = useState("");
-
-  useEffect(() => {
-    const now = new Date();
-    const istOffset = 5.5 * 60 * 60 * 1000; // Offset in milliseconds
-    const istNow = new Date(now.getTime() + istOffset);
-    const formattedDateTime = istNow.toISOString().slice(0, 16);
-    setCurrentDateTime(formattedDateTime);
-  }, []);
 
   return (
     <div className=" conatiner-xl mx-auto p-md-5 mt-2 mt-md-0">
@@ -81,7 +71,7 @@ const PostJobs = () => {
                 <option value="">Choose Job Type</option>
                 <option value="full-time">Full Time</option>
                 <option value="part-time">Part Time</option>
-                <option value="intership">Internship</option>
+                <option value="internship">Internship</option>
                 <option value="contract">Contract</option>
               </select>
             </div>
@@ -124,7 +114,6 @@ const PostJobs = () => {
               <p className="d-block mb-2 text-lg required-field">Job Opening</p>
               <input
                 type="datetime-local"
-                value={currentDateTime}
                 {...register("openingAt")}
                 className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
               />

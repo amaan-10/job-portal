@@ -17,6 +17,41 @@ export const createJobController = async (req, res, next) => {
 
 export const getAllJobsController = async (req, res, next) => {
   const { status, workType, id, search, sort } = req.query;
+  const queryObject = {};
+  if (status && status !== "all") {
+    queryObject.status = status;
+  }
+  if (workType && workType !== "all") {
+    queryObject.workType = workType;
+  }
+  if (search) {
+    queryObject.position = { $regex: search, $options: "i" };
+  }
+  if (id && id !== "all") {
+    queryObject._id = id;
+  }
+  let queryResult = jobsModel.find(queryObject);
+
+  if (sort === "latest") {
+    queryResult = queryResult.sort("-createdAt");
+  }
+  if (sort === "oldest") {
+    queryResult = queryResult.sort("createdAt");
+  }
+  if (sort === "a-z") {
+    queryResult = queryResult.sort("position");
+  }
+  if (sort === "z-a") {
+    queryResult = queryResult.sort("-position");
+  }
+  const jobs = await queryResult;
+
+  // const jobs = await jobsModel.find({createdBy:req.user.userId});
+  res.status(200).json(jobs);
+};
+
+export const getMyJobsController = async (req, res, next) => {
+  const { status, workType, id, search, sort } = req.query;
   const queryObject = {
     createdBy: req.body.user.userId,
   };

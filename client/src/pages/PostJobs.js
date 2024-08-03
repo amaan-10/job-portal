@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../url";
@@ -34,14 +34,24 @@ const PostJobs = () => {
       });
   };
 
+  const [currentDateTime, setCurrentDateTime] = useState("");
+
+  useEffect(() => {
+    const now = new Date();
+    const istOffset = 5.5 * 60 * 60 * 1000; // Offset in milliseconds
+    const istNow = new Date(now.getTime() + istOffset);
+    const formattedDateTime = istNow.toISOString().slice(0, 16);
+    setCurrentDateTime(formattedDateTime);
+  }, []);
+
   return (
     <div className=" conatiner-xl mx-auto p-md-5 mt-2 mt-md-0">
       <div className="job-container p-sm-5">
         <h3 className="text-center pt-3 pb-4 m-0">Create Job</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4">
+          <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-4">
             <div className="col-lg-6 col-12">
-              <p className="d-block mb-2 text-lg">Job Title</p>
+              <p className="d-block mb-2 text-lg required-field">Job Title</p>
               <input
                 type="text"
                 placeholder="Ex: Web Devlopment"
@@ -50,7 +60,9 @@ const PostJobs = () => {
               />
             </div>
             <div className="col-lg-6 col-12">
-              <p className="d-block mb-2 text-lg">Company Name</p>
+              <p className="d-block mb-2 text-lg required-field">
+                Company Name
+              </p>
               <input
                 type="text"
                 placeholder="Ex: Microsoft"
@@ -59,9 +71,9 @@ const PostJobs = () => {
               />
             </div>
           </div>
-          <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4">
+          <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-4">
             <div className="col-lg-6 col-12">
-              <p className="d-block mb-2 text-lg">Job Type</p>
+              <p className="d-block mb-2 text-lg required-field">Job Type</p>
               <select
                 {...register("workType")}
                 className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
@@ -74,7 +86,9 @@ const PostJobs = () => {
               </select>
             </div>
             <div className="col-lg-6 col-12">
-              <p className="d-block mb-2 text-lg">Work Location</p>
+              <p className="d-block mb-2 text-lg required-field">
+                Work Location
+              </p>
               <input
                 type="text"
                 placeholder="Ex: Pune"
@@ -83,8 +97,60 @@ const PostJobs = () => {
               />
             </div>
           </div>
+          <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-4">
+            <div className="col-lg-6 col-12">
+              <p className="d-block mb-2 text-lg">About the Organisation</p>
+              <input
+                type="text"
+                placeholder="About..."
+                {...register("about")}
+                className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              />
+            </div>
+            <div className="col-lg-6 col-12">
+              <p className="d-block mb-2 text-lg required-field">
+                Cost to Company (CTC)/Stipend
+              </p>
+              <input
+                type="text"
+                placeholder="Ex. INR 6,00,000"
+                {...register("ctc")}
+                className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              />
+            </div>
+          </div>
+          <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-5">
+            <div className="col-lg-4 col-12">
+              <p className="d-block mb-2 text-lg required-field">Job Opening</p>
+              <input
+                type="datetime-local"
+                value={currentDateTime}
+                {...register("openingAt")}
+                className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              />
+            </div>
+            <div className="col-lg-4 col-12">
+              <p className="d-block mb-2 text-lg required-field">Job Closing</p>
+              <input
+                type="datetime-local"
+                {...register("closesAt")}
+                className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              />
+            </div>
+            <div className="col-lg-4 col-12">
+              <p className="d-block mb-2 text-lg">Duration (Internship)</p>
+              <input
+                type="text"
+                placeholder="Ex. 6 Months"
+                {...register("duration")}
+                className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              />
+            </div>
+          </div>
           <div className="col-md-12 mb-4">
-            <p className="d-block mb-2 text-lg">Eligibility Criteria</p>
+            <p className="d-block mb-2 text-lg required-field">
+              Eligibility Criteria
+            </p>
             <textarea
               className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
               rows={3}
@@ -93,7 +159,9 @@ const PostJobs = () => {
             />
           </div>
           <div className="col-md-12 mb-4">
-            <p className="d-block mb-2 text-lg">Job Description</p>
+            <p className="d-block mb-2 text-lg required-field">
+              Job Description
+            </p>
             <textarea
               className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
               rows={6}

@@ -395,6 +395,10 @@ animation-delay: 1s;
     border: 2px solid #5ed6b3;
   }
 
+  .required-field::after {
+    content: "*";
+    color: red;
+}
 
 /* @extend display-flex; */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap');

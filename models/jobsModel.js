@@ -29,7 +29,7 @@ const jobSchema = new mongoose.Schema(
     },
     workType: {
       type: String,
-      enum: ["full-time", "part-time", "intership", "contract"],
+      enum: ["full-time", "part-time", "internship", "contract"],
       default: "full-time",
     },
     workLocation: {
@@ -37,9 +37,27 @@ const jobSchema = new mongoose.Schema(
       default: "Mumbai",
       required: [true, "Work location is required"],
     },
+    ctc: {
+      type: String,
+      required: [true, "CTC is required"],
+    },
+    about: {
+      type: String,
+    },
+    duration: {
+      type: String,
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
+    },
+    openingAt: {
+      type: String,
+      required: [true, "Job Opening Time is required"],
+    },
+    closesAt: {
+      type: String,
+      required: [true, "Job Closing Time is required"],
     },
   },
   {

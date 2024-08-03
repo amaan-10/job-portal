@@ -42,77 +42,108 @@ const JobDetails = () => {
         </p>
       </div>
       {jobs.map((job) => (
-        <div className="p-4 p-sm-5">
-          <h3>Job Details</h3>
-          <div
-            className=" bg-white p-3 p-md-4 me-3 me-sm-0"
-            style={{
-              borderRadius: "8px",
-              border: "2px solid rgba(20, 20, 20, 0.05)",
-              background: "#FFF",
-              padding: "15px",
-              boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-            }}
-          >
-            <h4 className=" fw-semibold ">{job.company}</h4>
-            <h5>{job.position}</h5>
-            <div className="d-flex gap-5 pt-4 flex-wrap">
-              <div className=" d-flex flex-column">
-                <h6>Work Location </h6>
-                <p>
-                  <FontAwesomeIcon className="pe-2" icon={faLocationDot} />
-                  {job.workLocation}
+        <div className="d-flex flex-column flex-md-row">
+          <div className="px-md-5 px-3  pe-md-0 col-md-9 col-12 py-4 ">
+            <h3>Job Details</h3>
+            <div
+              className=" bg-white p-3 p-md-4 me-3 me-sm-0"
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <h4 className=" fw-semibold ">{job.company}</h4>
+              <h5>{job.position}</h5>
+              <div className="d-flex gap-5 pt-4 flex-wrap">
+                <div className=" d-flex flex-column">
+                  <h6>Work Location </h6>
+                  <p>
+                    <FontAwesomeIcon className="pe-2" icon={faLocationDot} />
+                    {job.workLocation}
+                  </p>
+                </div>
+                <div>
+                  <h6>Work Type </h6>
+                  <p>
+                    <FontAwesomeIcon className="pe-2" icon={faBriefcaseClock} />
+                    {job.workType}
+                  </p>
+                </div>
+              </div>
+              <div className=" pt-4">
+                <h6>Eligibility Criteria </h6>
+                <p
+                  style={{
+                    borderRadius: "8px",
+                    border: "2px solid rgba(20, 20, 20, 0.05)",
+                    background: "#FFF",
+                    padding: "15px",
+                    boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                  }}
+                >
+                  {job.eligibility}
                 </p>
               </div>
-              <div>
-                <h6>Work Type </h6>
-                <p>
-                  <FontAwesomeIcon className="pe-2" icon={faBriefcaseClock} />
-                  {job.workType}
+              <div className=" pt-4">
+                <h6>Description </h6>
+                <p
+                  style={{
+                    borderRadius: "8px",
+                    border: "2px solid rgba(20, 20, 20, 0.05)",
+                    background: "#FFF",
+                    padding: "15px",
+                    boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                  }}
+                >
+                  {job.description}
+                </p>
+              </div>
+              <div className=" pt-4">
+                <h6>Other Details </h6>
+                <p
+                  style={{
+                    borderRadius: "8px",
+                    border: "2px solid rgba(20, 20, 20, 0.05)",
+                    background: "#FFF",
+                    padding: "15px",
+                    boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                  }}
+                >
+                  {job.otherDetails}
                 </p>
               </div>
             </div>
-            <div className=" pt-4">
-              <h6>Eligibility Criteria </h6>
-              <p
-                style={{
-                  borderRadius: "8px",
-                  border: "2px solid rgba(20, 20, 20, 0.05)",
-                  background: "#FFF",
-                  padding: "15px",
-                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-                }}
-              >
-                {job.eligibility}
-              </p>
+          </div>
+          <div className="px-md-4 px-5 mt-md-5 col-md-3  py-md-5 ">
+            <h6> Registration Schedule</h6>
+            <div
+              className=" bg-white p-3 mb-3 p-md-3 me-3 me-sm-0"
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <p>Opens: {job.openingAt}</p>
+              <p>Closes: {job.closesAt}</p>
             </div>
-            <div className=" pt-4">
-              <h6>Description </h6>
-              <p
-                style={{
-                  borderRadius: "8px",
-                  border: "2px solid rgba(20, 20, 20, 0.05)",
-                  background: "#FFF",
-                  padding: "15px",
-                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-                }}
-              >
-                {job.description}
-              </p>
-            </div>
-            <div className=" pt-4">
-              <h6>Other Details </h6>
-              <p
-                style={{
-                  borderRadius: "8px",
-                  border: "2px solid rgba(20, 20, 20, 0.05)",
-                  background: "#FFF",
-                  padding: "15px",
-                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-                }}
-              >
-                {job.otherDetails}
-              </p>
+            <h6> About the Company</h6>
+            <div
+              className=" bg-white p-3 mb-3 p-md-3 me-3 me-sm-0"
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <span>{job.about}</span>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import {
   faBriefcaseClock,
   faCalendarDays,
   faClock,
+  faIndianRupeeSign,
   faLessThan,
   faLocationDot,
   faUser,
@@ -30,7 +31,6 @@ const JobDetails = () => {
         setJobs(data);
       });
   }, []);
-  console.log(jobs);
 
   return (
     <div>
@@ -57,19 +57,33 @@ const JobDetails = () => {
             >
               <h4 className=" fw-semibold ">{job.company}</h4>
               <h5>{job.position}</h5>
-              <div className="d-flex gap-5 pt-4 flex-wrap">
-                <div className=" d-flex flex-column">
+              <div className="d-flex flex-wrap">
+                <div className="pt-4 pe-5">
+                  <h6>Work Type </h6>
+                  <p>
+                    <FontAwesomeIcon className="pe-2" icon={faBriefcaseClock} />
+                    {job.workType}
+                  </p>
+                </div>
+                <div className="pt-4 pe-5">
                   <h6>Work Location </h6>
                   <p>
                     <FontAwesomeIcon className="pe-2" icon={faLocationDot} />
                     {job.workLocation}
                   </p>
                 </div>
-                <div>
-                  <h6>Work Type </h6>
+                <div className="pt-4 pe-5">
+                  {job.workType === "internship" ? (
+                    <h6>Stipend</h6>
+                  ) : (
+                    <h6>Cost to Company(CTC)</h6>
+                  )}
                   <p>
-                    <FontAwesomeIcon className="pe-2" icon={faBriefcaseClock} />
-                    {job.workType}
+                    <FontAwesomeIcon
+                      className="pe-2"
+                      icon={faIndianRupeeSign}
+                    />
+                    {job.ctc}
                   </p>
                 </div>
               </div>

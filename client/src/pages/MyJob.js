@@ -79,7 +79,7 @@ const MyJob = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     let s = searchParams.get("search");
-    fetch(`${BASE_URL}/api/v1/job/get-job?search=${s}`, {
+    fetch(`${BASE_URL}/api/v1/job/get-my-job?search=${s}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -15,6 +15,13 @@ const jobSchema = new mongoose.Schema(
       required: [true, "Job position is required"],
       maxlength: 100,
     },
+    eligibility: {
+      type: String,
+      required: [true, "Job Eligibility is required"],
+    },
+    otherDetails: {
+      type: String,
+    },
     status: {
       type: String,
       enum: ["pending", "reject", "interview"],

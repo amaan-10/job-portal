@@ -30,15 +30,14 @@ const JobDetails = () => {
         setJobs(data);
       });
   }, []);
-  // console.log(jobs);
+  console.log(jobs);
 
   return (
     <div>
       <div className="px-4 px-sm-5 pt-3">
         <p>
           <Link to="/dashboard" className=" hover">
-            <FontAwesomeIcon icon={faAngleLeft} className=" pe-2" />
-            Back to Dashboard
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
           </Link>
         </p>
       </div>
@@ -74,6 +73,20 @@ const JobDetails = () => {
               </div>
             </div>
             <div className=" pt-4">
+              <h6>Eligibility Criteria </h6>
+              <p
+                style={{
+                  borderRadius: "8px",
+                  border: "2px solid rgba(20, 20, 20, 0.05)",
+                  background: "#FFF",
+                  padding: "15px",
+                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                }}
+              >
+                {job.eligibility}
+              </p>
+            </div>
+            <div className=" pt-4">
               <h6>Description </h6>
               <p
                 style={{
@@ -85,6 +98,20 @@ const JobDetails = () => {
                 }}
               >
                 {job.description}
+              </p>
+            </div>
+            <div className=" pt-4">
+              <h6>Other Details </h6>
+              <p
+                style={{
+                  borderRadius: "8px",
+                  border: "2px solid rgba(20, 20, 20, 0.05)",
+                  background: "#FFF",
+                  padding: "15px",
+                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                }}
+              >
+                {job.otherDetails}
               </p>
             </div>
           </div>

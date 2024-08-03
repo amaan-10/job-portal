@@ -1,4 +1,5 @@
 import {
+  faAngleRight,
   faBriefcaseClock,
   faCalendarDays,
   faClock,
@@ -93,6 +94,9 @@ const Card = ({ data }) => {
             >
               {description}
             </p>
+            <div className="hover text-end">
+              View details <FontAwesomeIcon icon={faAngleRight} />
+            </div>
           </div>
         </div>
       </section>

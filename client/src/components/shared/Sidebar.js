@@ -186,7 +186,7 @@ const Sidebar = ({ handleChange, handleClick }) => {
           />
           <RadioForm
             handleChange={handleChange}
-            value="contaract"
+            value="contract"
             title="Contract"
             name="test"
           />

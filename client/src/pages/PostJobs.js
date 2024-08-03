@@ -69,7 +69,7 @@ const PostJobs = () => {
                 <option value="">Choose Job Type</option>
                 <option value="full-time">Full Time</option>
                 <option value="part-time">Part Time</option>
-                <option value="intership">Intership</option>
+                <option value="intership">Internship</option>
                 <option value="contract">Contract</option>
               </select>
             </div>
@@ -77,11 +77,20 @@ const PostJobs = () => {
               <p className="d-block mb-2 text-lg">Work Location</p>
               <input
                 type="text"
-                placeholder="Ex: Pune, Maharashtra"
+                placeholder="Ex: Pune"
                 {...register("workLocation")}
                 className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
               />
             </div>
+          </div>
+          <div className="col-md-12 mb-4">
+            <p className="d-block mb-2 text-lg">Eligibility Criteria</p>
+            <textarea
+              className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              rows={3}
+              placeholder="Eligibility Criteria..."
+              {...register("eligibility")}
+            />
           </div>
           <div className="col-md-12 mb-4">
             <p className="d-block mb-2 text-lg">Job Description</p>
@@ -90,6 +99,15 @@ const PostJobs = () => {
               rows={6}
               placeholder="Job Description..."
               {...register("description")}
+            />
+          </div>
+          <div className="col-md-12 mb-4">
+            <p className="d-block mb-2 text-lg">Other Details</p>
+            <textarea
+              className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+              rows={6}
+              placeholder="Other Details..."
+              {...register("otherDetails")}
             />
           </div>
 

@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 import moment from "moment";
 
 export const createJobController = async (req, res, next) => {
-  const { company, position, description } = req.body;
-  if (!company || !position || !description) {
+  const { company, position, description, eligibility } = req.body;
+  if (!company || !position || !description || !eligibility) {
     next("Please provide all fields");
   }
   req.body.createdBy = req.body.user.userId;
@@ -63,8 +63,8 @@ export const getAllJobsController = async (req, res, next) => {
 
 export const updateJobController = async (req, res, next) => {
   const { id } = req.params;
-  const { company, position, description } = req.body;
-  if (!company || !position || !description) {
+  const { company, position, description, eligibility } = req.body;
+  if (!company || !position || !description || !eligibility) {
     next("Please provide all fields");
   }
   const job = await jobsModel.findOne({ _id: id });

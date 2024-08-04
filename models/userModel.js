@@ -24,9 +24,27 @@ const userSchema = new mongoose.Schema(
       minlength: [6, "Password should be atleast 6 character"],
       select: true,
     },
+    qualification: {
+      type: String,
+      required: [true, "Qualification is required"],
+    },
     location: {
       type: String,
       default: "India",
+    },
+    experience: {
+      type: String,
+      enum: ["fresher", "experienced"],
+      required: [true, "Experience Level is required"],
+    },
+    expyrs: {
+      type: Number,
+    },
+    pastexp: {
+      type: String,
+    },
+    projects: {
+      type: String,
     },
   },
   { timestamps: true }

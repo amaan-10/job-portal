@@ -1,9 +1,8 @@
 import mongoose from "mongoose";
 
-const mongoose = require("mongoose");
-
 const resumeSchema = new mongoose.Schema({
   filename: String,
+  data: Buffer,
   contentType: String,
   fileId: mongoose.Schema.Types.ObjectId,
   uploadDate: {

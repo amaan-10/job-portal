@@ -158,7 +158,7 @@ animation-delay: 1s;
 }
 
 .top-scrollbar{
-  height: 5px;
+  height: 16px;
 }
 
 @media (max-width:768px) {

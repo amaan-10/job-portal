@@ -7,7 +7,7 @@ import {
 
 const router = express.Router();
 
-router.post("/getUser", userAuth, getUserController);
+router.post("/get-user", userAuth, getUserController);
 
 router.put("/update-user", userAuth, updateUserController);
 

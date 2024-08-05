@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema(
     },
     qualification: {
       type: String,
-      required: [true, "Qualification is required"],
+      // required: [true, "Qualification is required"],
     },
     location: {
       type: String,
@@ -35,7 +35,7 @@ const userSchema = new mongoose.Schema(
     experience: {
       type: String,
       enum: ["fresher", "experienced"],
-      required: [true, "Experience Level is required"],
+      // required: [true, "Experience Level is required"],
     },
     expyrs: {
       type: Number,
@@ -45,6 +45,11 @@ const userSchema = new mongoose.Schema(
     },
     projects: {
       type: String,
+    },
+    employment: {
+      type: String,
+      enum: ["job-seeker", "recruiter"],
+      // required: [true, "Employment type is required"],
     },
   },
   { timestamps: true }

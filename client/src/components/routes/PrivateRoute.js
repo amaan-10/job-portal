@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
     try {
       dispatch(showLoading());
       const { data } = await axios.post(
-        `${BASE_URL}/api/v1/user/getUser`,
+        `${BASE_URL}/api/v1/user/get-user`,
         { token: localStorage.getItem("token") },
         {
           headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -21,6 +21,7 @@ const PrivateRoute = ({ children }) => {
       );
       if (data.success) {
         dispatch(setUser(data.data));
+        // console.log(data);
       } else {
         localStorage.clear();
         <Navigate to="/login" />;

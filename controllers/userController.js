@@ -1,8 +1,8 @@
 import userModel from "../models/userModel.js";
 
 export const updateUserController = async (req, res, next) => {
-  const { name, email, lastName, location } = req.body;
-  if (!name || !email || !lastName || !location) {
+  const { name, email, lastName, location, employment } = req.body;
+  if (!name || !email || !lastName || !location || !employment) {
     next("Please provide all fields");
   }
   const user = await userModel.findOne({ _id: req.user.userId });
@@ -10,6 +10,7 @@ export const updateUserController = async (req, res, next) => {
   user.lastName = lastName;
   user.email = email;
   user.location = location;
+  user.employment = employment;
 
   await user.save();
   const token = user.createJWT();

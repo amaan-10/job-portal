@@ -15,6 +15,7 @@ import Banner from "./components/shared/Banner";
 import MyJob from "./pages/MyJob";
 import UpdateJob from "./pages/UpdateJob";
 import JobDetails from "./pages/JobDetails";
+import MyProfile from "./pages/MyProfile";
 
 function App() {
   return (
@@ -90,6 +91,15 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <JobDetails />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <MyProfile />
             </PrivateRoute>
           }
         />

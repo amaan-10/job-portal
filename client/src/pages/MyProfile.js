@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import Spinner from "../components/shared/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 const MyProfile = () => {
   const [users, setUser] = useState([]);
@@ -55,18 +55,37 @@ const MyProfile = () => {
           <h2 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
             My Profile
           </h2>
-          <div className="d-flex">
-            <FontAwesomeIcon
-              icon={faUserTie}
-              style={{ height: "90px", padding: "20px" }}
-            />
-            <div>
-              <h6>
-                Name: {users.name} {users.lastName}
-              </h6>
-              <h6>email: {users.email}</h6>
-              <h6>location: {users.location}</h6>
-              <h6>Employment Type: {users.employment}</h6>
+
+          <div
+            className=" bg-white p-3 p-md-4 me-0"
+            style={{
+              borderRadius: "8px",
+              border: "2px solid rgba(20, 20, 20, 0.05)",
+              background: "#FFF",
+              padding: "15px",
+              boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+            }}
+          >
+            <span
+              className="badge rounded-pill text-bg-primary float-end px-3 py-2 me-3"
+              style={{ fontSize: "13px" }}
+            >
+              {users.employment}
+            </span>
+            <div className="d-flex">
+              <div className="py-4 px-5 ms-4">
+                <FontAwesomeIcon icon={faUserTie} style={{ height: "100px" }} />
+              </div>
+              <div className="d-flex flex-column justify-content-center">
+                <h3 className=" fw-bold">
+                  {users.name} {users.lastName}
+                </h3>
+                <h5>{users.email}</h5>
+                <h6>
+                  <FontAwesomeIcon icon={faLocationDot} className="pe-2" />
+                  {users.location}
+                </h6>
+              </div>
             </div>
           </div>
         </div>

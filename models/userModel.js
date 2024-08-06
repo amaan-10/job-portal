@@ -51,6 +51,9 @@ const userSchema = new mongoose.Schema(
       enum: ["job-seeker", "recruiter"],
       // required: [true, "Employment type is required"],
     },
+    aboutMe: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

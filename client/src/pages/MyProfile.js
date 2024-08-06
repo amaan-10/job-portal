@@ -72,6 +72,7 @@ const MyProfile = () => {
             >
               {users.employment}
             </span>
+
             <div className="d-flex">
               <div className="py-4 px-5 ms-4">
                 <FontAwesomeIcon icon={faUserTie} style={{ height: "100px" }} />

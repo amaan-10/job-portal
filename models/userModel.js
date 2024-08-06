@@ -46,10 +46,10 @@ const userSchema = new mongoose.Schema(
     projects: {
       type: String,
     },
-    employment: {
+    userRole: {
       type: String,
       enum: ["job-seeker", "recruiter"],
-      // required: [true, "Employment type is required"],
+      // required: [true, "User Role type is required"],
     },
     aboutMe: {
       type: String,

@@ -34,7 +34,7 @@ const JobDetails = () => {
       .then((data) => {
         setTimeout(function () {
           dispach(hideLoading());
-        }, 1000);
+        }, 1500);
 
         setJobs(data);
       });

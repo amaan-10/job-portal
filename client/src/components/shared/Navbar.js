@@ -9,19 +9,54 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { hideLoading } from "../../redux/features/alertSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { BASE_URL } from "./../../url";
 
 const Navbar = () => {
+  const [users, setUser] = useState([]);
+  const { user } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    // dispatch(showLoading());
+    fetch(`${BASE_URL}/api/v1/user/get-user`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data.data);
+
+        // dispatch(hideLoading());
+      });
+  }, []);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  const navItems = [
-    { path: "/", title: "Home" },
-    { path: "/dashboard", title: "DashBoard" },
-    { path: "/post-job", title: "Post a job" }, //to be edited
-    { path: "/my-job", title: "My jobs" }, //to be edited
-  ];
+  let navItems;
+
+  if (users.userRole === "recruiter") {
+    navItems = [
+      { path: "/", title: "Home" },
+      { path: "/dashboard", title: "DashBoard" },
+      { path: "/post-job", title: "Post a job" },
+      { path: "/my-job", title: "My jobs" },
+      { path: "/profile", title: "My Profile" },
+    ];
+  } else {
+    navItems = [
+      { path: "/", title: "Home" },
+      { path: "/dashboard", title: "DashBoard" },
+      { path: "/profile", title: "My Profile" }, //to be edited
+      { path: "/", title: "Applications" }, //to be edited
+    ];
+  }
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 

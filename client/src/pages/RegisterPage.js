@@ -21,7 +21,7 @@ const RegisterPage = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [employment, setEmployment] = useState("");
+  const [userRole, setUserRole] = useState("");
 
   const { loading } = useSelector((state) => state.alerts);
 
@@ -31,7 +31,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!name || !lastName || !email || !password || !employment) {
+      if (!name || !lastName || !email || !password || !userRole) {
         return toast.error("Please Provide all Fields");
       }
       dispatch(showLoading());
@@ -40,7 +40,7 @@ const RegisterPage = () => {
         lastName,
         email,
         password,
-        employment,
+        userRole,
       });
       dispatch(hideLoading());
       if (data.success) {
@@ -119,12 +119,12 @@ const RegisterPage = () => {
                         icon={faUserCheck}
                       />
                       <select
-                        value={employment}
-                        onChange={(e) => setEmployment(e.target.value)}
+                        value={userRole}
+                        onChange={(e) => setUserRole(e.target.value)}
                         className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
                       >
                         <option value="" disabled>
-                          Choose Employment Type
+                          Choose userRole Type
                         </option>
                         <option value="job-seeker">Job Seeker</option>
                         <option value="recruiter">Recruiter</option>

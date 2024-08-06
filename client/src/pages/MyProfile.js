@@ -13,33 +13,25 @@ const MyProfile = () => {
   const { loading } = useSelector((state) => state.alerts);
   const dispatch = useDispatch();
 
-  const getUser = async () => {
-    dispatch(showLoading());
-    try {
-      const { data } = await axios.post(
-        `${BASE_URL}/api/v1/user/get-user`,
-        { token: localStorage.getItem("token") },
-        {
-          headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      );
-      setTimeout(function () {
-        dispatch(hideLoading());
-      }, 1500);
-
-      setUser(data.data);
-    } catch (error) {
-      //
-      // console.log(error);
-    }
-  };
-
   useEffect(() => {
-    if (!user) {
-      getUser();
-    }
-  });
-  //   console.log(users);
+    dispatch(showLoading());
+    fetch(`${BASE_URL}/api/v1/user/get-user`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data.data);
+
+        setTimeout(function () {
+          dispatch(hideLoading());
+        }, 1500);
+      });
+  }, []);
 
   return (
     <>
@@ -70,7 +62,7 @@ const MyProfile = () => {
               className="badge rounded-pill text-bg-primary float-end px-3 py-2 me-3"
               style={{ fontSize: "13px" }}
             >
-              {users.employment}
+              {users.userRole}
             </span>
 
             <div className="d-flex">

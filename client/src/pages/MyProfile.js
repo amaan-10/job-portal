@@ -66,8 +66,8 @@ const MyProfile = () => {
               {users.userRole}
             </span>
 
-            <div className="d-flex">
-              <div className="py-4 px-5 ms-4">
+            <div className="d-flex flex-wrap flex-sm-nowrap my-5 my-sm-4  my-md-3 my-lg-2 justify-content-md-start justify-content-center">
+              <div className="py-4 mx-sm-5 me-sm-5 me-2">
                 <FontAwesomeIcon icon={faUserTie} style={{ height: "100px" }} />
               </div>
               <div className="d-flex flex-column justify-content-center">

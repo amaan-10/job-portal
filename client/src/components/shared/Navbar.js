@@ -62,7 +62,7 @@ const Navbar = () => {
         { path: "/", title: "Home" },
         { path: "/dashboard", title: "DashBoard" },
         { path: "/profile", title: "My Profile" }, //to be edited
-        { path: "/", title: "Applications" }, //to be edited
+        { path: "/applications", title: "Applications" }, //to be edited
       ];
     }
   } else {
@@ -70,7 +70,7 @@ const Navbar = () => {
       { path: "/", title: "Home" },
       { path: "/dashboard", title: "DashBoard" },
       { path: "/profile", title: "My Profile" }, //to be edited
-      { path: "/", title: "Applications" }, //to be edited
+      { path: "/applications", title: "Applications" }, //to be edited
     ];
   }
 

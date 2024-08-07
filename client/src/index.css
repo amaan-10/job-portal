@@ -322,7 +322,7 @@ animation-delay: 1s;
   text-decoration: underline;
 }
 
-  .btn {
+  .btn-button {
     display: inline-block;
     font-weight: 400;
     color: #212529;
@@ -340,22 +340,22 @@ animation-delay: 1s;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .btn {
+    .btn-button {
       transition: none;
     }
   }
   
-  .btn:hover {
+  .btn-button:hover {
     color: #212529;
     text-decoration: none;
   }
   
-  .btn:focus, .btn.focus {
+  .btn-button:focus, .btn-button.focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 6, 55, 0.25);
   }
   
-  .btn.disabled, .btn:disabled {
+  .btn-button.disabled, .btn-button:disabled {
     opacity: 0.65;
   }
   

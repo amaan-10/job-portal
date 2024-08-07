@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
     },
     experience: {
       type: String,
-      enum: ["fresher", "experienced"],
+      enum: ["fresher", "experienced", ""],
       // required: [true, "Experience Level is required"],
     },
     expyrs: {
@@ -51,7 +51,7 @@ const userSchema = new mongoose.Schema(
       enum: ["job-seeker", "recruiter"],
       // required: [true, "User Role type is required"],
     },
-    aboutMe: {
+    bio: {
       type: String,
     },
   },

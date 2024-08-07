@@ -42,7 +42,7 @@ const NotFound = () => {
                   className=" text-decoration-none bg-primary px-4 py-2 rounded-2 my-3 border-0 text-light"
                   to="/"
                 >
-                  Go Back
+                  Go Home
                 </Link>
               </button>
             </div>

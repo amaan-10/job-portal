@@ -16,6 +16,8 @@ import MyJob from "./pages/MyJob";
 import UpdateJob from "./pages/UpdateJob";
 import JobDetails from "./pages/JobDetails";
 import MyProfile from "./pages/MyProfile";
+import EditProfile from "./pages/EditProfile";
+import Applications from "./pages/Applications";
 
 function App() {
   return (
@@ -95,6 +97,15 @@ function App() {
           }
         />
         <Route
+          path="/applications"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <Applications />
+            </PrivateRoute>
+          }
+        />
+        <Route
           path="/profile"
           element={
             <PrivateRoute>
@@ -103,6 +114,16 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/profile/edit"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <EditProfile />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="*"
           element={

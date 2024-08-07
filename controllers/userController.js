@@ -1,22 +1,42 @@
 import userModel from "../models/userModel.js";
 
 export const updateUserController = async (req, res, next) => {
-  const { name, email, lastName, location, userRole } = req.body;
-  if (!name || !email || !lastName || !location || !userRole) {
-    next("Please provide all fields");
+  const {
+    name,
+    email,
+    lastName,
+    location,
+    userRole,
+    qualification,
+    experience,
+    expyrs,
+    pastexp,
+    projects,
+    bio,
+  } = req.body;
+
+  console.log(req.body);
+  if (!name || !email || !lastName || !location) {
+    next("Please provide all the fields");
   }
-  const user = await userModel.findOne({ _id: req.user.userId });
+
+  const user = await userModel.findOne({ _id: req.body.user.userId });
   user.name = name;
   user.lastName = lastName;
   user.email = email;
   user.location = location;
   user.userRole = userRole;
+  // user.qualification = qualification;
+  // user.experience = experience;
+  // user.expyrs = expyrs;
+  // user.pastexp = pastexp;
+  // user.projects = projects;
+  // user.bio = bio;
 
   await user.save();
-  const token = user.createJWT();
   res.status(200).json({
+    success: true,
     user,
-    token,
   });
 };
 

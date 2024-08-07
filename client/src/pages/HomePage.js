@@ -19,18 +19,6 @@ const HomePage = () => {
           <br /> providing a seamless experience for job seekers and employers
           alike.
         </h6>
-        <div>
-          <Link to="/dashboard">
-            <button className="btn btn-opacity-light m-1">
-              Job Seekers Portal
-            </button>
-          </Link>
-          <Link to="/post-job">
-            <button className="btn btn-opacity-success m-1">
-              Employers Portal
-            </button>
-          </Link>
-        </div>
         <img src="/assets/images/Group171.svg" className="img-fluid" />
       </div>
     </div>

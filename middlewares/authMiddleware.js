@@ -13,6 +13,7 @@ const userAuth = async (req, res, next) => {
   } catch (error) {
     next(error);
     next("Auth Failed1");
+    console.log(error);
   }
 };
 

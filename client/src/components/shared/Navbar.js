@@ -39,16 +39,32 @@ const Navbar = () => {
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  let navItems;
 
-  if (users.userRole === "recruiter") {
-    navItems = [
-      { path: "/", title: "Home" },
-      { path: "/dashboard", title: "DashBoard" },
-      { path: "/post-job", title: "Post a job" },
-      { path: "/my-job", title: "My jobs" },
-      { path: "/profile", title: "My Profile" },
-    ];
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setLoggedIn(!!token);
+  }, []);
+
+  let navItems;
+  if (isLoggedIn === true) {
+    if (users.userRole === "recruiter") {
+      navItems = [
+        { path: "/", title: "Home" },
+        { path: "/dashboard", title: "DashBoard" },
+        { path: "/post-job", title: "Post a job" },
+        { path: "/my-job", title: "My jobs" },
+        { path: "/profile", title: "My Profile" },
+      ];
+    } else {
+      navItems = [
+        { path: "/", title: "Home" },
+        { path: "/dashboard", title: "DashBoard" },
+        { path: "/profile", title: "My Profile" }, //to be edited
+        { path: "/", title: "Applications" }, //to be edited
+      ];
+    }
   } else {
     navItems = [
       { path: "/", title: "Home" },
@@ -57,13 +73,6 @@ const Navbar = () => {
       { path: "/", title: "Applications" }, //to be edited
     ];
   }
-
-  const [isLoggedIn, setLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setLoggedIn(!!token);
-  }, []);
 
   const navigate = useNavigate();
   const dispach = useDispatch();

@@ -12,6 +12,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import RadioForm from "../components/shared/RadioForm";
+import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);

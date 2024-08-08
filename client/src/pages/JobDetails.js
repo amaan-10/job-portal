@@ -11,16 +11,39 @@ import { Link, useParams } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
+import axios from "axios";
 
 const JobDetails = () => {
   const { id } = useParams();
   const [jobs, setJobs] = useState([]);
 
   const { loading } = useSelector((state) => state.alerts);
-  const dispach = useDispatch();
+  const dispatch = useDispatch();
+
+  const [isApplying, setIsApplying] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const [users, setUser] = useState([]);
 
   useEffect(() => {
-    dispach(showLoading());
+    fetch(`${BASE_URL}/api/v1/user/get-user`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(hideLoading());
+        setUser(data.data);
+        // console.log(data.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    dispatch(showLoading());
 
     fetch(`${BASE_URL}/api/v1/job/get-all-job?id=${id}`, {
       method: "GET",
@@ -33,12 +56,32 @@ const JobDetails = () => {
       .then((res) => res.json())
       .then((data) => {
         setTimeout(function () {
-          dispach(hideLoading());
+          dispatch(hideLoading());
         }, 1500);
 
         setJobs(data);
       });
   }, []);
+
+  const jobId = id;
+  const userId = users._id;
+
+  const handleApply = async () => {
+    setIsApplying(true);
+
+    try {
+      const response = await axios.post(`${BASE_URL}/api/v1/job/apply`, {
+        jobId,
+        userId,
+      });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage("An error occurred. Please try again.");
+      console.log(error);
+    } finally {
+      setIsApplying(false);
+    }
+  };
 
   return (
     <div>
@@ -185,6 +228,16 @@ const JobDetails = () => {
                       {job.about}
                     </a>
                   </span>
+                </div>
+                <div>
+                  <button
+                    className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
+                    onClick={handleApply}
+                    disabled={isApplying}
+                  >
+                    {isApplying ? "Applying..." : "Apply for this Job"}
+                  </button>
+                  {message && <p>{message}</p>}
                 </div>
               </div>
             </div>

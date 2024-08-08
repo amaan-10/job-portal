@@ -17,7 +17,7 @@ export const updateUserController = async (req, res, next) => {
   if (!name || !email || !lastName || !location) {
     next("Please provide all fields");
   }
-  console.log(req.body);
+  // console.log(req.body);
   const user = await userModel.findOne({ _id: req.body.user.userId });
   user.name = name;
   user.lastName = lastName;

@@ -8,6 +8,7 @@ import {
   jobStatsController,
   updateJobController,
 } from "../controllers/jobsController.js";
+import { jobApplicationController } from "../controllers/jobApplicationController.js";
 
 const router = express.Router();
 
@@ -22,5 +23,7 @@ router.patch("/update-job/:id", userAuth, updateJobController);
 router.delete("/delete-job/:id", userAuth, deleteJobController);
 
 router.get("/job-stats", userAuth, jobStatsController);
+
+router.post("/apply", jobApplicationController);
 
 export default router;

@@ -12,6 +12,7 @@ import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const JobDetails = () => {
   const { id } = useParams();
@@ -106,9 +107,13 @@ const JobDetails = () => {
         userId,
       });
       setMessage(response.data.message);
+      toast.success(response.data.message);
+      setTimeout(function () {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       setMessage("An error occurred. Please try again.");
-      console.log(error);
+      toast.error("An error occurred. Please try again.");
     } finally {
       setIsApplying(false);
     }

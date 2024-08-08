@@ -21,3 +21,25 @@ export const jobApplicationController = async (req, res) => {
       .json({ error: "An error occurred while submitting your application" });
   }
 };
+
+export const jobApplicationStatus = async (req, res) => {
+  try {
+    const { userId, jobId } = req.query;
+
+    // Check if there's an existing application
+    const existingApplication = await jobApplicationModel.findOne({
+      userId,
+      jobId,
+    });
+
+    if (existingApplication) {
+      res.status(200).json({ applied: true });
+    } else {
+      res.status(200).json({ applied: false });
+    }
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "An error occurred while checking application status" });
+  }
+};

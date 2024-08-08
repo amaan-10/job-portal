@@ -25,6 +25,8 @@ const JobDetails = () => {
 
   const [users, setUser] = useState([]);
 
+  const [isApplied, setIsApplied] = useState(false);
+
   useEffect(() => {
     fetch(`${BASE_URL}/api/v1/user/get-user`, {
       method: "GET",
@@ -36,7 +38,7 @@ const JobDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        dispatch(hideLoading());
+        // console.log(data);
         setUser(data.data);
         // console.log(data.data);
       });
@@ -65,6 +67,35 @@ const JobDetails = () => {
 
   const jobId = id;
   const userId = users._id;
+
+  useEffect(() => {
+    if (typeof userId === "undefined" || userId === null) {
+      const hasReloaded = sessionStorage.getItem("hasReloaded");
+
+      if (!hasReloaded) {
+        sessionStorage.setItem("hasReloaded", "true");
+        window.location.reload();
+      }
+    } else {
+      const checkApplicationStatus = async () => {
+        try {
+          console.log(userId);
+          const response = await axios.get(
+            `${BASE_URL}/api/v1/job/application/status`,
+            {
+              params: { userId, jobId },
+            }
+          );
+
+          setIsApplied(response.data.applied);
+        } catch (error) {
+          console.error("Error checking application status:", error);
+        }
+      };
+
+      checkApplicationStatus();
+    }
+  }, [jobId, userId]);
 
   const handleApply = async () => {
     setIsApplying(true);
@@ -229,16 +260,20 @@ const JobDetails = () => {
                     </a>
                   </span>
                 </div>
-                <div>
-                  <button
-                    className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
-                    onClick={handleApply}
-                    disabled={isApplying}
-                  >
-                    {isApplying ? "Applying..." : "Apply for this Job"}
-                  </button>
-                  {message && <p>{message}</p>}
-                </div>
+                {isApplied ? (
+                  <p>You have already applied for this job.</p>
+                ) : (
+                  <div>
+                    <button
+                      className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
+                      onClick={handleApply}
+                      disabled={isApplying}
+                    >
+                      {isApplying ? "Applying..." : "Apply for this Job"}
+                    </button>
+                    {message && <p>{message}</p>}
+                  </div>
+                )}
               </div>
             </div>
           ))}

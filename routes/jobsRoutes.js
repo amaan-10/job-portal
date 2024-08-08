@@ -8,7 +8,10 @@ import {
   jobStatsController,
   updateJobController,
 } from "../controllers/jobsController.js";
-import { jobApplicationController } from "../controllers/jobApplicationController.js";
+import {
+  jobApplicationController,
+  jobApplicationStatus,
+} from "../controllers/jobApplicationController.js";
 
 const router = express.Router();
 
@@ -25,5 +28,7 @@ router.delete("/delete-job/:id", userAuth, deleteJobController);
 router.get("/job-stats", userAuth, jobStatsController);
 
 router.post("/apply", jobApplicationController);
+
+router.get("/application/status", jobApplicationStatus);
 
 export default router;

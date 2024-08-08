@@ -270,7 +270,7 @@ const JobDetails = () => {
                 ) : (
                   <div>
                     <button
-                      className="bg-primary border-0 py-2 px-5 border-1 text-white md-rounded-s-none rounded"
+                      className="bg-primary w-100 border-0 py-2 px-5 mb-4 border-1 text-white md-rounded-s-none rounded"
                       onClick={handleApply}
                       disabled={isApplying}
                     >

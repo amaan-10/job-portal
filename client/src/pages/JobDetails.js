@@ -140,7 +140,7 @@ const JobDetails = () => {
           {jobs.map((job) => (
             <div className="d-flex flex-column flex-md-row">
               <div className="px-md-5 px-3  pe-md-0 col-lg-9 col-md-8 col-12 py-4 ">
-                <h3>Job Details</h3>
+                <h3 className=" fw-bold">Job Details</h3>
                 <div
                   className=" bg-white p-3 p-md-4 me-0"
                   style={{

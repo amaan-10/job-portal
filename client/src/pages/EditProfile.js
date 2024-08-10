@@ -76,13 +76,13 @@ const EditProfile = () => {
           <Spinner />
         </div>
       ) : (
-        <div className="  max-w-screen-2xl mx-auto xl:px-24 px-5 md:py-20 pt-3 pt-md-5 pb-5">
-          <h2 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
+        <div className=" max-w-screen-2xl mx-auto px-md-5 px-3 pt-3 pt-md-5  pb-md-5 pb-4">
+          <h3 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
             Edit Profile
-          </h2>
+          </h3>
           <div className="d-flex flex-md-nowrap flex-wrap gap-2">
             <div
-              className=" bg-white p-3 p-md-4 me-0 col-12 col-md-3"
+              className=" bg-white p-3 p-md-4 me-0 col-12 col-lg-3 col-md-4"
               style={{
                 borderRadius: "8px",
                 border: "2px solid rgba(20, 20, 20, 0.05)",
@@ -99,10 +99,10 @@ const EditProfile = () => {
                   />
                 </div>
                 <div className="d-flex flex-column align-items-center flex-wrap justify-content-center">
-                  <h3 className=" fw-bold">
+                  <h4 className=" fw-bold">
                     {users.name} {users.lastName}
-                  </h3>
-                  <h5>{users.email}</h5>
+                  </h4>
+                  <h6>{users.email}</h6>
                   <h6>
                     <FontAwesomeIcon icon={faLocationDot} className="pe-2" />
                     {users.location}
@@ -117,7 +117,7 @@ const EditProfile = () => {
               </div>
             </div>
             <div
-              className=" bg-white p-3 p-md-4 me-0 col-12 col-md-9"
+              className=" bg-white p-3 p-md-4 me-0 col-12 col-lg-9 col-md-8"
               style={{
                 borderRadius: "8px",
                 border: "2px solid rgba(20, 20, 20, 0.05)",

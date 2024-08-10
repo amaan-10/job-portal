@@ -44,10 +44,10 @@ const MyProfile = () => {
           <Spinner />
         </div>
       ) : (
-        <div className=" max-w-screen-2xl mx-auto xl:px-24 px-5 md:py-20 pt-3 pt-md-5 pb-5 ">
-          <h2 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
+        <div className=" max-w-screen-2xl mx-auto px-md-5 px-3 pt-3 pt-md-5 pb-5 ">
+          <h3 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
             My Profile
-          </h2>
+          </h3>
 
           <div
             className=" bg-white p-3 p-md-4 me-0"
@@ -66,15 +66,15 @@ const MyProfile = () => {
               {users.userRole}
             </span>
 
-            <div className="d-flex flex-wrap flex-sm-nowrap my-5 my-sm-4  my-md-3 my-lg-2 justify-content-md-start justify-content-center">
-              <div className="py-4 mx-sm-5 me-sm-5 me-2">
+            <div className="d-flex flex-wrap flex-sm-nowrap my-5 my-sm-4  my-md-3 my-lg-2 mx-3 justify-content-sm-start justify-content-center">
+              <div className="py-4 mx-sm-5 me-sm-5 px-sm-0 px-4">
                 <FontAwesomeIcon icon={faUserTie} style={{ height: "100px" }} />
               </div>
               <div className="d-flex flex-column justify-content-center">
-                <h3 className=" fw-bold">
+                <h4 className=" fw-bold">
                   {users.name} {users.lastName}
-                </h3>
-                <h5>{users.email}</h5>
+                </h4>
+                <h6>{users.email}</h6>
                 <h6>
                   <FontAwesomeIcon icon={faLocationDot} className="pe-2" />
                   {users.location}
@@ -104,9 +104,9 @@ const MyProfile = () => {
             ""
           ) : (
             <>
-              <h2 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
+              <h3 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
                 About
-              </h2>
+              </h3>
 
               <div
                 className=" bg-white p-3 p-md-4 me-0"

@@ -13,6 +13,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import RadioForm from "../components/shared/RadioForm";
 import { useLocation } from "react-router-dom";
+import { hideLoading, showLoading } from "../redux/features/alertSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Spinner from "../components/shared/Spinner";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -20,7 +23,11 @@ const Dashboard = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
 
+  const { loading } = useSelector((state) => state.alerts);
+  const dispatch = useDispatch();
+
   useEffect(() => {
+    dispatch(showLoading());
     fetch(`${BASE_URL}/api/v1/job/get-all-job`, {
       method: "GET",
       headers: {
@@ -32,7 +39,9 @@ const Dashboard = () => {
       .then((res) => res.json())
       .then((data) => {
         setJobs(data);
-
+        setTimeout(function () {
+          dispatch(hideLoading());
+        }, 1500);
         // dispach(hideLoading());
       });
   }, []);
@@ -110,7 +119,7 @@ const Dashboard = () => {
 
     const { startIndex, endIndex } = pageRange();
     const filteredJobsPage = filteredJobs.slice(startIndex, endIndex);
-
+    // console.log(filteredJobsPage);
     return filteredJobsPage.map((data, i) => <Card key={i} data={data} />);
   };
 
@@ -147,164 +156,177 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Banner query={query} handleInput={handleInput} />
-      <div className="dashboard-job-columns">
+      {loading ? (
         <div
-          className=" bg-white p-4 "
-          style={{
-            borderRadius: "8px",
-            border: "2px solid rgba(20, 20, 20, 0.05)",
-            background: "#FFF",
-            padding: "15px",
-            boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-          }}
+          className=" d-flex justify-content-center align-items-center"
+          style={{ height: "50vh" }}
         >
-          <Sidebar handleChange={handleChange} handleClick={handleClick} />
+          <Spinner />
         </div>
-        <div
-          className="  bg-white p-3 p-md-4 me-3 me-sm-0"
-          style={{
-            borderRadius: "8px",
-            border: "2px solid rgba(20, 20, 20, 0.05)",
-            background: "#FFF",
-            padding: "15px",
-            boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-            gridColumn: "span 2 / span 2",
-          }}
-        >
-          {result.length > 0 ? (
-            <>
-              <button
-                onClick={handleMenu}
-                className="bg-transparent border-0 float-end"
-              >
-                {menuOpen ? (
-                  <FontAwesomeIcon
-                    className=" text-black"
-                    style={{ width: 18, height: 18 }}
-                    icon={faXmark}
-                  />
-                ) : (
-                  <>
-                    <span
+      ) : (
+        <>
+          <Banner query={query} handleInput={handleInput} />
+          <div className="dashboard-job-columns">
+            <div
+              className=" bg-white p-4 "
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <Sidebar handleChange={handleChange} handleClick={handleClick} />
+            </div>
+            <div
+              className="  bg-white p-3 p-md-4 me-3 me-sm-0"
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                gridColumn: "span 2 / span 2",
+              }}
+            >
+              {result.length > 0 ? (
+                <>
+                  <button
+                    onClick={handleMenu}
+                    className="bg-transparent border-0 float-end"
+                  >
+                    {menuOpen ? (
+                      <FontAwesomeIcon
+                        className=" text-black"
+                        style={{ width: 18, height: 18 }}
+                        icon={faXmark}
+                      />
+                    ) : (
+                      <>
+                        <span
+                          style={{
+                            fontSize: "16px",
+                            fontWeight: "600",
+                            paddingRight: "8px",
+                          }}
+                        >
+                          Sort
+                        </span>
+                        <FontAwesomeIcon
+                          style={{ width: 16, height: 16 }}
+                          icon={faArrowDownWideShort}
+                        />
+                      </>
+                    )}
+                  </button>
+                  <div className={`${menuOpen ? "" : "d-none"}`}>
+                    <h4
                       style={{
                         fontSize: "16px",
+                        fontStyle: "normal",
                         fontWeight: "600",
-                        paddingRight: "8px",
+                        lineHeight: "30px",
+                        paddingBottom: "12px",
                       }}
                     >
                       Sort
-                    </span>
-                    <FontAwesomeIcon
-                      style={{ width: 16, height: 16 }}
-                      icon={faArrowDownWideShort}
-                    />
-                  </>
-                )}
-              </button>
-              <div className={`${menuOpen ? "" : "d-none"}`}>
-                <h4
-                  style={{
-                    fontSize: "16px",
-                    fontStyle: "normal",
-                    fontWeight: "600",
-                    lineHeight: "30px",
-                    paddingBottom: "12px",
-                  }}
-                >
-                  Sort
-                </h4>
-                <div>
-                  <label className="sidebar-label-container">
-                    <input
-                      type="radio"
-                      name={"test"}
-                      value={"latest"}
-                      onClick={() => handleSort("latest")}
-                    />
-                    <span className="checkmark"></span>
-                    {"latest"}
-                  </label>
-                  <label className="sidebar-label-container">
-                    <input
-                      type="radio"
-                      name={"test"}
-                      value={"oldest"}
-                      onClick={() => handleSort("oldest")}
-                    />
-                    <span className="checkmark"></span>
-                    {"oldest"}
-                  </label>
-                  <label className="sidebar-label-container">
-                    <input
-                      type="radio"
-                      name={"test"}
-                      value={"a-z"}
-                      onClick={() => handleSort("a-z")}
-                    />
-                    <span className="checkmark"></span>
-                    {"a-z"}
-                  </label>
-                  <label className="sidebar-label-container">
-                    <input
-                      type="radio"
-                      name={"test"}
-                      value={"z-a"}
-                      onClick={() => handleSort("z-a")}
-                    />
-                    <span className="checkmark"></span>
-                    {"z-a"}
-                  </label>
-                </div>
-              </div>
+                    </h4>
+                    <div>
+                      <label className="sidebar-label-container">
+                        <input
+                          type="radio"
+                          name={"test"}
+                          value={"latest"}
+                          onClick={() => handleSort("latest")}
+                        />
+                        <span className="checkmark"></span>
+                        {"latest"}
+                      </label>
+                      <label className="sidebar-label-container">
+                        <input
+                          type="radio"
+                          name={"test"}
+                          value={"oldest"}
+                          onClick={() => handleSort("oldest")}
+                        />
+                        <span className="checkmark"></span>
+                        {"oldest"}
+                      </label>
+                      <label className="sidebar-label-container">
+                        <input
+                          type="radio"
+                          name={"test"}
+                          value={"a-z"}
+                          onClick={() => handleSort("a-z")}
+                        />
+                        <span className="checkmark"></span>
+                        {"a-z"}
+                      </label>
+                      <label className="sidebar-label-container">
+                        <input
+                          type="radio"
+                          name={"test"}
+                          value={"z-a"}
+                          onClick={() => handleSort("z-a")}
+                        />
+                        <span className="checkmark"></span>
+                        {"z-a"}
+                      </label>
+                    </div>
+                  </div>
 
-              <Jobs result={result} jobsValue={jobsValue} />
-            </>
-          ) : (
-            <>
-              <h3
-                style={{
-                  fontSize: "20px",
-                  fontStyle: "normal",
-                  fontWeight: "600",
-                  lineHeight: "30px",
-                }}
-              >
-                {result.length} Jobs
-              </h3>
-              <p>No data Found..!!</p>
-            </>
-          )}
-          {result.length > 0 ? (
-            <div className="d-flex justify-content-center my-4 ">
-              <button
-                className="border-0 bg-transparent mx-3"
-                id="hover"
-                onClick={prevPage}
-                disabled={currentPage === 1}
-              >
-                Previous
-              </button>
-              <span className="mx-2">
-                Page {currentPage} of {Math.ceil(jobsValue / itemsPerPage)}
-              </span>
-              <button
-                className="border-0 bg-transparent mx-3"
-                id="hover"
-                onClick={nextPage}
-                disabled={currentPage === Math.ceil(jobsValue / itemsPerPage)}
-              >
-                Next
-              </button>
+                  <Jobs result={result} jobsValue={jobsValue} />
+                </>
+              ) : (
+                <>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontStyle: "normal",
+                      fontWeight: "600",
+                      lineHeight: "30px",
+                    }}
+                  >
+                    {result.length} Jobs
+                  </h3>
+                  <p>No data Found..!!</p>
+                </>
+              )}
+              {result.length > 0 ? (
+                <div className="d-flex justify-content-center my-4 ">
+                  <button
+                    className="border-0 bg-transparent mx-3"
+                    id="hover"
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                  <span className="mx-2">
+                    Page {currentPage} of {Math.ceil(jobsValue / itemsPerPage)}
+                  </span>
+                  <button
+                    className="border-0 bg-transparent mx-3"
+                    id="hover"
+                    onClick={nextPage}
+                    disabled={
+                      currentPage === Math.ceil(jobsValue / itemsPerPage)
+                    }
+                  >
+                    Next
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="newsletter">
-          <Newsletter />
-        </div>
-      </div>
+            <div className="newsletter">
+              <Newsletter />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

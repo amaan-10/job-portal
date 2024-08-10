@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../url";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const PostJobs = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const {
@@ -64,16 +66,27 @@ const PostJobs = () => {
           <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-4">
             <div className="col-lg-6 col-12">
               <p className="d-block mb-2 text-lg required-field">Job Type</p>
-              <select
-                {...register("workType")}
-                className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
-              >
-                <option value="">Choose Job Type</option>
-                <option value="full-time">Full Time</option>
-                <option value="part-time">Part Time</option>
-                <option value="internship">Internship</option>
-                <option value="contract">Contract</option>
-              </select>
+              <div className="d-flex">
+                <select
+                  {...register("workType")}
+                  className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                >
+                  <option value="">Choose Job Type</option>
+                  <option value="full-time">Full Time</option>
+                  <option value="part-time">Part Time</option>
+                  <option value="internship">Internship</option>
+                  <option value="contract">Contract</option>
+                </select>
+                <FontAwesomeIcon
+                  style={{
+                    position: "relative",
+                    margin: "0.8rem",
+                    marginRight: "0.3rem",
+                    color: "#6f6f6f",
+                  }}
+                  icon={faCaretDown}
+                />
+              </div>
             </div>
             <div className="col-lg-6 col-12">
               <p className="d-block mb-2 text-lg required-field">

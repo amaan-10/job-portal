@@ -43,3 +43,53 @@ export const jobApplicationStatus = async (req, res) => {
       .json({ error: "An error occurred while checking application status" });
   }
 };
+
+export const getAllJobApplication = async (req, res, next) => {
+  const { id, search, sort } = req.query;
+  const queryObject = {};
+
+  let queryResult = jobApplicationModel.find(queryObject);
+
+  if (sort === "latest") {
+    queryResult = queryResult.sort("-createdAt");
+  }
+  if (sort === "oldest") {
+    queryResult = queryResult.sort("createdAt");
+  }
+  if (sort === "a-z") {
+    queryResult = queryResult.sort("position");
+  }
+  if (sort === "z-a") {
+    queryResult = queryResult.sort("-position");
+  }
+  const jobApplications = await queryResult;
+
+  // const jobApplications = await jobsModel.find({createdBy:req.user.userId});
+  res.status(200).json(jobApplications);
+};
+
+export const getMyJobApplication = async (req, res, next) => {
+  const { id, search, sort } = req.query;
+  const queryObject = {
+    userId: req.body.user.userId,
+  };
+
+  let queryResult = jobApplicationModel.find(queryObject);
+
+  if (sort === "latest") {
+    queryResult = queryResult.sort("-createdAt");
+  }
+  if (sort === "oldest") {
+    queryResult = queryResult.sort("createdAt");
+  }
+  if (sort === "a-z") {
+    queryResult = queryResult.sort("position");
+  }
+  if (sort === "z-a") {
+    queryResult = queryResult.sort("-position");
+  }
+  const jobApplications = await queryResult;
+
+  // const jobApplications = await jobsModel.find({createdBy:req.user.userId});
+  res.status(200).json(jobApplications);
+};

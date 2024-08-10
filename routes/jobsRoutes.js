@@ -9,6 +9,8 @@ import {
   updateJobController,
 } from "../controllers/jobsController.js";
 import {
+  getAllJobApplication,
+  getMyJobApplication,
   jobApplicationController,
   jobApplicationStatus,
 } from "../controllers/jobApplicationController.js";
@@ -30,5 +32,9 @@ router.get("/job-stats", userAuth, jobStatsController);
 router.post("/apply", jobApplicationController);
 
 router.get("/application/status", jobApplicationStatus);
+
+router.get("/all-application", getAllJobApplication);
+
+router.get("/my-application", userAuth, getMyJobApplication);
 
 export default router;

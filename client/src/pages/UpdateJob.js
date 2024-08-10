@@ -6,6 +6,8 @@ import Spinner from "../components/shared/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { BASE_URL } from "../url";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const UpdateJob = () => {
   const { id } = useParams();
@@ -107,16 +109,27 @@ const UpdateJob = () => {
                     <p className="d-block mb-2 text-lg required-field">
                       Job Type
                     </p>
-                    <select
-                      {...register("workType")}
-                      className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
-                    >
-                      <option value={job.workType}>{job.workType}</option>
-                      <option value="full-time">Full Time</option>
-                      <option value="part-time">Part Time</option>
-                      <option value="intership">Internship</option>
-                      <option value="contract">Contract</option>
-                    </select>
+                    <div className="d-flex">
+                      <select
+                        {...register("workType")}
+                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                      >
+                        <option value={job.workType}>{job.workType}</option>
+                        <option value="full-time">Full Time</option>
+                        <option value="part-time">Part Time</option>
+                        <option value="intership">Internship</option>
+                        <option value="contract">Contract</option>
+                      </select>
+                      <FontAwesomeIcon
+                        style={{
+                          position: "relative",
+                          margin: "0.8rem",
+                          marginRight: "0.3rem",
+                          color: "#6f6f6f",
+                        }}
+                        icon={faCaretDown}
+                      />
+                    </div>
                   </div>
                   <div className="col-lg-6 col-12">
                     <p className="d-block mb-2 text-lg required-field">

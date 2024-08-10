@@ -80,7 +80,7 @@ const JobDetails = () => {
     } else {
       const checkApplicationStatus = async () => {
         try {
-          console.log(userId);
+          //console.log(userId);
           const response = await axios.get(
             `${BASE_URL}/api/v1/job/application/status`,
             {

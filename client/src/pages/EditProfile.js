@@ -1,4 +1,8 @@
-import { faLocationDot, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretDown,
+  faLocationDot,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +12,7 @@ import { BASE_URL } from "../url";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Spinner from "../components/shared/Spinner";
+import { Tooltip as ReactToolTip } from "react-tooltip";
 
 const EditProfile = () => {
   const { id } = useParams();
@@ -197,73 +202,127 @@ const EditProfile = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-4">
-                    <div className="col-lg-3 col-12">
-                      <p className="d-block mb-2 text-lg required-field">
-                        Experience
-                      </p>
-                      <select
-                        {...register("experience")}
-                        value={users.experience}
-                        onChange={handleChange}
-                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
-                      >
-                        <option value={users.experience}>
-                          {users.experience}
-                        </option>
-                        <option value="fresher">Fresher</option>
-                        <option value="experienced">Experienced</option>
-                      </select>
-                    </div>
-                    <div className="col-lg-3 col-12">
-                      <p className="d-block mb-2 text-lg required-field">
-                        Experience Years
-                      </p>
-                      <input
-                        type="text"
-                        placeholder="No. of Years"
-                        value={users.expyrs}
-                        {...register("expyrs")}
-                        onChange={handleChange}
-                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
-                      />
-                    </div>
-                    <div className="col-lg-6 col-12 pe-4">
-                      <p className="d-block mb-2 text-lg required-field">
-                        Past Experience
-                      </p>
-                      <input
-                        type="text"
-                        placeholder="Past Experience"
-                        value={users.pastexp}
-                        onChange={handleChange}
-                        {...register("pastexp")}
-                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
-                      />
-                    </div>
+                  <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-1">
+                    {users.experience === "experienced" ? (
+                      <>
+                        <div className="col-lg-3 col-12">
+                          <p className="d-block mb-2 text-lg required-field">
+                            Experience
+                          </p>
+                          <div className="d-flex">
+                            <select
+                              {...register("experience")}
+                              value={users.experience}
+                              onChange={handleChange}
+                              className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                            >
+                              <option value={users.experience}>
+                                {users.experience}
+                              </option>
+                              <option value="fresher">Fresher</option>
+                              <option value="experienced">Experienced</option>
+                            </select>
+                            <FontAwesomeIcon
+                              style={{
+                                position: "relative",
+                                margin: "0.8rem",
+                                marginRight: "0rem",
+                                color: "#6f6f6f",
+                              }}
+                              icon={faCaretDown}
+                            />
+                          </div>
+                        </div>
+                        <div className="col-lg-3 col-12">
+                          <p className="d-block mb-2 text-lg required-field">
+                            Experience Years
+                          </p>
+                          <input
+                            type="text"
+                            placeholder="No. of Years"
+                            value={users.expyrs}
+                            {...register("expyrs")}
+                            onChange={handleChange}
+                            className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                          />
+                        </div>
+                        <div className="col-lg-6 col-12 pe-5">
+                          <p className="d-block mb-2 text-lg">
+                            Past Experience
+                          </p>
+                          <input
+                            type="text"
+                            placeholder="Past Experience"
+                            value={users.pastexp}
+                            onChange={handleChange}
+                            {...register("pastexp")}
+                            className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      <div className="col-12 ">
+                        <p className="d-block mb-2 text-lg required-field">
+                          Experience
+                        </p>
+                        <div className="d-flex">
+                          <select
+                            {...register("experience")}
+                            value={users.experience}
+                            onChange={handleChange}
+                            className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                          >
+                            <option value={users.experience}>
+                              {users.experience}
+                            </option>
+                            <option value="fresher">Fresher</option>
+                            <option value="experienced">Experienced</option>
+                          </select>
+                          <FontAwesomeIcon
+                            style={{
+                              position: "relative",
+                              margin: "0.8rem",
+                              color: "#6f6f6f",
+                            }}
+                            icon={faCaretDown}
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <div className="col-md-12 mb-4">
                     <div className=" col-12">
                       <p className="d-block mb-2 text-lg required-field">
-                        User Role
+                        User Role (fixed)
                       </p>
-
-                      <select
-                        {...register("userRole")}
-                        value={users.userRole}
-                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
-                        disabled
-                      >
-                        <option value={users.userRole}>{users.userRole}</option>
-                        <option value="job-seeker">Fresher</option>
-                        <option value="recruiter">Experienced</option>
-                      </select>
+                      <div className=" d-flex">
+                        <select
+                          {...register("userRole")}
+                          value={users.userRole}
+                          className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                          title="User Role cannot be changed"
+                          disabled
+                        >
+                          <option value={users.userRole}>
+                            {users.userRole}
+                          </option>
+                          <option value="job-seeker">Job Seeker</option>
+                          <option value="recruiter">Recruiter</option>
+                        </select>
+                        <FontAwesomeIcon
+                          style={{
+                            position: "relative",
+                            margin: "0.8rem",
+                            marginRight: "0.3rem",
+                            color: "#6f6f6f",
+                          }}
+                          icon={faCaretDown}
+                        />
+                      </div>
                     </div>
                   </div>
                   <div className="col-md-12 mb-4">
-                    <p className="d-block mb-2 text-lg required-field">
-                      Projects
-                    </p>
+                    <p className="d-block mb-2 text-lg">Projects</p>
                     <textarea
                       className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
                       rows={6}

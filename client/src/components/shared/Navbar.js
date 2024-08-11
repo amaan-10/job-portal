@@ -29,7 +29,12 @@ const Navbar = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setUser(data.data);
+        if (data.success) {
+          setUser(data.data);
+          // console.log(data);
+        } else {
+          localStorage.clear();
+        }
 
         // dispatch(hideLoading());
       });
@@ -58,7 +63,6 @@ const Navbar = () => {
         { path: "/profile", title: "My Profile" },
       ];
     } else {
-      localStorage.clear();
       navItems = [
         { path: "/", title: "Home" },
         { path: "/dashboard", title: "DashBoard" },

@@ -32,11 +32,10 @@ const Navbar = () => {
         .then((data) => {
           if (data.success) {
             setUser(data.data);
-            console.log(data);
+            //console.log(data);
           } else {
             localStorage.clear();
           }
-
           // dispatch(hideLoading());
         });
     } catch (error) {

@@ -3,6 +3,7 @@ import {
   faBriefcaseClock,
   faCalendarDays,
   faClock,
+  faIndianRupeeSign,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,12 +16,13 @@ const Card = ({ data }) => {
     company,
     position,
     workLocation,
-    createdAt,
+    openingAt,
     workType,
     description,
+    ctc,
   } = data;
 
-  const date = createdAt.substring(0, 10);
+  const date = openingAt.substring(0, 10);
   return (
     <Link to={`/job-details/${_id}`} className=" text-decoration-none">
       <section
@@ -76,9 +78,16 @@ const Card = ({ data }) => {
                 />
                 {workType}
               </span>
-              <span className="d-flex text-muted align-items-center pe-3 gap-2">
+              <span className="d-flex text-muted align-items-center pe-2 gap-2">
                 <FontAwesomeIcon className="text-muted" icon={faCalendarDays} />
                 {date}
+              </span>
+              <span className="d-flex text-muted align-items-center pe-3 gap-2">
+                <FontAwesomeIcon
+                  className="text-muted"
+                  icon={faIndianRupeeSign}
+                />
+                {ctc}
               </span>
             </div>
             <p

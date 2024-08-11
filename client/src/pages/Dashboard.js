@@ -108,10 +108,10 @@ const Dashboard = () => {
 
     if (selected) {
       filteredJobs = filteredJobs.filter(
-        ({ company, workLocation, createdAt, workType }) =>
+        ({ company, workLocation, openingAt, workType }) =>
           workLocation.toLowerCase() === selected.toLowerCase() ||
           company.toLowerCase() === selected.toLowerCase() ||
-          createdAt >= selected ||
+          openingAt >= selected ||
           workType.toLowerCase() === selected.toLowerCase()
       );
     }

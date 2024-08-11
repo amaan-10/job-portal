@@ -58,6 +58,7 @@ const Navbar = () => {
         { path: "/profile", title: "My Profile" },
       ];
     } else {
+      localStorage.clear();
       navItems = [
         { path: "/", title: "Home" },
         { path: "/dashboard", title: "DashBoard" },

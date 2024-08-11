@@ -197,7 +197,7 @@ const MyJob = () => {
                             <button className="border-0 py-2 bg-transparent whitespace-nowrap">
                               <Link
                                 style={{ color: "black" }}
-                                to={`/update-job/${job?._id}`}
+                                to={`update-job/${job?._id}`}
                               >
                                 Edit
                               </Link>

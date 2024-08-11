@@ -60,9 +60,10 @@ const UpdateJob = () => {
             window.location.reload();
           }, 3000);
         } else {
-          toast.error(job.error);
+          toast.error(job.error.message);
+          //console.log(job);
         }
-        // console.log(job);
+        //console.log(job);
       });
     dispach(hideLoading());
   };
@@ -70,7 +71,7 @@ const UpdateJob = () => {
   return (
     <div className=" conatiner-xl mx-auto p-md-5 mt-2 mt-md-0">
       <div className="job-container p-sm-5">
-        <h3 className="text-center pt-3 pb-4 m-0">Create Job</h3>
+        <h3 className="text-center pt-3 pb-4 m-0">Update Job</h3>
 
         {loading ? (
           <Spinner />

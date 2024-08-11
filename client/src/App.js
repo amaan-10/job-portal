@@ -80,7 +80,7 @@ function App() {
           }
         />
         <Route
-          path="/update-job/:id"
+          path="my-job/update-job/:id"
           element={
             <PrivateRoute>
               <Navbar />

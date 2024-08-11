@@ -19,25 +19,29 @@ const Navbar = () => {
 
   useEffect(() => {
     // dispatch(showLoading());
-    fetch(`${BASE_URL}/api/v1/user/get-user`, {
-      method: "GET",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("token")}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          setUser(data.data);
-          // console.log(data);
-        } else {
-          localStorage.clear();
-        }
+    try {
+      fetch(`${BASE_URL}/api/v1/user/get-user`, {
+        method: "GET",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            setUser(data.data);
+            console.log(data);
+          } else {
+            localStorage.clear();
+          }
 
-        // dispatch(hideLoading());
-      });
+          // dispatch(hideLoading());
+        });
+    } catch (error) {
+      localStorage.clear();
+    }
   }, []);
 
   const [menuOpen, setMenuOpen] = useState(false);

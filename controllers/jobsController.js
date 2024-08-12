@@ -33,10 +33,10 @@ export const getAllJobsController = async (req, res, next) => {
   let queryResult = jobsModel.find(queryObject);
 
   if (sort === "latest") {
-    queryResult = queryResult.sort("-createdAt");
+    queryResult = queryResult.sort("-openingAt");
   }
   if (sort === "oldest") {
-    queryResult = queryResult.sort("createdAt");
+    queryResult = queryResult.sort("openingAt");
   }
   if (sort === "a-z") {
     queryResult = queryResult.sort("position");
@@ -70,10 +70,10 @@ export const getMyJobsController = async (req, res, next) => {
   let queryResult = jobsModel.find(queryObject);
 
   if (sort === "latest") {
-    queryResult = queryResult.sort("-createdAt");
+    queryResult = queryResult.sort("-openingAt");
   }
   if (sort === "oldest") {
-    queryResult = queryResult.sort("createdAt");
+    queryResult = queryResult.sort("openingAt");
   }
   if (sort === "a-z") {
     queryResult = queryResult.sort("position");

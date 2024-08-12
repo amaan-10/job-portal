@@ -5,12 +5,15 @@ import {
   faClock,
   faIndianRupeeSign,
   faLocationDot,
+  faUserClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Card = ({ data }) => {
+  const location = useLocation();
+
   const {
     _id,
     company,
@@ -20,6 +23,7 @@ const Card = ({ data }) => {
     workType,
     description,
     ctc,
+    status,
   } = data;
 
   const date = openingAt.substring(0, 10);
@@ -89,6 +93,12 @@ const Card = ({ data }) => {
                 />
                 {ctc}
               </span>
+              {location.pathname === "/applications" && (
+                <span className="d-flex text-muted align-items-center pe-3 gap-2">
+                  <FontAwesomeIcon className="text-muted" icon={faUserClock} />
+                  {status}
+                </span>
+              )}
             </div>
             <p
               className="text-muted"

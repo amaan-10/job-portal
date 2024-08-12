@@ -1,4 +1,5 @@
 import jobApplicationModel from "../models/jobApplicationModel.js";
+import jobsModel from "../models/jobsModel.js";
 
 export const jobApplicationController = async (req, res) => {
   try {
@@ -10,6 +11,17 @@ export const jobApplicationController = async (req, res) => {
       jobId,
       appliedAt: new Date(),
     });
+
+    const applications = await jobApplicationModel.find({}).exec();
+
+    // Iterate over each application
+    for (const application of applications) {
+      // Update the corresponding job's status
+      await jobsModel.updateOne(
+        { _id: application.jobId }, // Match job with applicationId
+        { $set: { status: application.status } } // Set the status field
+      );
+    }
 
     // Save the application in the database
     await newApplication.save();
@@ -48,6 +60,17 @@ export const getAllJobApplication = async (req, res, next) => {
   const { id, search, sort } = req.query;
   const queryObject = {};
 
+  const applications = await jobApplicationModel.find({}).exec();
+
+  // Iterate over each application
+  for (const application of applications) {
+    // Update the corresponding job's status
+    await jobsModel.updateOne(
+      { _id: application.jobId }, // Match job with applicationId
+      { $set: { status: application.status } } // Set the status field
+    );
+  }
+
   let queryResult = jobApplicationModel.find(queryObject);
 
   if (sort === "latest") {
@@ -73,6 +96,17 @@ export const getMyJobApplication = async (req, res, next) => {
   const queryObject = {
     userId: req.body.user.userId,
   };
+
+  const applications = await jobApplicationModel.find({}).exec();
+
+  // Iterate over each application
+  for (const application of applications) {
+    // Update the corresponding job's status
+    await jobsModel.updateOne(
+      { _id: application.jobId }, // Match job with applicationId
+      { $set: { status: application.status } } // Set the status field
+    );
+  }
 
   let queryResult = jobApplicationModel.find(queryObject);
 

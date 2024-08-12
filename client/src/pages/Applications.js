@@ -160,147 +160,151 @@ const Applications = () => {
           <h3 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
             Job Applications
           </h3>
-          <div
-            className=" bg-white p-3 p-md-4 me-0"
-            style={{
-              borderRadius: "8px",
-              border: "2px solid rgba(20, 20, 20, 0.05)",
-              background: "#FFF",
-              padding: "15px",
-              boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-            }}
-          >
-            {result.length > 0 ? (
-              <>
-                {/* <button
-                  onClick={handleMenu}
-                  className="bg-transparent border-0 float-end"
-                >
-                  {menuOpen ? (
-                    <FontAwesomeIcon
-                      className=" text-black"
-                      style={{ width: 18, height: 18 }}
-                      icon={faXmark}
-                    />
-                  ) : (
-                    <>
-                      <span
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: "600",
-                          paddingRight: "8px",
-                        }}
-                      >
-                        Sort
-                      </span>
-                      <FontAwesomeIcon
-                        style={{ width: 16, height: 16 }}
-                        icon={faArrowDownWideShort}
-                      />
-                    </>
-                  )}
-                </button>
-                <div className={`${menuOpen ? "" : "d-none"}`}>
-                  <h4
-                    style={{
-                      fontSize: "16px",
-                      fontStyle: "normal",
-                      fontWeight: "600",
-                      lineHeight: "30px",
-                      paddingBottom: "12px",
-                    }}
-                  >
-                    Sort
-                  </h4>
-                  <div>
-                    <label className="sidebar-label-container">
-                      <input
-                        type="radio"
-                        name={"test"}
-                        value={"latest"}
-                        onClick={() => handleSort("latest")}
-                      />
-                      <span className="checkmark"></span>
-                      {"latest"}
-                    </label>
-                    <label className="sidebar-label-container">
-                      <input
-                        type="radio"
-                        name={"test"}
-                        value={"oldest"}
-                        onClick={() => handleSort("oldest")}
-                      />
-                      <span className="checkmark"></span>
-                      {"oldest"}
-                    </label>
-                    <label className="sidebar-label-container">
-                      <input
-                        type="radio"
-                        name={"test"}
-                        value={"a-z"}
-                        onClick={() => handleSort("a-z")}
-                      />
-                      <span className="checkmark"></span>
-                      {"a-z"}
-                    </label>
-                    <label className="sidebar-label-container">
-                      <input
-                        type="radio"
-                        name={"test"}
-                        value={"z-a"}
-                        onClick={() => handleSort("z-a")}
-                      />
-                      <span className="checkmark"></span>
-                      {"z-a"}
-                    </label>
-                  </div>
-                </div> */}
-
-                <Jobs result={result} jobsValue={applicationValue} />
-              </>
-            ) : (
-              <>
+          <div className="d-flex flex-md-nowrap flex-wrap">
+            <div
+              className="bg-white p-3 p-md-4 mb-2 me-2 col-md-2 col-12 "
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              <div className=" d-flex pe-4 pe-sm-3">
                 <h3
                   style={{
                     fontSize: "20px",
                     fontStyle: "normal",
                     fontWeight: "600",
                     lineHeight: "30px",
+                    marginBottom: "0px",
                   }}
                 >
-                  {result.length} Jobs
+                  Sort
                 </h3>
-                <p>No data Found..!!</p>
-              </>
-            )}
-            {result.length > 0 ? (
-              <div className="d-flex justify-content-center my-4 ">
                 <button
-                  className="border-0 bg-transparent mx-3"
-                  id="hover"
-                  onClick={prevPage}
-                  disabled={currentPage === 1}
+                  onClick={handleMenu}
+                  className="bg-transparent border-0 d-md-none w-100"
+                  style={{ paddingLeft: "85%" }}
                 >
-                  Previous
-                </button>
-                <span className="mx-2">
-                  Page {currentPage} of{" "}
-                  {Math.ceil(applicationValue / itemsPerPage)}
-                </span>
-                <button
-                  className="border-0 bg-transparent mx-3"
-                  id="hover"
-                  onClick={nextPage}
-                  disabled={
-                    currentPage === Math.ceil(applicationValue / itemsPerPage)
-                  }
-                >
-                  Next
+                  {menuOpen ? (
+                    <FontAwesomeIcon
+                      className=" text-black"
+                      style={{ width: 20, height: 20, float: "right" }}
+                      icon={faXmark}
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      className=" text-black"
+                      style={{ width: 20, height: 20, float: "right" }}
+                      icon={faArrowDownWideShort}
+                    />
+                  )}
                 </button>
               </div>
-            ) : (
-              ""
-            )}
+              <div className={`${menuOpen ? "" : "d-none d-md-block"} mt-4 `}>
+                <label className="sidebar-label-container">
+                  <input
+                    type="radio"
+                    name={"test"}
+                    value={"latest"}
+                    onClick={() => handleSort("latest")}
+                  />
+                  <span className="checkmark"></span>
+                  {"latest"}
+                </label>
+                <label className="sidebar-label-container">
+                  <input
+                    type="radio"
+                    name={"test"}
+                    value={"oldest"}
+                    onClick={() => handleSort("oldest")}
+                  />
+                  <span className="checkmark"></span>
+                  {"oldest"}
+                </label>
+                <label className="sidebar-label-container">
+                  <input
+                    type="radio"
+                    name={"test"}
+                    value={"a-z"}
+                    onClick={() => handleSort("a-z")}
+                  />
+                  <span className="checkmark"></span>
+                  {"a-z"}
+                </label>
+                <label className="sidebar-label-container">
+                  <input
+                    type="radio"
+                    name={"test"}
+                    value={"z-a"}
+                    onClick={() => handleSort("z-a")}
+                  />
+                  <span className="checkmark"></span>
+                  {"z-a"}
+                </label>
+              </div>
+            </div>
+
+            <div
+              className=" bg-white p-3 p-md-4 me-0 col-md-10 col-12"
+              style={{
+                borderRadius: "8px",
+                border: "2px solid rgba(20, 20, 20, 0.05)",
+                background: "#FFF",
+                padding: "15px",
+                boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+              }}
+            >
+              {result.length > 0 ? (
+                <>
+                  <Jobs result={result} jobsValue={applicationValue} />
+                </>
+              ) : (
+                <>
+                  <h3
+                    style={{
+                      fontSize: "20px",
+                      fontStyle: "normal",
+                      fontWeight: "600",
+                      lineHeight: "30px",
+                    }}
+                  >
+                    {result.length} Jobs
+                  </h3>
+                  <p>No data Found..!!</p>
+                </>
+              )}
+              {result.length > 0 ? (
+                <div className="d-flex justify-content-center my-4 ">
+                  <button
+                    className="border-0 bg-transparent mx-3"
+                    id="hover"
+                    onClick={prevPage}
+                    disabled={currentPage === 1}
+                  >
+                    Previous
+                  </button>
+                  <span className="mx-2">
+                    Page {currentPage} of{" "}
+                    {Math.ceil(applicationValue / itemsPerPage)}
+                  </span>
+                  <button
+                    className="border-0 bg-transparent mx-3"
+                    id="hover"
+                    onClick={nextPage}
+                    disabled={
+                      currentPage === Math.ceil(applicationValue / itemsPerPage)
+                    }
+                  >
+                    Next
+                  </button>
+                </div>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </div>
       )}

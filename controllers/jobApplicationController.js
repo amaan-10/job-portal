@@ -109,18 +109,19 @@ export const getMyJobApplication = async (req, res, next) => {
   }
 
   let queryResult = jobApplicationModel.find(queryObject);
+  let queryResultJob = jobsModel.find(queryObject);
 
   if (sort === "latest") {
-    queryResult = queryResult.sort("-createdAt");
+    queryResult = queryResult.sort("-appliedAt");
   }
   if (sort === "oldest") {
-    queryResult = queryResult.sort("createdAt");
+    queryResult = queryResult.sort("appliedAt");
   }
   if (sort === "a-z") {
-    queryResult = queryResult.sort("position");
+    queryResultJob = queryResultJob.sort("position");
   }
   if (sort === "z-a") {
-    queryResult = queryResult.sort("-position");
+    queryResultJob = queryResultJob.sort("-position");
   }
   const jobApplications = await queryResult;
 

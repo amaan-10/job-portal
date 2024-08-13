@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import jobApplicationModel from "../models/jobApplicationModel.js";
 import jobsModel from "../models/jobsModel.js";
 
@@ -109,7 +110,6 @@ export const getMyJobApplication = async (req, res, next) => {
   }
 
   let queryResult = jobApplicationModel.find(queryObject);
-  let queryResultJob = jobsModel.find(queryObject);
 
   if (sort === "latest") {
     queryResult = queryResult.sort("-appliedAt");
@@ -118,12 +118,71 @@ export const getMyJobApplication = async (req, res, next) => {
     queryResult = queryResult.sort("appliedAt");
   }
   if (sort === "a-z") {
-    queryResultJob = queryResultJob.sort("position");
+    queryResult = await jobApplicationModel.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(req.body.user.userId),
+        },
+      },
+      {
+        $lookup: {
+          from: "jobs",
+          localField: "jobId",
+          foreignField: "_id",
+          as: "jobDetails",
+        },
+      },
+      {
+        $unwind: "$jobDetails",
+      },
+      {
+        $sort: {
+          "jobDetails.position": 1,
+        },
+      },
+      {
+        $project: {
+          appliedAt: 1,
+          jobId: 1,
+          userId: 1,
+        },
+      },
+    ]);
   }
   if (sort === "z-a") {
-    queryResultJob = queryResultJob.sort("-position");
+    queryResult = await jobApplicationModel.aggregate([
+      {
+        $match: {
+          userId: new mongoose.Types.ObjectId(req.body.user.userId),
+        },
+      },
+      {
+        $lookup: {
+          from: "jobs",
+          localField: "jobId",
+          foreignField: "_id",
+          as: "jobDetails",
+        },
+      },
+      {
+        $unwind: "$jobDetails",
+      },
+      {
+        $sort: {
+          "jobDetails.position": -1,
+        },
+      },
+      {
+        $project: {
+          appliedAt: 1,
+          jobId: 1,
+          userId: 1,
+        },
+      },
+    ]);
   }
   const jobApplications = await queryResult;
+  //console.log(jobApplications);
 
   // const jobApplications = await jobsModel.find({createdBy:req.user.userId});
   res.status(200).json(jobApplications);

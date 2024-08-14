@@ -2,14 +2,29 @@ import resumeModel from "../models/resumeModel.js";
 
 export const ResumeController = async (req, res) => {
   try {
-    const newResume = new resumeModel({
-      filename: req.file.originalname,
-      contentType: req.file.mimetype,
-      data: req.file.buffer,
+    let resume = await resumeModel.findOne({
       uploadedBy: req.body.user.userId,
     });
 
-    await newResume.save();
+    if (resume) {
+      resume.filename = req.file.originalname;
+      resume.data = req.file.buffer;
+      resume.contentType = req.file.mimetype;
+      resume.uploadDate = new Date();
+      resume.__v += 1;
+    } else {
+      resume = new resumeModel({
+        filename: req.file.originalname,
+        data: req.file.buffer,
+        contentType: req.file.mimetype,
+        uploadedBy: req.body.user.userId,
+        uploadDate: new Date(),
+        __v: 0,
+      });
+    }
+
+    await resume.save();
+
     res.status(200).send("File uploaded successfully");
   } catch (error) {
     res.status(500).json({ error: "Failed to upload PDF" });

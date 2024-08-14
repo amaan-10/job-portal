@@ -29,6 +29,41 @@ const JobDetails = () => {
 
   const [isApplied, setIsApplied] = useState(false);
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const handleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const [file, setFile] = useState(null);
+
+  const onFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const onUpload = (req) => {
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const axiosInstance = axios.create({
+      baseURL: `${BASE_URL}/api/v1/resume`,
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    axiosInstance
+      .post(`/upload`, formData)
+      .then((response) => {
+        toast.success("Resume File uploaded successfully");
+        setTimeout(function () {
+          window.location.reload();
+        }, 3000);
+      })
+      .catch((err) => {
+        toast.error("Error uploading file:", err);
+      });
+  };
+
   useEffect(() => {
     fetch(`${BASE_URL}/api/v1/user/get-user`, {
       method: "GET",
@@ -289,16 +324,34 @@ const JobDetails = () => {
                     <p>You have already applied for this job.</p>
                   </>
                 ) : (
-                  <div>
-                    <button
-                      className="bg-primary w-100 border-0 py-2 px-5 mb-4 border-1 text-white md-rounded-s-none rounded"
-                      onClick={handleApply}
-                      disabled={isApplying}
-                    >
-                      {isApplying ? "Applying..." : "Apply for this Job"}
-                    </button>
-                    {message && <p>{message}</p>}
-                  </div>
+                  <>
+                    <div className={`${menuOpen ? "d-none" : ""} w-100 my-2`}>
+                      <button
+                        className="bg-primary w-100 border-0 py-2 px-5 mb-4 border-1 text-white md-rounded-s-none rounded"
+                        onClick={handleMenu}
+                        disabled={isApplying}
+                      >
+                        {isApplying ? "Applying..." : "Apply for this Job"}
+                      </button>
+                      {message && <p>{message}</p>}
+                    </div>
+                    <div className={`${menuOpen ? "" : "d-none "} mt-2`}>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        onChange={onFileChange}
+                      />
+                      <button
+                        onClick={() => {
+                          onUpload();
+                          handleApply();
+                        }}
+                        className="w-100 d-block py-2 pl-3 my-3 border-1 form-control focus-outline-none bg-primary form-control-sm rounded-sm text-white cursor-pointer font-weight-bold"
+                      >
+                        Upload Your Resume
+                      </button>
+                    </div>
+                  </>
                 )}
               </div>
             </div>

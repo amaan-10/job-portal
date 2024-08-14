@@ -13,6 +13,10 @@ const resumeSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "User",
   },
+  forJob: {
+    type: mongoose.Types.ObjectId,
+    ref: "Job",
+  },
 });
 
 export default mongoose.model("Resume", resumeSchema);

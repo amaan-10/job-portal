@@ -19,6 +19,7 @@ import JobDetails from "./pages/JobDetails";
 import MyProfile from "./pages/MyProfile";
 import EditProfile from "./pages/EditProfile";
 import Applications from "./pages/Applications";
+import UsersApplications from "./pages/UsersApplications";
 
 function App() {
   return (
@@ -85,6 +86,15 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <UpdateJob />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="my-job/users-applications/:id"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <UsersApplications />
             </PrivateRoute>
           }
         />

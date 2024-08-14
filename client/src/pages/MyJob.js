@@ -179,6 +179,7 @@ const MyJob = () => {
                         <th scope="col">COMPANY NAME</th>
                         <th scope="col">POSITION</th>
                         <th scope="col">WORK TYPE</th>
+                        <th scope="col">APPLICATIONS</th>
                         <th scope="col">EDIT</th>
                         <th scope="col">DELETE</th>
                       </tr>
@@ -193,6 +194,16 @@ const MyJob = () => {
                           <td className="py-3">{job.company}</td>
                           <td className="py-3">{job.position}</td>
                           <td className="py-3">{job.workType}</td>
+                          <td>
+                            <button className="border-0 py-2 bg-transparent whitespace-nowrap">
+                              <Link
+                                style={{ color: "black" }}
+                                to={`users-applications/${job?._id}`}
+                              >
+                                Applications
+                              </Link>
+                            </button>
+                          </td>
                           <td>
                             <button className="border-0 py-2 bg-transparent whitespace-nowrap">
                               <Link

@@ -4,6 +4,7 @@ export const ResumeController = async (req, res) => {
   try {
     let resume = await resumeModel.findOne({
       uploadedBy: req.body.user.userId,
+      forJob: req.body.jobId,
     });
 
     if (resume) {
@@ -19,9 +20,11 @@ export const ResumeController = async (req, res) => {
         contentType: req.file.mimetype,
         uploadedBy: req.body.user.userId,
         uploadDate: new Date(),
+        forJob: req.body.jobId,
         __v: 0,
       });
     }
+    //console.log(req);
 
     await resume.save();
 

@@ -42,7 +42,9 @@ const JobDetails = () => {
 
   const onUpload = (req) => {
     const formData = new FormData();
+    formData.append("jobId", id);
     formData.append("file", file);
+    //console.log(id);
 
     const axiosInstance = axios.create({
       baseURL: `${BASE_URL}/api/v1/resume`,
@@ -54,10 +56,11 @@ const JobDetails = () => {
     axiosInstance
       .post(`/upload`, formData)
       .then((response) => {
-        toast.success("Resume File uploaded successfully");
-        setTimeout(function () {
-          window.location.reload();
-        }, 3000);
+        //console.log(response);
+        toast.success("Resume uploaded successfully");
+        // setTimeout(function () {
+        //   window.location.reload();
+        // }, 3000);
       })
       .catch((err) => {
         toast.error("Error uploading file:", err);
@@ -344,7 +347,7 @@ const JobDetails = () => {
                       <button
                         onClick={() => {
                           onUpload();
-                          handleApply();
+                          //handleApply();
                         }}
                         className="w-100 d-block py-2 pl-3 my-3 border-1 form-control focus-outline-none bg-primary form-control-sm rounded-sm text-white cursor-pointer font-weight-bold"
                       >

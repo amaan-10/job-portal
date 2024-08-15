@@ -347,7 +347,7 @@ const JobDetails = () => {
                       <button
                         onClick={() => {
                           onUpload();
-                          //handleApply();
+                          handleApply();
                         }}
                         className="w-100 d-block py-2 pl-3 my-3 border-1 form-control focus-outline-none bg-primary form-control-sm rounded-sm text-white cursor-pointer font-weight-bold"
                       >

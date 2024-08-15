@@ -11,6 +11,6 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 router.post("/upload", upload.single("file"), userAuth, ResumeController);
-router.get("/file/:id", userAuth, getResumeController);
+router.get("/file/:jobId/:userId", getResumeController);
 
 export default router;

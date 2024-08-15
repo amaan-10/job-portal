@@ -23,6 +23,7 @@ const ApplicantDetails = () => {
   const { jobId, userId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applicants, setApplicants] = useState([]);
+  const [resume, setResume] = useState([]);
 
   useEffect(() => {
     //dispatch(showLoading());
@@ -70,6 +71,36 @@ const ApplicantDetails = () => {
       }
     };
     fetchApplicants();
+
+    //fetchUsers();
+  }, []);
+
+  useEffect(() => {
+    //dispatch(showLoading());
+    // Fetch job applications
+    const fetchResume = async () => {
+      try {
+        const response = await axios.get(
+          `${BASE_URL}/api/v1/resume/file/${jobId}/${userId}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        //console.log(response.data);
+        setTimeout(function () {
+          //dispatch(hideLoading());
+        }, 1500);
+
+        setResume(response.data);
+        //console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching resume:", error);
+      }
+    };
+    fetchResume();
 
     //fetchUsers();
   }, []);
@@ -204,6 +235,17 @@ const ApplicantDetails = () => {
                   </p>
                 </div>
               </div>
+              <h5 className="mt-4 fw-bold ms-2">Resume</h5>
+              <div
+                className=" bg-white p-3 p-md-4 me-0"
+                style={{
+                  borderRadius: "8px",
+                  border: "2px solid rgba(20, 20, 20, 0.05)",
+                  background: "#FFF",
+                  padding: "15px",
+                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                }}
+              ></div>
             </div>
             <div className="px-sm-4 px-3 mt-md-5 col-lg-3 col-md-4  py-md-3 ">
               <h6>Social Media</h6>
@@ -223,59 +265,6 @@ const ApplicantDetails = () => {
                   <FontAwesomeIcon icon={faLinkedin} />
                 </p>
               </div>
-
-              {/* {isApplied ? (
-                  <>
-                    <h6> Status</h6>
-                    <div
-                      className=" bg-white p-3 mb-3 p-md-3 me-0"
-                      style={{
-                        borderRadius: "8px",
-                        border: "2px solid rgba(20, 20, 20, 0.05)",
-                        background: "#FFF",
-                        boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-                      }}
-                    >
-                      <p>
-                        <FontAwesomeIcon
-                          className="text-muted me-2"
-                          icon={faUserClock}
-                        />
-                        {job.status}
-                      </p>
-                    </div>
-                    <p>You have already applied for this job.</p>
-                  </>
-                ) : (
-                  <>
-                    <div className={`${menuOpen ? "d-none" : ""} w-100 my-2`}>
-                      <button
-                        className="bg-primary w-100 border-0 py-2 px-5 mb-4 border-1 text-white md-rounded-s-none rounded"
-                        onClick={handleMenu}
-                        disabled={isApplying}
-                      >
-                        {isApplying ? "Applying..." : "Apply for this Job"}
-                      </button>
-                      {message && <p>{message}</p>}
-                    </div>
-                    <div className={`${menuOpen ? "" : "d-none "} mt-2`}>
-                      <input
-                        type="file"
-                        accept="application/pdf"
-                        onChange={onFileChange}
-                      />
-                      <button
-                        onClick={() => {
-                          onUpload();
-                          //handleApply();
-                        }}
-                        className="w-100 d-block py-2 pl-3 my-3 border-1 form-control focus-outline-none bg-primary form-control-sm rounded-sm text-white cursor-pointer font-weight-bold"
-                      >
-                        Upload Your Resume
-                      </button>
-                    </div>
-                  </>
-                )} */}
             </div>
           </div>
         ))}

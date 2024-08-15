@@ -37,7 +37,14 @@ export const ResumeController = async (req, res) => {
 
 export const getResumeController = async (req, res) => {
   try {
-    const file = await resumeModel.findById(req.params.id);
+    const { jobId, userId } = req.params;
+    console.log(jobId, userId);
+
+    const file = await resumeModel.findOne({
+      forJob: jobId,
+      uploadedBy: userId,
+    });
+    //console.log(file);
     if (!file) return res.status(404).send("File not found");
 
     res.set("Content-Type", file.contentType);

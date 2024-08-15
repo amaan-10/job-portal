@@ -206,7 +206,7 @@ const ApplicantDetails = () => {
               </div>
             </div>
             <div className="px-sm-4 px-3 mt-md-5 col-lg-3 col-md-4  py-md-3 ">
-              <h6> Media Handle</h6>
+              <h6>Social Media</h6>
               <div
                 className=" bg-white p-3 mb-3 p-md-3 me-0"
                 style={{

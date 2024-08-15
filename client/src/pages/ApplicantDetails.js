@@ -223,24 +223,7 @@ const ApplicantDetails = () => {
                   <FontAwesomeIcon icon={faLinkedin} />
                 </p>
               </div>
-              <h6> About the Company</h6>
-              <div
-                className=" bg-white p-3 mb-3 p-md-3 me-0"
-                style={{
-                  borderRadius: "8px",
-                  border: "2px solid rgba(20, 20, 20, 0.05)",
-                  background: "#FFF",
-                  padding: "15px",
-                  boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
-                }}
-              >
-                <>Website </>
-                <span>
-                  {/* <a href={job.about} target="_blank">
-                    {job.about}
-                  </a> */}
-                </span>
-              </div>
+
               {/* {isApplied ? (
                   <>
                     <h6> Status</h6>

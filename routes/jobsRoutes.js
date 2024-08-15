@@ -10,6 +10,8 @@ import {
 } from "../controllers/jobsController.js";
 import {
   getAllJobApplication,
+  getJobApplicant,
+  getJobApplicantDetails,
   getMyJobApplication,
   jobApplicationController,
   jobApplicationStatus,
@@ -36,5 +38,9 @@ router.get("/application/status", jobApplicationStatus);
 router.get("/all-application", getAllJobApplication);
 
 router.get("/my-application", userAuth, getMyJobApplication);
+
+router.get("/get-applicants", userAuth, getJobApplicant);
+
+router.get("/get-applicant-details/:jobId/:userId", getJobApplicantDetails);
 
 export default router;

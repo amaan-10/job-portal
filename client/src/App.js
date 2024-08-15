@@ -20,6 +20,7 @@ import MyProfile from "./pages/MyProfile";
 import EditProfile from "./pages/EditProfile";
 import Applications from "./pages/Applications";
 import UsersApplications from "./pages/UsersApplications";
+import ApplicantDetails from "./pages/ApplicantDetails";
 
 function App() {
   return (
@@ -95,6 +96,15 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <UsersApplications />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="my-job/users-applications/applicant-details/:jobId/:userId"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <ApplicantDetails />
             </PrivateRoute>
           }
         />

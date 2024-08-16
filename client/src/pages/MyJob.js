@@ -5,6 +5,7 @@ import Spinner from "../components/shared/Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { BASE_URL } from "../url";
+import { set } from "mongoose";
 
 const MyJob = () => {
   const [jobs, setJobs] = useState([]);
@@ -17,6 +18,7 @@ const MyJob = () => {
   const dispach = useDispatch();
 
   useEffect(() => {
+    dispach(showLoading());
     fetch(`${BASE_URL}/api/v1/job/get-my-job`, {
       method: "GET",
       headers: {
@@ -29,7 +31,9 @@ const MyJob = () => {
       .then((data) => {
         setJobs(data);
         // console.log(data);
-        dispach(hideLoading());
+        setTimeout(function () {
+          dispach(hideLoading());
+        }, 1000);
       });
   }, []);
 

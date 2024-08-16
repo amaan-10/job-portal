@@ -47,8 +47,13 @@ export const getResumeController = async (req, res) => {
     //console.log(file);
     if (!file) return res.status(404).send("File not found");
 
-    res.set("Content-Type", file.contentType);
-    res.send(file.data);
+    const pdfBuffer = Buffer.from(file.data, "base64");
+
+    res.set({
+      "Content-Type": file.contentType,
+      "Content-Disposition": `inline; filename=${file.filename}.pdf`,
+    });
+    res.send(pdfBuffer);
   } catch (error) {
     res.status(500).send("Error retrieving file");
   }

@@ -19,11 +19,21 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
+import { Worker } from "@react-pdf-viewer/core";
+import { Viewer } from "@react-pdf-viewer/core";
+// Import the styles
+import "@react-pdf-viewer/core/lib/styles/index.css";
+import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
+
+// Import styles
+import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+
 const ApplicantDetails = () => {
   const { jobId, userId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applicants, setApplicants] = useState([]);
   const [resume, setResume] = useState([]);
+  const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   useEffect(() => {
     //dispatch(showLoading());
@@ -87,14 +97,32 @@ const ApplicantDetails = () => {
               authorization: `Bearer ${localStorage.getItem("token")}`,
               "content-type": "application/json",
             },
+            responseType: "arraybuffer",
           }
         );
-        //console.log(response.data);
-        setTimeout(function () {
-          //dispatch(hideLoading());
-        }, 1500);
 
-        setResume(response.data);
+        const blob = new Blob([response.data], { type: "application/pdf" });
+
+        const url = URL.createObjectURL(blob);
+
+        console.log(url);
+
+        // (response) => response.blob();
+        // (blob) => {
+        //   const url = window.URL.createObjectURL(blob);
+        //   const a = document.createElement("a");
+        //   a.href = url;
+        //   a.download = "document.pdf";
+        //   document.body.appendChild(a);
+        //   a.click();
+        //   a.remove();
+        // };
+        //console.log(response.data);
+        // setTimeout(function () {
+        //   //dispatch(hideLoading());
+        // }, 1500);
+
+        setResume(url);
         //console.log(response.data);
       } catch (error) {
         console.error("Error fetching resume:", error);
@@ -105,6 +133,15 @@ const ApplicantDetails = () => {
     //fetchUsers();
   }, []);
 
+  const downloadPDF = () => {
+    const a = document.createElement("a");
+    a.href = resume;
+    a.download = `${applicants[0].name}-${applicants[0]._id}-resume.pdf`;
+    document.body.appendChild(a);
+    a.click();
+  };
+
+  console.log(applicants[0].name);
   return (
     <div>
       <div className="px-4 px-sm-5 pt-3">
@@ -245,7 +282,41 @@ const ApplicantDetails = () => {
                   padding: "15px",
                   boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
                 }}
-              ></div>
+              >
+                {resume ? (
+                  <>
+                    <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+                      <Viewer
+                        plugins={[defaultLayoutPluginInstance]}
+                        fileUrl={resume}
+                      />
+                    </Worker>
+                    <button
+                      onClick={() => {
+                        downloadPDF();
+                      }}
+                      className="w-100 d-block py-2 pl-3 my-3 border-1 form-control focus-outline-none bg-primary form-control-sm rounded-sm text-white cursor-pointer font-weight-bold"
+                    >
+                      Download Resume
+                    </button>
+                  </>
+                ) : (
+                  <p>Resume Not Found...</p>
+                )}
+
+                {/* {resume ? (
+                  <Document
+                    file={resume}
+                    onLoadSuccess={({ numPages }) =>
+                      console.log(`Loaded ${numPages} pages`)
+                    }
+                  >
+                    <Page pageNumber={1} />
+                  </Document>
+                ) : (
+                  <p>Loading PDF...</p>
+                )} */}
+              </div>
             </div>
             <div className="px-sm-4 px-3 mt-md-5 col-lg-3 col-md-4  py-md-3 ">
               <h6>Social Media</h6>

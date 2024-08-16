@@ -253,10 +253,6 @@ export const getJobApplicantDetails = async (req, res, next) => {
   //console.log(req);
   try {
     const { jobId, userId } = req.params;
-    const applications = await jobApplicationModel.findOne({
-      jobId: jobId,
-      userId: userId,
-    });
 
     //console.log(applications);
 

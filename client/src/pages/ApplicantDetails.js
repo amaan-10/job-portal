@@ -33,6 +33,7 @@ const ApplicantDetails = () => {
   const [jobs, setJobs] = useState([]);
   const [applicants, setApplicants] = useState([]);
   const [resume, setResume] = useState([]);
+  const [error, setError] = useState(null);
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
 
   useEffect(() => {
@@ -101,23 +102,18 @@ const ApplicantDetails = () => {
           }
         );
 
+        if (response.status === 404) {
+          setError("Resume not found");
+          return;
+        }
+        //console.log(response.status);
+
         const blob = new Blob([response.data], { type: "application/pdf" });
 
         const url = URL.createObjectURL(blob);
 
-        console.log(url);
+        // console.log(url);
 
-        // (response) => response.blob();
-        // (blob) => {
-        //   const url = window.URL.createObjectURL(blob);
-        //   const a = document.createElement("a");
-        //   a.href = url;
-        //   a.download = "document.pdf";
-        //   document.body.appendChild(a);
-        //   a.click();
-        //   a.remove();
-        // };
-        //console.log(response.data);
         // setTimeout(function () {
         //   //dispatch(hideLoading());
         // }, 1500);
@@ -126,6 +122,7 @@ const ApplicantDetails = () => {
         //console.log(response.data);
       } catch (error) {
         console.error("Error fetching resume:", error);
+        setError("Resume not found");
       }
     };
     fetchResume();
@@ -141,7 +138,7 @@ const ApplicantDetails = () => {
     a.click();
   };
 
-  console.log(applicants[0].name);
+  // console.log(resume);
   return (
     <div>
       <div className="px-4 px-sm-5 pt-3">
@@ -283,7 +280,9 @@ const ApplicantDetails = () => {
                   boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
                 }}
               >
-                {resume ? (
+                {error ? (
+                  <p>{error}</p>
+                ) : resume ? (
                   <>
                     <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
                       <Viewer
@@ -301,21 +300,8 @@ const ApplicantDetails = () => {
                     </button>
                   </>
                 ) : (
-                  <p>Resume Not Found...</p>
+                  <p>Loading Resume... </p>
                 )}
-
-                {/* {resume ? (
-                  <Document
-                    file={resume}
-                    onLoadSuccess={({ numPages }) =>
-                      console.log(`Loaded ${numPages} pages`)
-                    }
-                  >
-                    <Page pageNumber={1} />
-                  </Document>
-                ) : (
-                  <p>Loading PDF...</p>
-                )} */}
               </div>
             </div>
             <div className="px-sm-4 px-3 mt-md-5 col-lg-3 col-md-4  py-md-3 ">

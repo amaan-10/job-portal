@@ -20,6 +20,7 @@ const UsersApplications = () => {
   const { id } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applicants, setApplicants] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     //dispatch(showLoading());
@@ -64,6 +65,7 @@ const UsersApplications = () => {
         setApplicants(response.data);
       } catch (error) {
         console.error("Error fetching job applications:", error);
+        setError("Applications Not Found..!!");
       }
     };
     fetchApplicants();
@@ -71,7 +73,7 @@ const UsersApplications = () => {
     //fetchUsers();
   }, []);
 
-  //console.log(jobs);
+  // console.log(error);
 
   return (
     <div>
@@ -89,94 +91,100 @@ const UsersApplications = () => {
           gridColumn: "span 2 / span 2",
         }}
       >
-        {applicants.map((applicant, index) => (
-          <Link
-            to={`/my-job/users-applications/applicant-details/${id}/${applicant._id}`}
-            className=" text-decoration-none"
-          >
-            <section
-              className=" my-3 mx-1 p-3 px-4"
-              style={{
-                border: "2px solid #ededed",
-                cursor: "pointer",
-                borderRadius: "8px",
-              }}
-            >
-              <div style={{ textDecoration: "none" }}>
-                <div>
-                  <h4
-                    style={{
-                      fontSize: "20px",
-                      fontStyle: "normal",
-                      fontWeight: "600",
-                      lineHeight: "30px",
-                    }}
-                    className="text-black h4 mb-0"
-                  >
-                    {applicant.name} {applicant.lastName}
-                  </h4>
-                  <h4
-                    style={{
-                      fontSize: "16px",
-                      fontStyle: "normal",
-                      fontWeight: "400",
-                      lineHeight: "27px",
-                    }}
-                    className="text-black h4 mb-1"
-                  >
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className=" text-muted me-2"
-                    />
-                    {applicant.email}
-                  </h4>
+        {error ? (
+          <p>{error}</p>
+        ) : (
+          <>
+            {applicants.map((applicant, index) => (
+              <Link
+                to={`/my-job/users-applications/applicant-details/${id}/${applicant._id}`}
+                className=" text-decoration-none"
+              >
+                <section
+                  className=" my-3 mx-1 p-3 px-4"
+                  style={{
+                    border: "2px solid #ededed",
+                    cursor: "pointer",
+                    borderRadius: "8px",
+                  }}
+                >
+                  <div style={{ textDecoration: "none" }}>
+                    <div>
+                      <h4
+                        style={{
+                          fontSize: "20px",
+                          fontStyle: "normal",
+                          fontWeight: "600",
+                          lineHeight: "30px",
+                        }}
+                        className="text-black h4 mb-0"
+                      >
+                        {applicant.name} {applicant.lastName}
+                      </h4>
+                      <h4
+                        style={{
+                          fontSize: "16px",
+                          fontStyle: "normal",
+                          fontWeight: "400",
+                          lineHeight: "27px",
+                        }}
+                        className="text-black h4 mb-1"
+                      >
+                        <FontAwesomeIcon
+                          icon={faEnvelope}
+                          className=" text-muted me-2"
+                        />
+                        {applicant.email}
+                      </h4>
 
-                  <div
-                    style={{
-                      fontSize: "14px",
-                      lineHeight: "1.5rem",
-                      display: "flex",
-                      alignItems: "center",
-                      padding: "2px 0px",
-                    }}
-                    className=" d-flex gap-lg-2 flex-wrap text-muted"
-                  >
-                    <span className="d-flex  align-items-center pe-3 gap-2">
-                      <FontAwesomeIcon
+                      <div
+                        style={{
+                          fontSize: "14px",
+                          lineHeight: "1.5rem",
+                          display: "flex",
+                          alignItems: "center",
+                          padding: "2px 0px",
+                        }}
+                        className=" d-flex gap-lg-2 flex-wrap text-muted"
+                      >
+                        <span className="d-flex  align-items-center pe-3 gap-2">
+                          <FontAwesomeIcon
+                            className="text-muted"
+                            icon={faLocationDot}
+                          />
+                          {applicant.location}
+                        </span>
+                        <span className="d-flex text-muted align-items-center pe-3 gap-2">
+                          <FontAwesomeIcon
+                            className="text-muted"
+                            icon={faUserTie}
+                          />
+                          {applicant.experience}
+                        </span>
+                      </div>
+                      <p
                         className="text-muted"
-                        icon={faLocationDot}
-                      />
-                      {applicant.location}
-                    </span>
-                    <span className="d-flex text-muted align-items-center pe-3 gap-2">
-                      <FontAwesomeIcon
-                        className="text-muted"
-                        icon={faUserTie}
-                      />
-                      {applicant.experience}
-                    </span>
+                        style={{
+                          paddingTop: "6px",
+                          fontSize: "14px",
+                          textOverflow: "ellipsis",
+                          overflow: "hidden",
+                          lineClamp: "2",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {applicant.bio}
+                      </p>
+                      <div className="hover text-end">
+                        View details <FontAwesomeIcon icon={faAngleRight} />
+                      </div>
+                    </div>
                   </div>
-                  <p
-                    className="text-muted"
-                    style={{
-                      paddingTop: "6px",
-                      fontSize: "14px",
-                      textOverflow: "ellipsis",
-                      overflow: "hidden",
-                      lineClamp: "2",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {applicant.bio}
-                  </p>
-                  <div className="hover text-end">
-                    View details <FontAwesomeIcon icon={faAngleRight} />
-                  </div>
-                </div>
-              </div>
-            </section>
-          </Link>
-        ))}
+                </section>
+              </Link>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

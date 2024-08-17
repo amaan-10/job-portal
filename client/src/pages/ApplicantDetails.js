@@ -17,7 +17,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faXTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 import { Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
@@ -325,6 +329,9 @@ const ApplicantDetails = () => {
                   </p>
                   <p>
                     <FontAwesomeIcon icon={faLinkedin} />
+                  </p>
+                  <p>
+                    <FontAwesomeIcon icon={faXTwitter} />
                   </p>
                 </div>
               </div>

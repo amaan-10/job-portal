@@ -332,6 +332,47 @@ const EditProfile = () => {
                       onChange={handleChange}
                     />
                   </div>
+                  <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-1">
+                    <div className="col-lg-3 col-12">
+                      <p className="d-block mb-2 text-lg required-field">
+                        Github Profile
+                      </p>
+                      <input
+                        type="text"
+                        placeholder="Github link"
+                        value={users.github}
+                        {...register("github")}
+                        onChange={handleChange}
+                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                      />
+                    </div>
+                    <div className="col-lg-3 col-12">
+                      <p className="d-block mb-2 text-lg required-field">
+                        Linkedin Profile
+                      </p>
+                      <input
+                        type="text"
+                        placeholder="Linkedin link"
+                        value={users.linkedin}
+                        {...register("linkedin")}
+                        onChange={handleChange}
+                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                      />
+                    </div>
+                    <div className="col-lg-6 col-12 pe-5">
+                      <p className="d-block mb-2 text-lg">
+                        X (formerly Twitter) Profile
+                      </p>
+                      <input
+                        type="text"
+                        placeholder="X(Twitter) link"
+                        value={users.x}
+                        onChange={handleChange}
+                        {...register("x")}
+                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                      />
+                    </div>
+                  </div>
                   <div className="col-md-12 mb-4">
                     <p className="d-block mb-2 text-lg">Bio</p>
                     <textarea

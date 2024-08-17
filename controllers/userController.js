@@ -13,6 +13,7 @@ export const updateUserController = async (req, res, next) => {
     pastexp,
     projects,
     bio,
+    github,
   } = req.body;
   if (!name || !email || !lastName || !location) {
     next("Please provide all fields");
@@ -30,6 +31,7 @@ export const updateUserController = async (req, res, next) => {
   user.pastexp = pastexp;
   user.projects = projects;
   user.bio = bio;
+  user.github = github;
 
   // await user.save();
   const updateUser = await userModel.findOneAndUpdate(

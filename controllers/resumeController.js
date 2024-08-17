@@ -38,7 +38,7 @@ export const ResumeController = async (req, res) => {
 export const getResumeController = async (req, res) => {
   try {
     const { jobId, userId } = req.params;
-    console.log(jobId, userId);
+    //console.log(jobId, userId);
 
     const file = await resumeModel.findOne({
       forJob: jobId,

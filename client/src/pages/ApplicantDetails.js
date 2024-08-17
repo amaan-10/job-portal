@@ -325,13 +325,34 @@ const ApplicantDetails = () => {
                   }}
                 >
                   <p>
-                    <FontAwesomeIcon icon={faGithub} />
+                    <FontAwesomeIcon icon={faGithub} className="me-2" />
+                    <a
+                      style={{ fontSize: "12px" }}
+                      href={applicant.github}
+                      target="_blank"
+                    >
+                      {applicant.github}
+                    </a>
                   </p>
                   <p>
                     <FontAwesomeIcon icon={faLinkedin} />
+                    <a
+                      style={{ fontSize: "12px" }}
+                      href={applicant.linkedin}
+                      target="_blank"
+                    >
+                      {applicant.linkedin}
+                    </a>
                   </p>
                   <p>
                     <FontAwesomeIcon icon={faXTwitter} />
+                    <a
+                      style={{ fontSize: "12px" }}
+                      href={applicant.x}
+                      target="_blank"
+                    >
+                      {applicant.x}
+                    </a>
                   </p>
                 </div>
               </div>

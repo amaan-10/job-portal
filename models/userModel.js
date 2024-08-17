@@ -54,6 +54,15 @@ const userSchema = new mongoose.Schema(
     bio: {
       type: String,
     },
+    github: {
+      type: String,
+    },
+    linkedin: {
+      type: String,
+    },
+    x: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

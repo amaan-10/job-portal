@@ -17,13 +17,13 @@ export const jobApplicationController = async (req, res) => {
     const applications = await jobApplicationModel.find({}).exec();
 
     // Iterate over each application
-    for (const application of applications) {
-      // Update the corresponding job's status
-      await jobsModel.updateOne(
-        { _id: application.jobId }, // Match job with applicationId
-        { $set: { status: application.status } } // Set the status field
-      );
-    }
+    // for (const application of applications) {
+    //   // Update the corresponding job's status
+    //   await jobsModel.updateOne(
+    //     { _id: application.jobId }, // Match job with applicationId
+    //     { $set: { status: application.status } } // Set the status field
+    //   );
+    // }
 
     // Save the application in the database
     await newApplication.save();
@@ -65,13 +65,13 @@ export const getAllJobApplication = async (req, res, next) => {
   const applications = await jobApplicationModel.find({}).exec();
 
   // Iterate over each application
-  for (const application of applications) {
-    // Update the corresponding job's status
-    await jobsModel.updateOne(
-      { _id: application.jobId }, // Match job with applicationId
-      { $set: { status: application.status } } // Set the status field
-    );
-  }
+  // for (const application of applications) {
+  //   // Update the corresponding job's status
+  //   await jobsModel.updateOne(
+  //     { _id: application.jobId }, // Match job with applicationId
+  //     { $set: { status: application.status } } // Set the status field
+  //   );
+  // }
 
   let queryResult = jobApplicationModel.find(queryObject);
 
@@ -102,13 +102,13 @@ export const getMyJobApplication = async (req, res, next) => {
   const applications = await jobApplicationModel.find({}).exec();
 
   // Iterate over each application
-  for (const application of applications) {
-    // Update the corresponding job's status
-    await jobsModel.updateOne(
-      { _id: application.jobId }, // Match job with applicationId
-      { $set: { status: application.status } } // Set the status field
-    );
-  }
+  // for (const application of applications) {
+  //   // Update the corresponding job's status
+  //   await jobsModel.updateOne(
+  //     { _id: application.jobId }, // Match job with applicationId
+  //     { $set: { status: application.status } } // Set the status field
+  //   );
+  // }
 
   let queryResult = jobApplicationModel.find(queryObject);
 
@@ -247,6 +247,65 @@ export const getJobApplicant = async (req, res, next) => {
 
   // // const jobApplications = await jobsModel.find({createdBy:req.user.userId});
   // res.status(200).json(jobApplications);
+};
+
+export const getApplicantStatus = async (req, res, next) => {
+  //console.log(req);
+  try {
+    const { jobId, userId } = req.params;
+    const application = await jobApplicationModel.findOne({
+      userId,
+      jobId,
+    });
+    //console.log(user);
+
+    if (!application) {
+      return res.status(404).json({ message: "Applicant Status Not Found" });
+    }
+    return res.status(200).json(application);
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
+export const updateApplicantStatus = async (req, res, next) => {
+  //console.log(req);
+  try {
+    const { jobId, userId } = req.params;
+    const { status } = req.body;
+    // console.log(req.body);
+
+    // console.log(status);
+
+    const applicantStatus = await jobApplicationModel.findOne({
+      userId,
+      jobId,
+    });
+    applicantStatus.status = status;
+    // console.log(applicantStatus);
+
+    const updateStatus = await jobApplicationModel.findOneAndUpdate(
+      {
+        userId,
+        jobId,
+      },
+      applicantStatus,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    // console.log(updateStatus);
+
+    if (!status) {
+      return res.status(404).json({ message: "Applicant Status Not Found" });
+    }
+    return res.status(200).json({ updateStatus, success: true });
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return res.status(500).json({ message: "Server error" });
+  }
 };
 
 export const getJobApplicantDetails = async (req, res, next) => {

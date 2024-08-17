@@ -10,11 +10,13 @@ import {
 } from "../controllers/jobsController.js";
 import {
   getAllJobApplication,
+  getApplicantStatus,
   getJobApplicant,
   getJobApplicantDetails,
   getMyJobApplication,
   jobApplicationController,
   jobApplicationStatus,
+  updateApplicantStatus,
 } from "../controllers/jobApplicationController.js";
 
 const router = express.Router();
@@ -42,5 +44,9 @@ router.get("/my-application", userAuth, getMyJobApplication);
 router.get("/get-applicants", userAuth, getJobApplicant);
 
 router.get("/get-applicant-details/:jobId/:userId", getJobApplicantDetails);
+
+router.put("/update-applicant-status/:jobId/:userId", updateApplicantStatus);
+
+router.get("/get-applicant-status/:jobId/:userId", getApplicantStatus);
 
 export default router;

@@ -3,6 +3,7 @@ import {
   faAngleLeft,
   faBriefcaseClock,
   faCalendarDays,
+  faCaretDown,
   faEnvelope,
   faIndianRupeeSign,
   faLocationDot,
@@ -31,6 +32,7 @@ import { defaultLayoutPlugin } from "@react-pdf-viewer/default-layout";
 
 // Import styles
 import "@react-pdf-viewer/default-layout/lib/styles/index.css";
+import { useForm } from "react-hook-form";
 
 const ApplicantDetails = () => {
   const { loading } = useSelector((state) => state.alerts);
@@ -39,8 +41,11 @@ const ApplicantDetails = () => {
   const [jobs, setJobs] = useState([]);
   const [applicants, setApplicants] = useState([]);
   const [resume, setResume] = useState([]);
+  const [applicantDetail, setApplicantDetail] = useState([]);
   const [error, setError] = useState(null);
   const defaultLayoutPluginInstance = defaultLayoutPlugin();
+
+  const { register } = useForm();
 
   useEffect(() => {
     dispatch(showLoading());
@@ -136,6 +141,66 @@ const ApplicantDetails = () => {
     //fetchUsers();
   }, []);
 
+  useEffect(() => {
+    //dispatch(showLoading());
+    // Fetch job applications
+    const fetchApplicantsStatus = async () => {
+      try {
+        const response = await axios.get(
+          `${BASE_URL}/api/v1/job/get-applicant-status/${jobId}/${userId}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+              "content-type": "application/json",
+            },
+          }
+        );
+        //console.log(response.data);
+        // setTimeout(function () {
+        //   dispatch(hideLoading());
+        // }, 1500);
+
+        setApplicantDetail(response.data);
+      } catch (error) {
+        console.error("Error fetching job applications:", error);
+      }
+    };
+    fetchApplicantsStatus();
+
+    //fetchUsers();
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setApplicantDetail({ ...applicantDetail, [name]: value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(applicantDetail);
+    fetch(`${BASE_URL}/api/v1/job/update-applicant-status/${jobId}/${userId}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(applicantDetail),
+    })
+      .then((res) => res.json())
+      .then((status) => {
+        if (status.success) {
+          dispatch(showLoading());
+          toast.success("Profile Updated Successfully");
+          setTimeout(function () {
+            window.location.reload();
+          }, 3000);
+        } else {
+          toast.error(status.error);
+        }
+      });
+    dispatch(hideLoading());
+  };
+
   const downloadPDF = () => {
     const a = document.createElement("a");
     a.href = resume;
@@ -144,7 +209,7 @@ const ApplicantDetails = () => {
     a.click();
   };
 
-  // console.log(resume);
+  console.log(applicantDetail);
   return (
     <div>
       <div className="px-4 px-sm-5 pt-3">
@@ -354,6 +419,53 @@ const ApplicantDetails = () => {
                       {applicant.x}
                     </a>
                   </p>
+                </div>
+                <h6>Applicant Status</h6>
+                <div
+                  className=" bg-white p-3 mb-3 p-md-3 me-0"
+                  style={{
+                    borderRadius: "8px",
+                    border: "2px solid rgba(20, 20, 20, 0.05)",
+                    background: "#FFF",
+                    boxShadow: " 0px 1px 2px 0px rgba(0, 0, 0, 0.03)",
+                  }}
+                >
+                  <form onSubmit={handleSubmit}>
+                    <p className="d-block mb-2 text-lg required-field">
+                      Job Status
+                    </p>
+                    <div className=" d-flex">
+                      <select
+                        {...register("status")}
+                        value={applicantDetail.status}
+                        onChange={handleChange}
+                        className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                      >
+                        <option value={applicantDetail.status}>
+                          {applicantDetail.status}
+                        </option>
+                        <option value="pending">Pending</option>
+                        <option value="reviewed">Reviewed</option>
+                        <option value="interview">Interview</option>
+                        <option value="accepted">Accepted</option>
+                        <option value="rejected">Rejected</option>
+                      </select>
+                      <FontAwesomeIcon
+                        style={{
+                          position: "relative",
+                          margin: "0.8rem",
+                          marginRight: "0.3rem",
+                          color: "#6f6f6f",
+                        }}
+                        icon={faCaretDown}
+                      />
+                    </div>
+                    <input
+                      type="submit"
+                      className="d-block mt-4 bg-primary text-white px-4 py-2 form-control-sm form-control-sm-leading-6 rounded-sm cursor-pointer"
+                      style={{ width: "8rem" }}
+                    />
+                  </form>
                 </div>
               </div>
             </div>

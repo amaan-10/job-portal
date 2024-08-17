@@ -8,8 +8,12 @@ import {
   faUserClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { BASE_URL } from "../../url";
+import { hideLoading, showLoading } from "../../redux/features/alertSlice";
+import { useDispatch } from "react-redux";
 
 const Card = ({ data }) => {
   const location = useLocation();
@@ -23,10 +27,63 @@ const Card = ({ data }) => {
     workType,
     description,
     ctc,
-    status,
   } = data;
 
   const date = openingAt.substring(0, 10);
+
+  const [status, setApplicantStatus] = useState([]);
+  const [userId, setUsers] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //fetch user
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/v1/user/get-user`, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+            "content-type": "application/json",
+          },
+        });
+        //console.log(response.data);
+        setUsers(response.data.data._id);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  // Fetch job applications
+
+  const fetchApplicantsStatus = async () => {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/api/v1/job/get-applicant-status/${_id}/${userId}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      //console.log(response.data);
+      setTimeout(function () {
+        dispatch(hideLoading());
+      }, 2000);
+
+      setApplicantStatus(response.data.status);
+    } catch (error) {
+      console.error("Error fetching job applications:", error);
+    }
+  };
+  useEffect(() => {
+    fetchApplicantsStatus();
+  });
+
+  //console.log(userId);
+
   return (
     <Link to={`/job-details/${_id}`} className=" text-decoration-none">
       <section

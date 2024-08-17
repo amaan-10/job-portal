@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { BASE_URL } from "../url";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 const JobDetails = () => {
   const { id } = useParams();
   const [jobs, setJobs] = useState([]);
+  const location = useLocation();
 
   const { loading } = useSelector((state) => state.alerts);
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ const JobDetails = () => {
   const [message, setMessage] = useState("");
 
   const [users, setUser] = useState([]);
+  const [status, setApplicantStatus] = useState([]);
 
   const [isApplied, setIsApplied] = useState(false);
 
@@ -137,6 +139,31 @@ const JobDetails = () => {
     }
   }, [jobId, userId]);
 
+  const fetchApplicantsStatus = async () => {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/api/v1/job/get-applicant-status/${jobId}/${userId}`,
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+            "content-type": "application/json",
+          },
+        }
+      );
+      //console.log(response.data);
+      setTimeout(function () {
+        dispatch(hideLoading());
+      }, 2000);
+
+      setApplicantStatus(response.data.status);
+    } catch (error) {
+      console.error("Error fetching job applications:", error);
+    }
+  };
+  useEffect(() => {
+    fetchApplicantsStatus();
+  });
+
   const handleApply = async () => {
     setIsApplying(true);
 
@@ -162,9 +189,15 @@ const JobDetails = () => {
     <div>
       <div className="px-4 px-sm-5 pt-3">
         <p>
-          <Link to="/dashboard" className=" hover">
-            <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
-          </Link>
+          {location.pathname === "/applications" ? (
+            <Link to="/applications" className=" hover">
+              <FontAwesomeIcon icon={faAngleLeft} /> Back to Applications
+            </Link>
+          ) : (
+            <Link to="/dashboard" className=" hover">
+              <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
+            </Link>
+          )}
         </p>
       </div>
       {loading ? (
@@ -321,7 +354,7 @@ const JobDetails = () => {
                           className="text-muted me-2"
                           icon={faUserClock}
                         />
-                        {job.status}
+                        {status}
                       </p>
                     </div>
                     <p>You have already applied for this job.</p>

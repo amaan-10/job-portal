@@ -189,15 +189,9 @@ const JobDetails = () => {
     <div>
       <div className="px-4 px-sm-5 pt-3">
         <p>
-          {location.pathname === "/applications" ? (
-            <Link to="/applications" className=" hover">
-              <FontAwesomeIcon icon={faAngleLeft} /> Back to Applications
-            </Link>
-          ) : (
-            <Link to="/dashboard" className=" hover">
-              <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
-            </Link>
-          )}
+          <Link to="/dashboard" className=" hover">
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
+          </Link>
         </p>
       </div>
       {loading ? (

@@ -85,7 +85,14 @@ const Card = ({ data }) => {
   //console.log(userId);
 
   return (
-    <Link to={`/job-details/${_id}`} className=" text-decoration-none">
+    <Link
+      to={`${
+        window.location.pathname === "/dashboard"
+          ? `/dashboard/job-details/${_id}`
+          : `/applications/job-details/${_id}`
+      }`}
+      className=" text-decoration-none"
+    >
       <section
         className=" my-3 mx-1 p-3"
         style={{

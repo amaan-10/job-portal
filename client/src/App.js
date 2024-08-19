@@ -109,7 +109,7 @@ function App() {
           }
         />
         <Route
-          path="/job-details/:id"
+          path="/dashboard/job-details/:id"
           element={
             <PrivateRoute>
               <Navbar />
@@ -117,12 +117,22 @@ function App() {
             </PrivateRoute>
           }
         />
+
         <Route
           path="/applications"
           element={
             <PrivateRoute>
               <Navbar />
               <Applications />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/applications/job-details/:id"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <JobDetails />
             </PrivateRoute>
           }
         />

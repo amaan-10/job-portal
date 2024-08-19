@@ -76,8 +76,8 @@ const EditProfile = () => {
     <div>
       <div className="px-3 px-md-5 pt-3">
         <p>
-          <Link to={`/my-job`} className=" hover">
-            <FontAwesomeIcon icon={faAngleLeft} /> Back to My Jobs
+          <Link to={`/profile`} className=" hover">
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to My Profile
           </Link>
         </p>
       </div>

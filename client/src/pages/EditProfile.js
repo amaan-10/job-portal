@@ -1,4 +1,5 @@
 import {
+  faAngleLeft,
   faCaretDown,
   faLocationDot,
   faUserTie,
@@ -6,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { BASE_URL } from "../url";
 import { useForm } from "react-hook-form";
@@ -73,6 +74,13 @@ const EditProfile = () => {
 
   return (
     <div>
+      <div className="px-3 px-md-5 pt-3">
+        <p>
+          <Link to={`/my-job`} className=" hover">
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to My Jobs
+          </Link>
+        </p>
+      </div>
       {loading ? (
         <div
           className=" d-flex justify-content-center align-items-center"
@@ -81,7 +89,7 @@ const EditProfile = () => {
           <Spinner />
         </div>
       ) : (
-        <div className=" max-w-screen-2xl mx-auto px-md-5 px-3 pt-3 pt-md-5  pb-md-5 pb-4">
+        <div className=" max-w-screen-2xl mx-auto px-md-5 px-3 pt-3  pb-md-5 pb-4">
           <h3 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
             Edit Profile
           </h3>

@@ -197,7 +197,12 @@ const JobDetails = () => {
             }`}
             className=" hover"
           >
-            <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to{" "}
+            {`${
+              window.location.pathname === `/dashboard/job-details/${jobId}`
+                ? `Dashboard`
+                : `Applications`
+            }`}
           </Link>
         </p>
       </div>

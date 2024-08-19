@@ -197,7 +197,7 @@ const JobDetails = () => {
       {loading ? (
         <div
           className=" d-flex justify-content-center align-items-center"
-          style={{ height: "50vh" }}
+          style={{ height: "65vh" }}
         >
           <Spinner />
         </div>
@@ -365,7 +365,7 @@ const JobDetails = () => {
                       </button>
                       {message && <p>{message}</p>}
                     </div>
-                    <div className={`${menuOpen ? "" : "d-none "} mt-2`}>
+                    <div className={`${menuOpen ? "" : "d-none "} my-3`}>
                       <input
                         type="file"
                         accept="application/pdf"
@@ -380,6 +380,9 @@ const JobDetails = () => {
                       >
                         Upload Your Resume
                       </button>
+                      <p>
+                        Before applying for job, Please update your profile.
+                      </p>
                     </div>
                   </>
                 )}

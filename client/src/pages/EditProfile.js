@@ -76,7 +76,7 @@ const EditProfile = () => {
       {loading ? (
         <div
           className=" d-flex justify-content-center align-items-center"
-          style={{ height: "50vh" }}
+          style={{ height: "65vh" }}
         >
           <Spinner />
         </div>

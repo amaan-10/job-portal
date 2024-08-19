@@ -189,7 +189,14 @@ const JobDetails = () => {
     <div>
       <div className="px-4 px-sm-5 pt-3">
         <p>
-          <Link to="/dashboard" className=" hover">
+          <Link
+            to={`${
+              window.location.pathname === `/dashboard/job-details/${jobId}`
+                ? `/dashboard`
+                : `/applications`
+            }`}
+            className=" hover"
+          >
             <FontAwesomeIcon icon={faAngleLeft} /> Back to Dashboard
           </Link>
         </p>

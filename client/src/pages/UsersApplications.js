@@ -4,6 +4,7 @@ import { BASE_URL } from "../url";
 import axios from "axios";
 
 import {
+  faAngleLeft,
   faAngleRight,
   faBriefcaseClock,
   faCalendarDays,
@@ -77,7 +78,14 @@ const UsersApplications = () => {
 
   return (
     <div>
-      <div className=" max-w-screen-2xl mx-auto px-md-5 px-3 pt-3 pt-md-4 pb-3 ">
+      <div className="px-4 px-sm-5 pt-3">
+        <p>
+          <Link to={`/my-job`} className=" hover">
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to My Jobs
+          </Link>
+        </p>
+      </div>
+      <div className=" max-w-screen-2xl mx-auto px-md-5 px-3 pt-3 pt-md-4 pb-0 ">
         <h3 className=" fw-bold">Job Applicants</h3>
       </div>
       <div

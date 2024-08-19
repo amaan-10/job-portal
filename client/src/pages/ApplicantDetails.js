@@ -215,7 +215,7 @@ const ApplicantDetails = () => {
       <div className="px-4 px-sm-5 pt-3">
         <p>
           <Link to={`/my-job/users-applications/${jobId}`} className=" hover">
-            <FontAwesomeIcon icon={faAngleLeft} /> Back to My Jobs
+            <FontAwesomeIcon icon={faAngleLeft} /> Back to Job Applicants
           </Link>
         </p>
       </div>

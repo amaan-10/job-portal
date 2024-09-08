@@ -15,6 +15,7 @@ import { BASE_URL } from "../../url";
 import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 import { useDispatch } from "react-redux";
 
+// Component for cards used at dashboard and applications page
 const Card = ({ data }) => {
   const location = useLocation();
 

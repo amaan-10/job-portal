@@ -1,5 +1,6 @@
 import React from "react";
 
+// Component for jobs (the details which is later shown in cards)
 const Jobs = ({ result, jobsValue }) => {
   return (
     <>

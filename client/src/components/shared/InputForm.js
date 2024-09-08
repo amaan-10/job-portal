@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// Component for the skeleton of radio buttions of sidebar
 const InputForm = ({
   htmlFor,
   icon,

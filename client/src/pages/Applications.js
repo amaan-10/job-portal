@@ -111,7 +111,7 @@ const Applications = () => {
             "content-type": "application/json",
           },
         });
-        console.log(response.data);
+        //console.log(response.data);
         setUsers(response.data);
       } catch (error) {
         console.error("Error fetching users:", error);

@@ -177,7 +177,7 @@ const ApplicantDetails = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(applicantDetail);
+    // console.log(applicantDetail);
     fetch(`${BASE_URL}/api/v1/job/update-applicant-status/${jobId}/${userId}`, {
       method: "PUT",
       headers: {
@@ -209,7 +209,7 @@ const ApplicantDetails = () => {
     a.click();
   };
 
-  console.log(applicantDetail);
+  //console.log(applicantDetail);
   return (
     <div>
       <div className="px-4 px-sm-5 pt-3">

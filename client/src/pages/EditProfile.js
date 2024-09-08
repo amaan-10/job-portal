@@ -48,7 +48,7 @@ const EditProfile = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(users);
+    //console.log(users);
     fetch(`${BASE_URL}/api/v1/user/update-user`, {
       method: "PUT",
       headers: {

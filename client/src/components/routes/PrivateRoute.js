@@ -5,11 +5,12 @@ import axios from "axios";
 import { Navigate } from "react-router-dom";
 import { setUser } from "../../redux/features/auth/authSlice";
 import { BASE_URL } from "../../url";
-
+// This route allows to surf the components under this route if and only if user is Logged In means if the bearer token is present in local storage or not
 const PrivateRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const getUser = async () => {
+    //check user login(token in header) else direct to login page
     try {
       dispatch(showLoading());
       const { data } = await axios.post(

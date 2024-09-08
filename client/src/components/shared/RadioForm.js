@@ -1,5 +1,6 @@
 import React from "react";
 
+//Component for Radio Buttom Form
 const RadioForm = ({ handleChange, value, title, name }) => {
   return (
     <label className="sidebar-label-container">

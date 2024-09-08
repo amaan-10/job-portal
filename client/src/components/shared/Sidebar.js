@@ -3,18 +3,22 @@ import RadioForm from "./RadioForm";
 import { faFilter, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+//Component for Side bar comes under Dashboard
 const Sidebar = ({ handleChange, handleClick }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  //Declare current date and time using date function
   const now = new Date();
+  //Calculating 1 day, 1 week, 1 month, 3 months ago date using Date function and simple maths
   const oneDayAgo = new Date(now - 24 * 60 * 60 * 1000);
   const oneWeekAgo = new Date(now - 7 * 24 * 60 * 60 * 1000);
   const oneMonthAgo = new Date(now - 30 * 24 * 60 * 60 * 1000);
   const threeMonthAgo = new Date(now - 90 * 24 * 60 * 60 * 1000);
 
+  //Slicing Date and time into only date i.e dd/mm/yyyy
   const oneDayAgoDate = oneDayAgo.toISOString().slice(0, 10);
   const oneWeekAgoDate = oneWeekAgo.toISOString().slice(0, 10);
   const oneMonthAgoDate = oneMonthAgo.toISOString().slice(0, 10);

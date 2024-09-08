@@ -13,10 +13,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "./../../url";
 
+// Component for navbar which is part of every page through the WebApp
 const Navbar = () => {
   const [users, setUser] = useState([]);
   const { user } = useSelector((state) => state.auth);
 
+  // fetch user
   useEffect(() => {
     // dispatch(showLoading());
     try {
@@ -50,13 +52,16 @@ const Navbar = () => {
 
   const [isLoggedIn, setLoggedIn] = useState(false);
 
+  //check if user is logged in or not
   useEffect(() => {
     const token = localStorage.getItem("token");
     setLoggedIn(!!token);
   }, []);
 
   let navItems;
+  // show this if user is logged in
   if (isLoggedIn === true) {
+    // show this if user role is recruiter
     if (users.userRole === "recruiter") {
       navItems = [
         { path: "/", title: "Home" },
@@ -66,6 +71,7 @@ const Navbar = () => {
         { path: "/profile", title: "My Profile" },
       ];
     } else {
+      // show this if user role is not recruiter
       navItems = [
         { path: "/", title: "Home" },
         { path: "/dashboard", title: "DashBoard" },

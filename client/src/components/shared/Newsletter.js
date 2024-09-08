@@ -8,6 +8,7 @@ import axios from "axios";
 import { BASE_URL } from "../../url";
 import { toast } from "react-toastify";
 
+// Component for the Newsletter on Dashboard page
 const Newsletter = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const handleMenu = () => {
@@ -20,6 +21,7 @@ const Newsletter = () => {
     setFile(e.target.files[0]);
   };
 
+  // upload resume file via axios post
   const onUpload = (req) => {
     const formData = new FormData();
     formData.append("file", file);

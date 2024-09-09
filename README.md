@@ -136,7 +136,7 @@ Make sure you have the following software installed on your system:
 
     ```env
     MONGO_URI=your_mongodb_connection_string
-    PORT=5000
+    PORT=8080
     ```
     
 5. Enter your API in `config.js`

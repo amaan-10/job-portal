@@ -241,7 +241,7 @@ List of resources that are find helpful and would like to give credit to:
 
 ## Deployment
 
-### Employ-Mee : [Job-Portal Website Link](https://website-job-portal.netlify.app/)
+### Employ-Mee : [Job-Portal Website Link](https://employ-mee.vercel.app/)
 
 **For User Login (*dummy*):**
 <br>

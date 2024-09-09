@@ -136,7 +136,7 @@ Make sure you have the following software installed on your system:
 
     ```env
     MONGO_URI=your_mongodb_connection_string
-    PORT=5000
+    PORT=8080
     ```
     
 5. Enter your API in `config.js`
@@ -161,7 +161,7 @@ Make sure you have the following software installed on your system:
     npm start
     ```
 
-    The server will start on `http://localhost:5000`.
+    The server will start on `http://localhost:8080`.
 
 3. Start the client:
 
@@ -180,6 +180,7 @@ Make sure you have the following software installed on your system:
    Open a new terminal window and run:
 
     ```sh
+    cd server
     npm run dev
     ```
     > job-portal@1.0.0 dev
@@ -212,7 +213,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Your Name - Amaan Shaikh amaanshaikh.gg@gmail.com
+Amaan Shaikh - amaanshaikh.gg@gmail.com
 
 Project Link: [https://github.com/amaan-10/job-portal](https://github.com/amaan-10/job-portal)
 

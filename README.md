@@ -213,7 +213,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Your Name - Amaan Shaikh amaanshaikh.gg@gmail.com
+Amaan Shaikh - amaanshaikh.gg@gmail.com
 
 Project Link: [https://github.com/amaan-10/job-portal](https://github.com/amaan-10/job-portal)
 

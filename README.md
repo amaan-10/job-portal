@@ -180,6 +180,7 @@ Make sure you have the following software installed on your system:
    Open a new terminal window and run:
 
     ```sh
+    cd server
     npm run dev
     ```
     > job-portal@1.0.0 dev

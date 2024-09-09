@@ -161,7 +161,7 @@ Make sure you have the following software installed on your system:
     npm start
     ```
 
-    The server will start on `http://localhost:5000`.
+    The server will start on `http://localhost:8080`.
 
 3. Start the client:
 

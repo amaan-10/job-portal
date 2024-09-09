@@ -13,7 +13,6 @@ import { BASE_URL } from "../url";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Spinner from "../components/shared/Spinner";
-import { Tooltip as ReactToolTip } from "react-tooltip";
 
 const EditProfile = () => {
   const { id } = useParams();

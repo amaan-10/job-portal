@@ -7,7 +7,6 @@ import Dashboard from "./pages/Dashboard";
 import PostJobs from "./pages/PostJobs";
 import NotFound from "./pages/NotFound";
 import { ToastContainer } from "react-toastify";
-import "react-tooltip/dist/react-tooltip.css";
 import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";

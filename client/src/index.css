@@ -36,6 +36,9 @@ animation-delay: 1s;
 }
 
 /* navigation bar */
+nav a span{
+  font-weight: 500;
+}
 
 @media (max-width: 890px){
   nav a span{

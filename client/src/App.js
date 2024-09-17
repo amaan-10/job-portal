@@ -20,6 +20,7 @@ import EditProfile from "./pages/EditProfile";
 import Applications from "./pages/Applications";
 import UsersApplications from "./pages/UsersApplications";
 import ApplicantDetails from "./pages/ApplicantDetails";
+import UserRoutes from "./components/routes/UserRoutes";
 
 function App() {
   return (
@@ -66,8 +67,10 @@ function App() {
           path="/post-job"
           element={
             <PrivateRoute>
-              <Navbar />
-              <PostJobs />
+              <UserRoutes>
+                <Navbar />
+                <PostJobs />
+              </UserRoutes>
             </PrivateRoute>
           }
         />
@@ -75,8 +78,10 @@ function App() {
           path="/my-job"
           element={
             <PrivateRoute>
-              <Navbar />
-              <MyJob />
+              <UserRoutes>
+                <Navbar />
+                <MyJob />
+              </UserRoutes>
             </PrivateRoute>
           }
         />
@@ -84,8 +89,10 @@ function App() {
           path="my-job/update-job/:id"
           element={
             <PrivateRoute>
-              <Navbar />
-              <UpdateJob />
+              <UserRoutes>
+                <Navbar />
+                <UpdateJob />
+              </UserRoutes>
             </PrivateRoute>
           }
         />
@@ -93,8 +100,10 @@ function App() {
           path="my-job/users-applications/:id"
           element={
             <PrivateRoute>
-              <Navbar />
-              <UsersApplications />
+              <UserRoutes>
+                <Navbar />
+                <UsersApplications />
+              </UserRoutes>
             </PrivateRoute>
           }
         />
@@ -102,8 +111,10 @@ function App() {
           path="my-job/users-applications/applicant-details/:jobId/:userId"
           element={
             <PrivateRoute>
-              <Navbar />
-              <ApplicantDetails />
+              <UserRoutes>
+                <Navbar />
+                <ApplicantDetails />
+              </UserRoutes>
             </PrivateRoute>
           }
         />

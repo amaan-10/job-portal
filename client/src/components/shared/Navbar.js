@@ -15,7 +15,7 @@ import { BASE_URL } from "./../../url";
 
 // Component for navbar which is part of every page through the WebApp
 const Navbar = () => {
-  const [users, setUser] = useState([]);
+  const [users, setUser] = useState("recruiter");
   const { user } = useSelector((state) => state.auth);
 
   // fetch user
@@ -33,7 +33,7 @@ const Navbar = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            setUser(data.data);
+            setUser(data.data.userRole);
             //console.log(data);
           } else {
             localStorage.clear();
@@ -62,7 +62,7 @@ const Navbar = () => {
   // show this if user is logged in
   if (isLoggedIn === true) {
     // show this if user role is recruiter
-    if (users.userRole === "recruiter") {
+    if (users === "recruiter") {
       navItems = [
         { path: "/", title: "Home" },
         { path: "/dashboard", title: "DashBoard" },

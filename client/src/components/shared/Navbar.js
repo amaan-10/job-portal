@@ -33,7 +33,7 @@ const Navbar = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.success) {
-            setUser(data.data);
+            setUser(data.data.userRole);
             //console.log(data);
           } else {
             localStorage.clear();

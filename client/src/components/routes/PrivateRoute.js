@@ -25,10 +25,13 @@ const PrivateRoute = ({ children }) => {
         // console.log(data);
       } else {
         localStorage.clear();
+        window.location.reload();
         <Navigate to="/login" />;
       }
     } catch (error) {
       localStorage.clear();
+      window.location.reload();
+      <Navigate to="/login" />;
       dispatch(hideLoading());
       // console.log(error);
     }

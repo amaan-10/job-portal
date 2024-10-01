@@ -21,6 +21,7 @@ import Applications from "./pages/Applications";
 import UsersApplications from "./pages/UsersApplications";
 import ApplicantDetails from "./pages/ApplicantDetails";
 import UserRoutes from "./components/routes/UserRoutes";
+import Footer from "./components/shared/Footer";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <Dashboard />
+              <Footer />
             </PrivateRoute>
           }
         />

@@ -34,6 +34,7 @@ function App() {
             <>
               <Navbar />
               <HomePage />
+              <Footer />
             </>
           }
         />
@@ -72,6 +73,7 @@ function App() {
               <UserRoutes>
                 <Navbar />
                 <PostJobs />
+                <Footer />
               </UserRoutes>
             </PrivateRoute>
           }
@@ -83,6 +85,7 @@ function App() {
               <UserRoutes>
                 <Navbar />
                 <MyJob />
+                <Footer />
               </UserRoutes>
             </PrivateRoute>
           }
@@ -94,6 +97,7 @@ function App() {
               <UserRoutes>
                 <Navbar />
                 <UpdateJob />
+                <Footer />
               </UserRoutes>
             </PrivateRoute>
           }
@@ -105,6 +109,7 @@ function App() {
               <UserRoutes>
                 <Navbar />
                 <UsersApplications />
+                <Footer />
               </UserRoutes>
             </PrivateRoute>
           }
@@ -116,6 +121,7 @@ function App() {
               <UserRoutes>
                 <Navbar />
                 <ApplicantDetails />
+                <Footer />
               </UserRoutes>
             </PrivateRoute>
           }
@@ -126,6 +132,7 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <JobDetails />
+              <Footer />
             </PrivateRoute>
           }
         />
@@ -136,6 +143,7 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <Applications />
+              <Footer />
             </PrivateRoute>
           }
         />
@@ -145,6 +153,7 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <JobDetails />
+              <Footer />
             </PrivateRoute>
           }
         />

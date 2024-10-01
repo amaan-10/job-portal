@@ -38,7 +38,11 @@ const Footer = () => {
         </div>
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li className="ms-3">
-            <a className="text-body-secondary" href="https://x.com/">
+            <a
+              className="text-body-secondary"
+              href="https://x.com/"
+              target="_blank"
+            >
               <svg className="bi" width={24} height={24}>
                 <FontAwesomeIcon icon={faXTwitter} />
               </svg>
@@ -48,6 +52,7 @@ const Footer = () => {
             <a
               className="text-body-secondary"
               href="https://www.instagram.com/"
+              target="_blank"
             >
               <svg className="bi" width={24} height={24}>
                 <FontAwesomeIcon icon={faInstagram} />
@@ -55,7 +60,11 @@ const Footer = () => {
             </a>
           </li>
           <li className="ms-3">
-            <a className="text-body-secondary" href="https://www.facebook.com/">
+            <a
+              className="text-body-secondary"
+              href="https://www.facebook.com/"
+              target="_blank"
+            >
               <svg className="bi" width={24} height={24}>
                 <FontAwesomeIcon icon={faFacebook} />
               </svg>

@@ -5,6 +5,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -38,7 +39,7 @@ const Footer = () => {
         </div>
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
           <li className="ms-3">
-            <a
+            <Link
               className="text-body-secondary"
               href="https://x.com/"
               target="_blank"
@@ -46,10 +47,10 @@ const Footer = () => {
               <svg className="bi" width={24} height={24}>
                 <FontAwesomeIcon icon={faXTwitter} />
               </svg>
-            </a>
+            </Link>
           </li>
           <li className="ms-3">
-            <a
+            <Link
               className="text-body-secondary"
               href="https://www.instagram.com/"
               target="_blank"
@@ -57,10 +58,10 @@ const Footer = () => {
               <svg className="bi" width={24} height={24}>
                 <FontAwesomeIcon icon={faInstagram} />
               </svg>
-            </a>
+            </Link>
           </li>
           <li className="ms-3">
-            <a
+            <Link
               className="text-body-secondary"
               href="https://www.facebook.com/"
               target="_blank"
@@ -68,7 +69,7 @@ const Footer = () => {
               <svg className="bi" width={24} height={24}>
                 <FontAwesomeIcon icon={faFacebook} />
               </svg>
-            </a>
+            </Link>
           </li>
         </ul>
       </footer>

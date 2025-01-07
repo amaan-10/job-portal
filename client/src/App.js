@@ -20,8 +20,9 @@ import EditProfile from "./pages/EditProfile";
 import Applications from "./pages/Applications";
 import UsersApplications from "./pages/UsersApplications";
 import ApplicantDetails from "./pages/ApplicantDetails";
-import UserRoutes from "./components/routes/UserRoutes";
 import Footer from "./components/shared/Footer";
+import UserRoute from "./components/routes/UserRoute";
+import DemoLogin from "./components/shared/DemoLogin";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
               <Navbar />
               <HomePage />
               <Footer />
+              <DemoLogin />
             </>
           }
         />
@@ -70,11 +72,11 @@ function App() {
           path="/post-job"
           element={
             <PrivateRoute>
-              <UserRoutes>
+              <UserRoute>
                 <Navbar />
                 <PostJobs />
                 <Footer />
-              </UserRoutes>
+              </UserRoute>
             </PrivateRoute>
           }
         />
@@ -82,11 +84,11 @@ function App() {
           path="/my-job"
           element={
             <PrivateRoute>
-              <UserRoutes>
+              <UserRoute>
                 <Navbar />
                 <MyJob />
                 <Footer />
-              </UserRoutes>
+              </UserRoute>
             </PrivateRoute>
           }
         />
@@ -94,11 +96,11 @@ function App() {
           path="my-job/update-job/:id"
           element={
             <PrivateRoute>
-              <UserRoutes>
+              <UserRoute>
                 <Navbar />
                 <UpdateJob />
                 <Footer />
-              </UserRoutes>
+              </UserRoute>
             </PrivateRoute>
           }
         />
@@ -106,11 +108,11 @@ function App() {
           path="my-job/users-applications/:id"
           element={
             <PrivateRoute>
-              <UserRoutes>
+              <UserRoute>
                 <Navbar />
                 <UsersApplications />
                 <Footer />
-              </UserRoutes>
+              </UserRoute>
             </PrivateRoute>
           }
         />
@@ -118,11 +120,11 @@ function App() {
           path="my-job/users-applications/applicant-details/:jobId/:userId"
           element={
             <PrivateRoute>
-              <UserRoutes>
+              <UserRoute>
                 <Navbar />
                 <ApplicantDetails />
                 <Footer />
-              </UserRoutes>
+              </UserRoute>
             </PrivateRoute>
           }
         />

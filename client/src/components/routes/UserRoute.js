@@ -6,7 +6,7 @@ import { Navigate } from "react-router-dom";
 import { BASE_URL } from "../../url";
 // This route allows to surf the components under this route if and only if user is Logged In means if the bearer token is present in local storage or not
 
-const UserRoutes = ({ children }) => {
+const UserRoute = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [users, setUsers] = useState("recruiter");
@@ -47,4 +47,4 @@ const UserRoutes = ({ children }) => {
   }
 };
 
-export default UserRoutes;
+export default UserRoute;

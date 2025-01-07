@@ -896,3 +896,23 @@ label.valid {
   .social-label {
     margin-right: 0px;
     margin-bottom: 10px; } }
+
+
+    .popover-container {
+      background-color: #f8f9fa;
+      border: 1px solid #e9ecef;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .popover-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #343a40;
+      margin-bottom: 0.5rem;
+    }
+    
+    .popover-content {
+      font-size: 0.875rem;
+      color: #6c757d;
+    }
+    

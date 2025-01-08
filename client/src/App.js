@@ -29,7 +29,7 @@ function App() {
   return (
     <>
       <ToastContainer />
-      <Analytics />
+
       <Routes>
         <Route
           path="/"
@@ -190,6 +190,7 @@ function App() {
           }
         />
       </Routes>
+      <Analytics />
     </>
   );
 }

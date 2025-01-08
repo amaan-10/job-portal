@@ -14,6 +14,10 @@ export default function DemoLogin() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [demo, setDemo] = useState(false);
 
+  const toggleDemo = () => {
+    setDemo((prevDemo) => !prevDemo); // Toggles between true and false
+  };
+
   //check if user is logged in or not
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -61,8 +65,10 @@ export default function DemoLogin() {
           >
             {!demo ? (
               <>
-                <h6 className="popover-title">Curious about the platform?</h6>
-                <p className="popover-content mb-0">
+                <h6 className="popover-title slide-in">
+                  Curious about the platform?
+                </h6>
+                <p className="popover-content mb-0 slide-in">
                   Try it now with demo credentials
                 </p>
                 <div
@@ -82,16 +88,16 @@ export default function DemoLogin() {
                 />
               </>
             ) : (
-              <>
-                <h6 className="popover-title">Try Demo:</h6>
+              <div>
+                <h6 className="popover-title slide-in">Try Demo:</h6>
                 <button
-                  className="btn btn-primary mb-2 demo-button seeker"
+                  className="btn btn-primary mb-2 demo-button seeker slide-in"
                   onClick={() => handleDemoLogin("job-seeker")}
                 >
                   as a Job Seeker
                 </button>
                 <button
-                  className="btn btn-primary demo-button recruiter"
+                  className="btn btn-primary demo-button recruiter slide-in"
                   onClick={() => handleDemoLogin("recruiter")}
                 >
                   as a Recruiter
@@ -111,13 +117,13 @@ export default function DemoLogin() {
                     borderTop: "10px solid #f8f9fa",
                   }}
                 />
-              </>
+              </div>
             )}
           </div>
 
           <button
             className="border-0 bg-transparent"
-            onClick={() => setDemo(true)}
+            onClick={toggleDemo}
             style={{
               transform: isHovered ? "scale(1.1)" : "scale(1)",
               transition: "transform 0.2s",

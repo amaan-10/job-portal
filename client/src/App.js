@@ -23,7 +23,7 @@ import ApplicantDetails from "./pages/ApplicantDetails";
 import Footer from "./components/shared/Footer";
 import UserRoute from "./components/routes/UserRoute";
 import DemoLogin from "./components/shared/DemoLogin";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/dist/react";
 
 function App() {
   return (

@@ -44,6 +44,9 @@
   "@testing-library/user-event": "^13.5.0",
   
     
+  "@vercel/analytics": "^1.4.1",
+  
+    
   "axios": "^1.6.4",
   
     
@@ -68,7 +71,7 @@
   "react-router-dom": "^6.21.1",
   
     
-  "react-scripts": "5.0.1",
+  "react-scripts": "^3.0.1",
   
     
   "react-toastify": "^9.1.3",

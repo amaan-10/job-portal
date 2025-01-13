@@ -17,6 +17,8 @@ const UpdateJob = () => {
   const dispach = useDispatch();
 
   const [selectedOption, setSelectedOption] = useState(null);
+  const [requiredSkills, setRequiredSkills] = useState([]);
+
   const {
     register,
     handleSubmit,
@@ -49,7 +51,7 @@ const UpdateJob = () => {
         authorization: `Bearer ${localStorage.getItem("token")}`,
         "content-type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({ ...data, requiredSkills: requiredSkills || [] }),
     })
       .then((res) => res.json())
       .then((job) => {
@@ -217,6 +219,24 @@ const UpdateJob = () => {
                     placeholder="Eligibility Criteria..."
                     {...register("eligibility")}
                     defaultValue={job.eligibility}
+                  />
+                </div>
+                <div className="col-md-12 mb-4">
+                  <p className="d-block mb-2 text-lg required-field">
+                    Skills Required
+                  </p>
+                  <textarea
+                    className="form-control d-block w-full flex-1 border-2 bg-white py-1.5 pl-3 text-gray-900 placeholder-gray-400 focus-outline-none form-control-sm form-control-sm-leading-6"
+                    rows={2}
+                    placeholder="Skills Required..."
+                    defaultValue={job.requiredSkills.join(", ")}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      const skillsArray = value
+                        .split(",")
+                        .map((skill) => skill.trim());
+                      setRequiredSkills(skillsArray);
+                    }}
                   />
                 </div>
                 <div className="col-md-12 mb-4">

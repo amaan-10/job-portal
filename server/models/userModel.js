@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       // required: [true, "Qualification is required"],
     },
+    skills: {
+      type: [String],
+      // required: [true, "Skills is required"],
+    },
     location: {
       type: String,
       default: "India",

@@ -6,7 +6,6 @@ export const getRecommendations = async (req, res) => {
       user_skills: userSkills.join(", "),
       jobs,
     });
-    console.log("Response: ", response.data);
 
     res.status(200).json(response.data);
   } catch (error) {

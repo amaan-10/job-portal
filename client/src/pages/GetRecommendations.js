@@ -50,7 +50,7 @@ const GetRecommendations = ({ userId }) => {
       });
   }, []);
 
-  console.log(userSkills);
+  //   console.log(userSkills);
 
   useEffect(() => {
     const fetchRecommendations = async () => {

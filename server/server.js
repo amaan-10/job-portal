@@ -18,6 +18,7 @@ import errorMiddleware from "./middlewares/errorMiddleware.js";
 import jobsRoutes from "./routes/jobsRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import resumeRoutes from "./routes/resumeRoutes.js";
+import recommendationsRoutes from "./routes/recommendationsRoutes.js";
 import mongoose from "mongoose";
 
 dotenv.config();
@@ -42,6 +43,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/job", jobsRoutes);
 app.use("/api/v1/resume", resumeRoutes);
+app.use("/api/v1/ai", recommendationsRoutes);
 
 //validation middleware
 app.use(errorMiddleware);

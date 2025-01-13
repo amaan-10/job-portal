@@ -1,4 +1,4 @@
-import { Routes, Route, createBrowserRouter } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import PrivateRoute from "./components/routes/PrivateRoute";
 import PublicRoute from "./components/routes/PublicRoute";
 import Navbar from "./components/shared/Navbar";
-import Banner from "./components/shared/Banner";
 import MyJob from "./pages/MyJob";
 import UpdateJob from "./pages/UpdateJob";
 import JobDetails from "./pages/JobDetails";
@@ -23,6 +22,7 @@ import ApplicantDetails from "./pages/ApplicantDetails";
 import Footer from "./components/shared/Footer";
 import UserRoute from "./components/routes/UserRoute";
 import DemoLogin from "./components/shared/DemoLogin";
+import Recommendations from "./pages/GetRecommendations";
 
 function App() {
   return (
@@ -175,6 +175,16 @@ function App() {
             <PrivateRoute>
               <Navbar />
               <EditProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/recommendations"
+          element={
+            <PrivateRoute>
+              <Navbar />
+              <Recommendations />
+              <Footer />
             </PrivateRoute>
           }
         />

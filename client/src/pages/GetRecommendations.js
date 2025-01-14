@@ -42,15 +42,19 @@ const GetRecommendations = ({ userId }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setJobs(data);
+        const simplifiedJobs = data.map((job) => ({
+          id: job._id,
+          position: job.position,
+          company: job.company,
+          requiredSkills: job.requiredSkills,
+        }));
+        setJobs(simplifiedJobs);
         setTimeout(function () {
           dispatch(hideLoading());
         }, 1500);
         // dispach(hideLoading());
       });
   }, []);
-
-  //   console.log(userSkills);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
@@ -59,53 +63,7 @@ const GetRecommendations = ({ userId }) => {
           `${BASE_URL}/api/v1/ai/get-recommendations`,
           {
             userSkills: userSkills,
-            jobs: [
-              {
-                title: "Frontend Developer",
-                company: "TechCorp",
-                requiredSkills: ["React", "JavaScript", "HTML", "CSS"],
-              },
-              {
-                title: "Backend Developer",
-                company: "DevHub",
-                requiredSkills: ["Node.js", "MongoDB", "Express"],
-              },
-              {
-                title: "Fullstack Developer",
-                company: "WebSolutions",
-                requiredSkills: ["React", "Node.js", "JavaScript", "MongoDB"],
-              },
-              {
-                title: "UI/UX Designer",
-                company: "Designify",
-                requiredSkills: ["HTML", "CSS", "Figma"],
-              },
-              {
-                title: "Data Scientist",
-                company: "DataWorks",
-                requiredSkills: [
-                  "Python",
-                  "Machine Learning",
-                  "TensorFlow",
-                  "SQL",
-                ],
-              },
-              {
-                title: "Junior Web Developer",
-                company: "StartUp Inc.",
-                requiredSkills: ["React", "HTML", "CSS"],
-              },
-              {
-                title: "Cloud Engineer",
-                company: "CloudTech",
-                requiredSkills: ["AWS", "Terraform", "Docker"],
-              },
-              {
-                title: "Java Developer",
-                company: "JavaWorks",
-                requiredSkills: ["Java", "Spring Boot", "Hibernate"],
-              },
-            ],
+            jobs: jobs,
           }
         );
         setRecommendations(data);
@@ -116,13 +74,14 @@ const GetRecommendations = ({ userId }) => {
 
     fetchRecommendations();
   }, [userSkills]);
-
   return (
     <div>
       <h2>Recommended Jobs</h2>
       <ul>
         {recommendations.map((job, index) => (
-          <li key={index}>{job.title}</li>
+          <li key={index}>
+            {job.position} - {job.company}
+          </li>
         ))}
       </ul>
     </div>

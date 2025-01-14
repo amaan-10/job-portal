@@ -7,7 +7,8 @@ from typing import List
 app = FastAPI()
 
 class Job(BaseModel):
-    title: str
+    id: str
+    position: str
     company: str
     requiredSkills: List[str]  # A list of required skills
 

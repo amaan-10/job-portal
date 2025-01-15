@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 //Top portion of Dashboard page which contains search box for postions
-const Banner = ({ query, handleInput }) => {
+const Banner = ({ query, handleInput, handleRecommendations }) => {
   return (
-    <div className="  max-w-screen-2xl mx-auto xl:px-24 px-5 md:py-20 pt-3 pt-md-5 pb-5 ">
+    <div className="  max-w-screen-2xl mx-auto xl:px-24 px-5 md:py-20 pt-3 pt-md-5 pb-4 ">
       <h1 style={{ fontWeight: "600" }} className=" text-black mb-3 ">
         Find your <span style={{ color: "blue" }}> new job </span> today.
       </h1>
@@ -65,6 +65,15 @@ const Banner = ({ query, handleInput }) => {
           </button>
         </div>
       </form>
+
+      <button
+        type="button"
+        className="ai-button mt-3 py-2 px-4"
+        onClick={handleRecommendations}
+      >
+        AI Recommendations
+        <img src="./assets/images/star.png" alt="icon" />
+      </button>
     </div>
   );
 };

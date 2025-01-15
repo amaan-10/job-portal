@@ -79,8 +79,11 @@ const Card = ({ data }) => {
       console.error("Error fetching job applications:", error);
     }
   };
+
   useEffect(() => {
-    fetchApplicantsStatus();
+    if (window.location.pathname === "/applications") {
+      fetchApplicantsStatus();
+    }
   });
 
   //console.log(userId);

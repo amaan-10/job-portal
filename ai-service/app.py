@@ -10,8 +10,12 @@ class Job(BaseModel):
     id: str
     position: str
     company: str
-    requiredSkills: List[str]  # A list of required skills
-
+    requiredSkills: List[str]
+    workLocation: str
+    openingAt: str
+    workType: str
+    description: str
+    ctc: str
 class JobRecommendationRequest(BaseModel):
     user_skills: str  # Skills of the user as a string
     jobs: List[Job]   # A list of job objects

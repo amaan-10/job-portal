@@ -44,6 +44,10 @@ const UpdateJob = () => {
   // console.log(jobs);
   const onSubmit = (data) => {
     data.skills = selectedOption;
+    const skillsArray = data.requiredSkills
+      .split(",")
+      .map((item) => item.trim());
+
     // console.log(data);
     fetch(`${BASE_URL}/api/v1/job/update-job/${id}`, {
       method: "PATCH",
@@ -51,7 +55,7 @@ const UpdateJob = () => {
         authorization: `Bearer ${localStorage.getItem("token")}`,
         "content-type": "application/json",
       },
-      body: JSON.stringify({ ...data, requiredSkills: requiredSkills || [] }),
+      body: JSON.stringify({ ...data, requiredSkills: skillsArray || [] }),
     })
       .then((res) => res.json())
       .then((job) => {
@@ -230,13 +234,7 @@ const UpdateJob = () => {
                     rows={2}
                     placeholder="Skills Required..."
                     defaultValue={job.requiredSkills.join(", ")}
-                    onChange={(e) => {
-                      const value = e.target.value;
-                      const skillsArray = value
-                        .split(",")
-                        .map((skill) => skill.trim());
-                      setRequiredSkills(skillsArray);
-                    }}
+                    {...register("requiredSkills")}
                   />
                 </div>
                 <div className="col-md-12 mb-4">

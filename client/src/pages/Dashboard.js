@@ -16,6 +16,7 @@ import { useLocation } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
+import GetRecommendations from "./GetRecommendations";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -46,6 +47,12 @@ const Dashboard = () => {
       });
   }, []);
   // console.log(jobs);
+
+  const recommendations = GetRecommendations();
+
+  const handleRecommendations = () => {
+    setJobs(recommendations);
+  };
 
   const [query, setQuery] = useState("");
 
@@ -165,7 +172,11 @@ const Dashboard = () => {
         </div>
       ) : (
         <>
-          <Banner query={query} handleInput={handleInput} />
+          <Banner
+            query={query}
+            handleInput={handleInput}
+            handleRecommendations={handleRecommendations}
+          />
           <div className="dashboard-job-columns">
             <div
               className=" bg-white p-4 "

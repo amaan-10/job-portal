@@ -993,3 +993,20 @@ label.valid {
     .ai-button:hover::after {
       opacity: 1;
     }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ff7e5f, #67a9fa , #9473f5 , #ff7e5f);
+      background-size: 300% 100%;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+      animation: gradientMove 3s linear infinite alternate;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 100% 0; /* Start from the right */
+      }
+      100% {
+        background-position: 0 0; /* Move to the left */
+      }
+    }

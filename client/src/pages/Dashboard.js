@@ -52,6 +52,10 @@ const Dashboard = () => {
 
   const handleRecommendations = () => {
     setJobs(recommendations);
+    document.getElementById("recommendation").innerText = "AI Recommendations";
+    const image = document.getElementById("recommendation-img");
+    image.src = "./assets/images/star.png";
+    image.style.display = "block";
   };
 
   const [query, setQuery] = useState("");
@@ -201,6 +205,31 @@ const Dashboard = () => {
                 gridColumn: "span 2 / span 2",
               }}
             >
+              <div className=" d-flex flex-row">
+                <span
+                  id="recommendation"
+                  className="gradient-text"
+                  style={{
+                    fontSize: "20px",
+                    fontStyle: "normal",
+                    fontWeight: "700",
+                    lineHeight: "30px",
+                    paddingBottom: "12px",
+                  }}
+                ></span>
+                <img
+                  id="recommendation-img"
+                  alt="icon"
+                  style={{
+                    display: "none",
+                    height: 22,
+                    width: 22,
+                    marginLeft: 6,
+                    marginBottom: 0,
+                  }}
+                />
+              </div>
+
               {result.length > 0 ? (
                 <>
                   <button
@@ -286,7 +315,6 @@ const Dashboard = () => {
                       </label>
                     </div>
                   </div>
-
                   <Jobs result={result} jobsValue={jobsValue} />
                 </>
               ) : (

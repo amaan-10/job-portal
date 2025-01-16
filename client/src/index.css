@@ -943,3 +943,53 @@ label.valid {
         opacity: 1;
       }
     }
+
+.ai-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #f8d49b, #9473f5, #67a9fa);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: capitalize;
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.7s ease;
+      border-radius: 0.5rem;
+    }
+
+    .ai-button img {
+      height: 16px;
+      width: 16px;
+      margin-left: 4px;
+      margin-bottom: 0px;
+    }
+
+    .ai-button:hover {
+      transform: translateY(0px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+                  0 0 15px rgba(148, 115, 245, 0.5),
+                  0 0 25px rgba(148, 115, 245, 0.5);
+    }
+
+    .ai-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 0.5rem;
+      padding: 3px; /* Adjust the thickness of the border */
+      background: linear-gradient(135deg, #67a9fa , #9473f5,  #f8d49b);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .ai-button:hover::after {
+      opacity: 1;
+    }

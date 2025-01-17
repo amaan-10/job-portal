@@ -49,9 +49,21 @@ const Dashboard = () => {
   // console.log(jobs);
 
   const recommendations = GetRecommendations();
+  const [loadingAI, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [aiBorder, setBorder] = useState(false);
 
   const handleRecommendations = () => {
-    setJobs(recommendations);
+    setLoading(true);
+    try {
+      setJobs(recommendations);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+    setBorder(true);
+
     document.getElementById("recommendation").innerText = "AI Recommendations";
     const image = document.getElementById("recommendation-img");
     image.src = "./assets/images/star.png";
@@ -131,7 +143,9 @@ const Dashboard = () => {
     const { startIndex, endIndex } = pageRange();
     const filteredJobsPage = filteredJobs.slice(startIndex, endIndex);
     // console.log(filteredJobsPage);
-    return filteredJobsPage.map((data, i) => <Card key={i} data={data} />);
+    return filteredJobsPage.map((data, i) => (
+      <Card key={i} data={data} aiBorder={aiBorder} />
+    ));
   };
 
   const result = filteredPositionData(jobs, selectedCategory, query);
@@ -230,106 +244,117 @@ const Dashboard = () => {
                 />
               </div>
 
-              {result.length > 0 ? (
+              {loadingAI ? (
+                <div
+                  className=" d-flex justify-content-center align-items-center"
+                  style={{ height: "40vh", marginBottom: "65vh" }}
+                >
+                  <Spinner />
+                </div>
+              ) : (
                 <>
-                  <button
-                    onClick={handleMenu}
-                    className="bg-transparent border-0 float-end"
-                  >
-                    {menuOpen ? (
-                      <FontAwesomeIcon
-                        className=" text-black"
-                        style={{ width: 18, height: 18 }}
-                        icon={faXmark}
-                      />
-                    ) : (
-                      <>
-                        <span
+                  {result.length > 0 ? (
+                    <>
+                      <button
+                        onClick={handleMenu}
+                        className="bg-transparent border-0 float-end"
+                      >
+                        {menuOpen ? (
+                          <FontAwesomeIcon
+                            className=" text-black"
+                            style={{ width: 18, height: 18 }}
+                            icon={faXmark}
+                          />
+                        ) : (
+                          <>
+                            <span
+                              style={{
+                                fontSize: "16px",
+                                fontWeight: "600",
+                                paddingRight: "8px",
+                              }}
+                            >
+                              Sort
+                            </span>
+                            <FontAwesomeIcon
+                              style={{ width: 16, height: 16 }}
+                              icon={faArrowDownWideShort}
+                            />
+                          </>
+                        )}
+                      </button>
+                      <div className={`${menuOpen ? "" : "d-none"}`}>
+                        <h4
                           style={{
                             fontSize: "16px",
+                            fontStyle: "normal",
                             fontWeight: "600",
-                            paddingRight: "8px",
+                            lineHeight: "30px",
+                            paddingBottom: "12px",
                           }}
                         >
                           Sort
-                        </span>
-                        <FontAwesomeIcon
-                          style={{ width: 16, height: 16 }}
-                          icon={faArrowDownWideShort}
-                        />
-                      </>
-                    )}
-                  </button>
-                  <div className={`${menuOpen ? "" : "d-none"}`}>
-                    <h4
-                      style={{
-                        fontSize: "16px",
-                        fontStyle: "normal",
-                        fontWeight: "600",
-                        lineHeight: "30px",
-                        paddingBottom: "12px",
-                      }}
-                    >
-                      Sort
-                    </h4>
-                    <div>
-                      <label className="sidebar-label-container">
-                        <input
-                          type="radio"
-                          name={"test"}
-                          value={"latest"}
-                          onClick={() => handleSort("latest")}
-                        />
-                        <span className="checkmark"></span>
-                        {"latest"}
-                      </label>
-                      <label className="sidebar-label-container">
-                        <input
-                          type="radio"
-                          name={"test"}
-                          value={"oldest"}
-                          onClick={() => handleSort("oldest")}
-                        />
-                        <span className="checkmark"></span>
-                        {"oldest"}
-                      </label>
-                      <label className="sidebar-label-container">
-                        <input
-                          type="radio"
-                          name={"test"}
-                          value={"a-z"}
-                          onClick={() => handleSort("a-z")}
-                        />
-                        <span className="checkmark"></span>
-                        {"a-z"}
-                      </label>
-                      <label className="sidebar-label-container">
-                        <input
-                          type="radio"
-                          name={"test"}
-                          value={"z-a"}
-                          onClick={() => handleSort("z-a")}
-                        />
-                        <span className="checkmark"></span>
-                        {"z-a"}
-                      </label>
-                    </div>
-                  </div>
-                  <Jobs result={result} jobsValue={jobsValue} />
-                </>
-              ) : (
-                <>
-                  <h3
-                    style={{
-                      fontSize: "20px",
-                      fontStyle: "normal",
-                      fontWeight: "600",
-                      lineHeight: "30px",
-                    }}
-                  >
-                    {result.length} Jobs
-                  </h3>
-                  <p>No data Found..!!</p>
+                        </h4>
+                        <div>
+                          <label className="sidebar-label-container">
+                            <input
+                              type="radio"
+                              name={"test"}
+                              value={"latest"}
+                              onClick={() => handleSort("latest")}
+                            />
+                            <span className="checkmark"></span>
+                            {"latest"}
+                          </label>
+                          <label className="sidebar-label-container">
+                            <input
+                              type="radio"
+                              name={"test"}
+                              value={"oldest"}
+                              onClick={() => handleSort("oldest")}
+                            />
+                            <span className="checkmark"></span>
+                            {"oldest"}
+                          </label>
+                          <label className="sidebar-label-container">
+                            <input
+                              type="radio"
+                              name={"test"}
+                              value={"a-z"}
+                              onClick={() => handleSort("a-z")}
+                            />
+                            <span className="checkmark"></span>
+                            {"a-z"}
+                          </label>
+                          <label className="sidebar-label-container">
+                            <input
+                              type="radio"
+                              name={"test"}
+                              value={"z-a"}
+                              onClick={() => handleSort("z-a")}
+                            />
+                            <span className="checkmark"></span>
+                            {"z-a"}
+                          </label>
+                        </div>
+                      </div>
+                      <Jobs result={result} jobsValue={jobsValue} />
+                    </>
+                  ) : (
+                    <>
+                      <h3
+                        style={{
+                          fontSize: "20px",
+                          fontStyle: "normal",
+                          fontWeight: "600",
+                          lineHeight: "30px",
+                        }}
+                      >
+                        {result.length} Jobs
+                      </h3>
+                      <p>No data Found..!!</p>
+                    </>
+                  )}
                 </>
               )}
               {result.length > 0 ? (

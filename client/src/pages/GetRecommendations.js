@@ -81,6 +81,7 @@ const GetRecommendations = () => {
         setRecommendations(data || []);
       } catch (error) {
         console.error("Error fetching recommendations:", error);
+      } finally {
       }
     };
     fetchRecommendations();

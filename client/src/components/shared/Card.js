@@ -16,8 +16,10 @@ import { hideLoading, showLoading } from "../../redux/features/alertSlice";
 import { useDispatch } from "react-redux";
 
 // Component for cards used at dashboard and applications page
-const Card = ({ data }) => {
+const Card = ({ data, aiBorder }) => {
   const location = useLocation();
+
+  // console.log(aiBorder);
 
   const {
     _id,
@@ -98,12 +100,9 @@ const Card = ({ data }) => {
       className=" text-decoration-none"
     >
       <section
-        className=" my-3 mx-1 p-3"
-        style={{
-          border: "2px solid #ededed",
-          cursor: "pointer",
-          borderRadius: "8px",
-        }}
+        className={`my-3 mx-1 p-3 ${
+          aiBorder ? "gradient-border" : "static-border"
+        }`}
       >
         <div style={{ textDecoration: "none" }}>
           <div>

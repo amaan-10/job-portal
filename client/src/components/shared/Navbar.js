@@ -98,98 +98,98 @@ const Navbar = () => {
     setLoggedIn(false);
   };
 
-  useEffect(() => {
-    // Cold start API when the component loads
-    const coldStartAPI = async () => {
-      try {
-        const response = await fetch(
-          `${BASE_URL}/api/v1/ai/get-recommendations`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userSkills: ["html", "css", "js"],
-              jobs: [
-                {
-                  id: "65991419dbeb316b14c217eb",
-                  workLocation: "Pune",
-                  workType: "contract",
-                  position: "Clinical Data Manager",
-                  company: "HealthCare Solutions",
-                  description:
-                    "As a Clinical Data Manager, you will be responsible for managing clinical trial data, ensuring its accuracy, completeness, and compliance with regulatory standards. Your role will involve designing and implementing data collection processes, analyzing clinical data, and preparing reports for submission to regulatory authorities. You will also collaborate with clinical research teams to support ongoing trials.",
+  // useEffect(() => {
+  //   // Cold start API when the component loads
+  //   const coldStartAPI = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `${BASE_URL}/api/v1/ai/get-recommendations`,
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({
+  //             userSkills: ["html", "css", "js"],
+  //             jobs: [
+  //               {
+  //                 id: "65991419dbeb316b14c217eb",
+  //                 workLocation: "Pune",
+  //                 workType: "contract",
+  //                 position: "Clinical Data Manager",
+  //                 company: "HealthCare Solutions",
+  //                 description:
+  //                   "As a Clinical Data Manager, you will be responsible for managing clinical trial data, ensuring its accuracy, completeness, and compliance with regulatory standards. Your role will involve designing and implementing data collection processes, analyzing clinical data, and preparing reports for submission to regulatory authorities. You will also collaborate with clinical research teams to support ongoing trials.",
 
-                  ctc: "INR 8 LPA",
-                  openingAt: "2024-08-01T09:00",
-                  requiredSkills: [
-                    "Clinical Data Management",
-                    "Data Analysis",
-                    "Data Quality Assurance",
-                    "Clinical Trials",
-                    "Database Management Systems",
-                    "SAS",
-                    "CDISC",
-                    "SDTM",
-                    "EDC Systems",
-                    "Data Validation",
-                    "Data Cleaning",
-                    "Risk-Based Monitoring",
-                    "Clinical Reporting",
-                    "GxP",
-                    "FDA",
-                    "Project Management",
-                    "Statistical Analysis",
-                    "Microsoft Excel",
-                    "Data Integration",
-                    "Cross-functional Collaboration",
-                    "SAS",
-                    "R",
-                    "or SQL",
-                  ],
-                },
-                {
-                  id: "65991419dbeb316b14c217c4",
-                  workLocation: "Bengaluru",
-                  workType: "full-time",
-                  position: "Software Engineer",
-                  company: "AutoTech Corp.",
-                  description:
-                    "Develop software solutions for automotive systems.",
-                  ctc: "INR 9 LPA",
-                  openingAt: "2024-08-12T09:00",
-                  requiredSkills: [
-                    "JavaScript",
-                    "Python",
-                    "Java",
-                    "C++",
-                    "C#",
-                    "MySQL",
-                    "PostgreSQL",
-                    "MongoDB",
-                    "AWS",
-                    "Azure",
-                    "Problem Solving",
-                  ],
-                },
-              ],
-            }),
-          }
-        );
+  //                 ctc: "INR 8 LPA",
+  //                 openingAt: "2024-08-01T09:00",
+  //                 requiredSkills: [
+  //                   "Clinical Data Management",
+  //                   "Data Analysis",
+  //                   "Data Quality Assurance",
+  //                   "Clinical Trials",
+  //                   "Database Management Systems",
+  //                   "SAS",
+  //                   "CDISC",
+  //                   "SDTM",
+  //                   "EDC Systems",
+  //                   "Data Validation",
+  //                   "Data Cleaning",
+  //                   "Risk-Based Monitoring",
+  //                   "Clinical Reporting",
+  //                   "GxP",
+  //                   "FDA",
+  //                   "Project Management",
+  //                   "Statistical Analysis",
+  //                   "Microsoft Excel",
+  //                   "Data Integration",
+  //                   "Cross-functional Collaboration",
+  //                   "SAS",
+  //                   "R",
+  //                   "or SQL",
+  //                 ],
+  //               },
+  //               {
+  //                 id: "65991419dbeb316b14c217c4",
+  //                 workLocation: "Bengaluru",
+  //                 workType: "full-time",
+  //                 position: "Software Engineer",
+  //                 company: "AutoTech Corp.",
+  //                 description:
+  //                   "Develop software solutions for automotive systems.",
+  //                 ctc: "INR 9 LPA",
+  //                 openingAt: "2024-08-12T09:00",
+  //                 requiredSkills: [
+  //                   "JavaScript",
+  //                   "Python",
+  //                   "Java",
+  //                   "C++",
+  //                   "C#",
+  //                   "MySQL",
+  //                   "PostgreSQL",
+  //                   "MongoDB",
+  //                   "AWS",
+  //                   "Azure",
+  //                   "Problem Solving",
+  //                 ],
+  //               },
+  //             ],
+  //           }),
+  //         }
+  //       );
 
-        if (!response.ok) {
-          throw new Error("Failed to cold start API");
-        }
+  //       if (!response.ok) {
+  //         throw new Error("Failed to cold start API");
+  //       }
 
-        const data = await response.json();
-      } catch (error) {
-        console.error("Error in API cold start:", error);
-      }
-    };
+  //       const data = await response.json();
+  //     } catch (error) {
+  //       console.error("Error in API cold start:", error);
+  //     }
+  //   };
 
-    coldStartAPI();
-  }, []);
+  //   coldStartAPI();
+  // }, []);
   return (
     <>
       <header className=" max-w-screen-2xl conatiner mx-auto xl:px-24 px-3 px-md-5 pt-4 pb-3">

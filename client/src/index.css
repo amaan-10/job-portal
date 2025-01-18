@@ -35,6 +35,16 @@
 animation-delay: 1s;
 }
 
+.gif-background {
+  width: 300px;
+  height: 300px;
+  justify-self: center;
+  background-image: url('../public/assets/images/sparkle-0.75.gif'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
+
 /* navigation bar */
 nav a span{
   font-weight: 500;

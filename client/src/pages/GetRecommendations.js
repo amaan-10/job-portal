@@ -11,6 +11,7 @@ const GetRecommendations = () => {
   const [userSkills, setUserSkills] = useState([]);
   const [jobs, setJobs] = useState([]);
   const dispatch = useDispatch();
+  const [loadingAI, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchUserSkills = async () => {
@@ -69,6 +70,7 @@ const GetRecommendations = () => {
 
   useEffect(() => {
     const fetchRecommendations = async () => {
+      setLoading(true);
       if (userSkills.length === 0 || jobs.length === 0) return;
       try {
         const { data } = await axios.post(
@@ -79,6 +81,7 @@ const GetRecommendations = () => {
           }
         );
         setRecommendations(data || []);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching recommendations:", error);
       } finally {
@@ -87,10 +90,15 @@ const GetRecommendations = () => {
     fetchRecommendations();
   }, [userSkills, jobs]);
 
-  return recommendations.map(({ id, ...rest }) => ({
-    _id: id,
-    ...rest,
-  }));
+  // console.log(loadingAI);
+
+  return [
+    recommendations.map(({ id, ...rest }) => ({
+      _id: id,
+      ...rest,
+    })),
+    loadingAI,
+  ];
 };
 
 export default GetRecommendations;

@@ -48,19 +48,19 @@ const Dashboard = () => {
   }, []);
   // console.log(jobs);
 
-  const recommendations = GetRecommendations();
   const [loadingAI, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [aiBorder, setBorder] = useState(false);
+  const recommendations = GetRecommendations();
 
   const handleRecommendations = () => {
-    setLoading(true);
     try {
-      setJobs(recommendations);
+      setJobs(recommendations[0]);
+      setLoading(recommendations[1]);
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
+      setLoading(recommendations[1]);
     }
     setBorder(true);
 
@@ -69,6 +69,13 @@ const Dashboard = () => {
     image.src = "./assets/images/star.png";
     image.style.display = "block";
   };
+
+  useEffect(() => {
+    if (loadingAI === true) {
+      setLoading(recommendations[1]);
+      setJobs(recommendations[0]);
+    }
+  }, [recommendations[1]]);
 
   const [query, setQuery] = useState("");
 
@@ -245,12 +252,14 @@ const Dashboard = () => {
               </div>
 
               {loadingAI ? (
-                <div
-                  className=" d-flex justify-content-center align-items-center"
-                  style={{ height: "40vh", marginBottom: "65vh" }}
-                >
-                  <Spinner />
-                </div>
+                <>
+                  <div
+                    className=" gif-background d-flex justify-content-center align-items-center"
+                    style={{ height: "40vh", marginBottom: "65vh" }}
+                  >
+                    <Spinner />
+                  </div>
+                </>
               ) : (
                 <>
                   {result.length > 0 ? (

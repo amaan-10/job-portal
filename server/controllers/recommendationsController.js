@@ -3,7 +3,7 @@ export const getRecommendations = async (req, res) => {
   try {
     const { userSkills, jobs } = req.body;
     const response = await axios.post(
-      "https://job-portal-ai.onrender.com/recommend-jobs/",
+      "https://job-portal-ai.vercel.app/recommend-jobs/",
       {
         user_skills: userSkills.join(", "),
         jobs,

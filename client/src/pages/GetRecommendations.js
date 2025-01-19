@@ -5,6 +5,7 @@ import axios from "axios";
 import { BASE_URL } from "../url";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 const GetRecommendations = () => {
   const [recommendations, setRecommendations] = useState([]);
@@ -25,7 +26,7 @@ const GetRecommendations = () => {
           },
         });
         const data = await response.json();
-        setUserSkills(data.data.skills || []);
+        setUserSkills(data.data.skills);
       } catch (error) {
         console.error("Error fetching user skills:", error);
       } finally {
@@ -71,7 +72,12 @@ const GetRecommendations = () => {
   useEffect(() => {
     const fetchRecommendations = async () => {
       setLoading(true);
-      if (userSkills.length === 0 || jobs.length === 0) return;
+      if (userSkills.length === 0 || jobs.length === 0) {
+        setTimeout(function () {
+          setLoading(false);
+        }, 5000);
+        return;
+      }
       try {
         const { data } = await axios.post(
           `${BASE_URL}/api/v1/ai/get-recommendations`,

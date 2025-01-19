@@ -31,6 +31,16 @@ const LoginPage = () => {
         localStorage.setItem("token", data.token);
         toast.success("Login Successfull");
         navigate("/");
+        if (
+          !data.user.experience ||
+          !data.user.skills ||
+          data.user.skills.length === 0 ||
+          !data.user.qualification ||
+          !data.user.github
+        ) {
+          toast.warn("Please complete your profile");
+          navigate("/profile/edit");
+        }
       }
     } catch (error) {
       dispach(hideLoading());

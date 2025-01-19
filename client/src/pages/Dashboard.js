@@ -17,6 +17,7 @@ import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
 import GetRecommendations from "./GetRecommendations";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -74,6 +75,11 @@ const Dashboard = () => {
     if (loadingAI === true) {
       setLoading(recommendations[1]);
       setJobs(recommendations[0]);
+      if (!recommendations[0] || recommendations[0].length === 0) {
+        toast.warn(
+          "User maybe 'recruiter' or User Skills are not updated in Profile"
+        );
+      }
     }
   }, [recommendations[1]]);
 

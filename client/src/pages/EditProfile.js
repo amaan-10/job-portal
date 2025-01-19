@@ -40,10 +40,15 @@ const EditProfile = () => {
       });
   }, []);
 
-  const handleChange = (event) => {
+  const handleChangeSkills = (event) => {
     const { name, value } = event.target;
     const skillsArray = value.split(",").map((skill) => skill.trim());
     setUser({ ...users, [name]: value, skills: skillsArray });
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser({ ...users, [name]: value });
   };
 
   const handleSubmit = (event) => {
@@ -220,7 +225,7 @@ const EditProfile = () => {
                       placeholder="Skills"
                       {...register("skills")}
                       value={users?.skills?.join(", ")}
-                      onChange={handleChange}
+                      onChange={handleChangeSkills}
                     />
                   </div>
                   <div className="d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4 mb-4 me-lg-1">

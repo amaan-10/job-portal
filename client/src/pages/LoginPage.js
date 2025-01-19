@@ -26,6 +26,7 @@ const LoginPage = () => {
         email,
         password,
       });
+
       if (data.success) {
         dispach(hideLoading());
         localStorage.setItem("token", data.token);

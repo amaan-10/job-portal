@@ -75,7 +75,7 @@ const GetRecommendations = () => {
       if (userSkills.length === 0 || jobs.length === 0) {
         setTimeout(function () {
           setLoading(false);
-        }, 5000);
+        }, 7000);
         return;
       }
       try {

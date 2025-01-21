@@ -79,6 +79,9 @@ const Dashboard = () => {
         toast.warn(
           "User maybe 'recruiter' or User Skills are not updated in Profile"
         );
+        setTimeout(function () {
+          toast.warn("If not, Try Again.");
+        }, 1000);
       }
     }
   }, [recommendations[1]]);

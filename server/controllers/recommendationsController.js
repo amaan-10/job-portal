@@ -10,9 +10,7 @@ export const getRecommendations = async (req, res) => {
       }
     );
 
-    setTimeout(function () {
-      res.status(200).json(response.data);
-    }, 3000);
+    res.status(200).json(response.data);
   } catch (error) {
     res.status(500).json({ error: "Error fetching recommendations" });
     console.error("Detailed error:", error.response?.data || error.stack);

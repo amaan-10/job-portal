@@ -5,14 +5,11 @@ import Jobs from "../components/shared/Jobs";
 import Sidebar from "../components/shared/Sidebar";
 import Newsletter from "../components/shared/Newsletter";
 import { BASE_URL } from "../url";
-import { current } from "@reduxjs/toolkit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowDownWideShort,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import RadioForm from "../components/shared/RadioForm";
-import { useLocation } from "react-router-dom";
 import { hideLoading, showLoading } from "../redux/features/alertSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/shared/Spinner";
@@ -54,14 +51,20 @@ const Dashboard = () => {
   const [aiBorder, setBorder] = useState(false);
   const recommendations = GetRecommendations();
 
+  // console.log(recommendations);
+
   const handleRecommendations = () => {
     try {
+      setLoading(true);
       setJobs(recommendations[0]);
-      setLoading(recommendations[1]);
+      if (recommendations[1] === false) {
+        setTimeout(function () {
+          setLoading(false);
+        }, 3000);
+      }
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(recommendations[1]);
     }
     setBorder(true);
 

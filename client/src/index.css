@@ -392,7 +392,7 @@ nav a span{
   }
 
   .btn-opacity-success {
-    color: #5ed6b3;
+    color: #3aae8b;
     background-color: #b7eddd;
     border: 2px solid transparent;
     transition: all 0.5s ease-in-out;
@@ -1063,3 +1063,133 @@ label.valid {
         background-position: 0% 50%;
       }
     }
+
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(45deg, #6a11cb 20%, #2575fc 100%);
+  color: white;
+  padding: 120px 0;
+}
+
+
+
+.gradient-text {
+  background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffcc67);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2rem; /* Adjust as needed */
+  font-weight: bold;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+}
+
+.search-form .form-control {
+  max-width: 300px;
+  border-radius: 30px;
+}
+
+
+/* About Us Section */
+#about-us {
+  background-color: #f8f9fa;
+  padding: 80px 0;
+}
+
+#about-us h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#about-us img {
+  border-radius: 10px;
+}
+
+/* Featured Jobs Section */
+#jobs {
+  background-color: #f1f3f5;
+  padding: 80px 0;
+}
+
+#jobs h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body button {
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* Testimonials Section */
+#testimonials {
+  padding: 80px 0;
+}
+
+.testimonial {
+  padding: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.testimonial h5 {
+  font-weight: bold;
+  margin-top: 15px;
+  color: #343a40;
+}
+
+/* Footer */
+.footer {
+  background-color: #343a40;
+  padding: 30px 0;
+}
+
+.footer p {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  #about-us, #jobs, #testimonials {
+    padding: 60px 20px;
+  }
+
+  .testimonial p {
+    font-size: 0.9rem;
+  }
+}
+
+.carousel-indicators button {
+  background-color: gray !important; /* Change to your desired color */
+}
+
+.carousel-indicators .active {
+  background-color: black !important; /* Change active button color */
+}

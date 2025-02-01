@@ -34,7 +34,7 @@ const Footer = () => {
             </svg>
           </a>
           <span className="mb-3 mb-md-0 text-body-secondary">
-            © 2024 Employ-mee. All rights reserved.
+            © 2025 Employ-mee. All rights reserved.
           </span>
         </div>
         <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">

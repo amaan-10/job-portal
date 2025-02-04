@@ -1,4 +1,7 @@
-import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleExclamation,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -13,9 +16,11 @@ export default function DemoLogin() {
   const [isHovered, setIsHovered] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [demo, setDemo] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const toggleDemo = () => {
     setDemo((prevDemo) => !prevDemo); // Toggles between true and false
+    if (isVisible === false) setIsVisible(!isVisible);
   };
 
   //check if user is logged in or not
@@ -56,70 +61,83 @@ export default function DemoLogin() {
     <>
       {!isLoggedIn ? (
         <div className="position-fixed bottom-0 end-0 mb-3 me-3 rounded-circle d-flex flex-column align-items-end justify-content-center bg-transparent border-0 ">
-          <div
-            className="popover-container bg-light shadow p-3 mb-3 rounded"
-            style={{
-              zIndex: 1050,
-              width: "275px",
-            }}
-          >
-            {!demo ? (
-              <>
-                <h6 className="popover-title slide-in">
-                  Curious about the platform?
-                </h6>
-                <p className="popover-content mb-0 slide-in">
-                  Try it now with demo credentials
-                </p>
-                <div
-                  className="popover-arrow"
-                  style={{
-                    zIndex: 1050,
-                    position: "absolute",
-                    top: "85px",
-                    left: "92%",
-                    transform: "translateX(-50%)",
-                    width: 0,
-                    height: 0,
-                    borderLeft: "10px solid transparent",
-                    borderRight: "10px solid transparent",
-                    borderTop: "10px solid #f8f9fa",
-                  }}
-                />
-              </>
-            ) : (
-              <div>
-                <h6 className="popover-title slide-in">Try Demo:</h6>
-                <button
-                  className="btn btn-primary mb-2 demo-button seeker slide-in"
-                  onClick={() => handleDemoLogin("job-seeker")}
-                >
-                  as a Job Seeker
-                </button>
-                <button
-                  className="btn btn-primary demo-button recruiter slide-in"
-                  onClick={() => handleDemoLogin("recruiter")}
-                >
-                  as a Recruiter
-                </button>
-                <div
-                  className="popover-arrow"
-                  style={{
-                    zIndex: 1050,
-                    position: "absolute",
-                    top: "142px",
-                    left: "92%",
-                    transform: "translateX(-50%)",
-                    width: 0,
-                    height: 0,
-                    borderLeft: "10px solid transparent",
-                    borderRight: "10px solid transparent",
-                    borderTop: "10px solid #f8f9fa",
-                  }}
-                />
-              </div>
-            )}
-          </div>
+          {isVisible && (
+            <div
+              className="popover-container bg-light shadow p-3 mb-3 rounded"
+              style={{
+                zIndex: 1050,
+                width: "290px",
+              }}
+            >
+              {!demo ? (
+                <>
+                  <div className="d-flex gap-3">
+                    <div>
+                      <h6 className="popover-title slide-in">
+                        Curious about the platform?
+                      </h6>
+                      <p className="popover-content mb-0 slide-in">
+                        Try it now with demo credentials
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setIsVisible(!isVisible)}
+                      className=" align-self-baseline justify-content-end border-0 bg-transparent"
+                    >
+                      <FontAwesomeIcon className=" text-muted" icon={faXmark} />
+                    </button>
+                  </div>
+
+                  <div
+                    className="popover-arrow"
+                    style={{
+                      zIndex: 1050,
+                      position: "absolute",
+                      top: "85px",
+                      left: "92%",
+                      transform: "translateX(-50%)",
+                      width: 0,
+                      height: 0,
+                      borderLeft: "10px solid transparent",
+                      borderRight: "10px solid transparent",
+                      borderTop: "10px solid #f8f9fa",
+                    }}
+                  />
+                </>
+              ) : (
+                <div>
+                  <h6 className="popover-title slide-in">Try Demo:</h6>
+                  <button
+                    className="btn btn-primary mb-2 demo-button seeker slide-in"
+                    onClick={() => handleDemoLogin("job-seeker")}
+                  >
+                    as a Job Seeker
+                  </button>
+                  <button
+                    className="btn btn-primary demo-button recruiter slide-in"
+                    onClick={() => handleDemoLogin("recruiter")}
+                  >
+                    as a Recruiter
+                  </button>
+                  <div
+                    className="popover-arrow"
+                    style={{
+                      zIndex: 1050,
+                      position: "absolute",
+                      top: "142px",
+                      left: "92%",
+                      transform: "translateX(-50%)",
+                      width: 0,
+                      height: 0,
+                      borderLeft: "10px solid transparent",
+                      borderRight: "10px solid transparent",
+                      borderTop: "10px solid #f8f9fa",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          )}
 
           <button
             className="border-0 bg-transparent"

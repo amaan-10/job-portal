@@ -97,13 +97,6 @@ nav a span{
   padding-left: 15px;
 }
 
-.title-heading{
-  font-size: 42px;
-  font-weight: 700;
-  padding: 14px;
-
-}
-
 .description{
   font-weight: 400;
   color: #6e6e6e ;
@@ -1067,17 +1060,36 @@ label.valid {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(45deg, #6a11cb 20%, #2575fc 100%);
+  /* background: linear-gradient(45deg, #6a11cb 20%, #2575fc 100%); */
   color: white;
-  padding: 120px 0;
+  height: 85vh;
+  padding: 100px 0;
+}
+
+#heading {
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIn 0.5s ease-in-out 2.5s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      visibility: visible;
+  }
 }
 
 
-
-.gradient-text {
-  background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffcc67);
+.title-heading{
+  background: linear-gradient(45deg, #6a11cb 40%, #2575fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  font-size: 72px;
+  font-weight: 700;
+}
+
+.phrase-text {
+  color:#333333;
   font-size: 2rem; /* Adjust as needed */
   font-weight: bold;
 }
@@ -1094,7 +1106,6 @@ label.valid {
 
 /* About Us Section */
 #about-us {
-  background-color: #f8f9fa;
   padding: 80px 0;
 }
 

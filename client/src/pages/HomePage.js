@@ -1,21 +1,77 @@
-import React from "react";
-import { Container, Row, Col, Carousel } from "react-bootstrap";
+import React, { useState } from "react";
+import { useEffect, useRef } from "react";
+import lottie from "lottie-web";
+
+import { Row, Col, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const containerRef = useRef(null);
+  const [animationData, setAnimationData] = useState(null); // Define animation data state
+
+  useEffect(() => {
+    if (!containerRef.current || !animationData) return; // Check if animationData is loaded
+
+    const animation = lottie.loadAnimation({
+      container: containerRef.current, // DOM element
+      animationData: animationData, // Lottie animation data
+      loop: false, // Ensure the animation does not loop
+      autoplay: true, // Start the animation automatically
+    });
+
+    // Cleanup animation on unmount
+    return () => {
+      animation.destroy(); // Destroy the animation when component unmounts
+    };
+  }, [animationData]); // Run effect when animationData changes
+
+  // Set the animationData here based on your use case (static or dynamic)
+  useEffect(() => {
+    // Example: Load an animation data here (you can replace with actual Lottie JSON)
+    import("../assets/animated-logo.json").then((data) => {
+      setAnimationData(data); // Set animation data dynamically (ensure path to your JSON file)
+    });
+  }, []);
+
   return (
     <>
       <div className="landing-page">
         {/* Hero Section */}
-        <header className="hero-section">
-          <div className="text-center">
-            <h1 className="title-heading">Welcome to Employ-Mee</h1>
-            <h6 className="gradient-text">
+        <header className="hero-section d-flex justify-content-end align-items-center">
+          <div
+            ref={containerRef}
+            style={{
+              position: "absolute",
+              top: 50,
+              left: 100,
+              width: "90%", // Adjust the width as per your needs
+              height: "100%", // Adjust the height as per your needs
+              zIndex: -1, // Keep the animation behind content
+              objectFit: "contain",
+            }}
+          ></div>
+          <div id="heading" className="pe-5 text-end">
+            <h1 style={{ color: "#333333" }}>
+              Welcome to <h1 className="title-heading">Employ-Mee</h1>
+            </h1>
+            <h6 className="phrase-text">
               "Connecting Dreams to Careers:
               <br />
               Your Gateway to
               <span className="text-primary"> Professional Success</span> !"
             </h6>
+            <h5 style={{ color: "#333333" }}>
+              Now Smarter with{" "}
+              <span className="gradient-text fw-bold">
+                AI{" "}
+                <img
+                  height={16}
+                  width={16}
+                  src="./assets/images/star.png"
+                  alt="icon"
+                />
+              </span>
+            </h5>
           </div>
         </header>
 

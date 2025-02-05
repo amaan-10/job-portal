@@ -8,6 +8,19 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   const containerRef = useRef(null);
   const [animationData, setAnimationData] = useState(null); // Define animation data state
+  const [isTab, setIsTab] = useState(window.innerWidth < 992);
+  const [isSM, setIsMS] = useState(window.innerWidth < 576);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTab(window.innerWidth < 992);
+      setIsMS(window.innerWidth < 576);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current || !animationData) return; // Check if animationData is loaded
@@ -37,30 +50,39 @@ const HomePage = () => {
     <>
       <div className="landing-page">
         {/* Hero Section */}
-        <header className="hero-section d-flex justify-content-end align-items-center">
+        <header
+          className="hero-section d-flex flex-column flex-lg-row justify-content-lg-end align-items-lg-center"
+          style={{
+            paddingTop: isTab ? 100 : 120,
+            paddingBottom: isTab ? 75 : 100,
+          }}
+        >
           <div
             ref={containerRef}
             style={{
               position: "absolute",
-              top: 50,
-              left: 100,
+              top: isSM ? -35 : isTab ? 0 : 50,
+              left: isSM ? 25 : isTab ? 50 : 100,
               width: "90%", // Adjust the width as per your needs
-              height: "100%", // Adjust the height as per your needs
+              height: isSM ? "60%" : isTab ? "80%" : "100%", // Adjust the height as per your needs
               zIndex: -1, // Keep the animation behind content
               objectFit: "contain",
             }}
           ></div>
-          <div id="heading" className="pe-5 text-end">
-            <h1 style={{ color: "#333333" }}>
+          <div className="col-lg-4" style={{ height: isSM ? 50 : 100 }}>
+            .
+          </div>
+          <div id="heading" className="pe-4 pe-sm-5 me-lg-5 text-end">
+            <h1 style={{ color: "#333333", fontSize: isSM ? 28 : 40 }}>
               Welcome to <h1 className="title-heading">Employ-Mee</h1>
             </h1>
-            <h6 className="phrase-text">
+            <h6 className="phrase-text" style={{ fontSize: isSM ? 16 : 32 }}>
               "Connecting Dreams to Careers:
               <br />
               Your Gateway to
               <span className="text-primary"> Professional Success</span> !"
             </h6>
-            <h5 style={{ color: "#333333" }}>
+            <h5 style={{ color: "#333333", fontSize: isSM ? 18 : 20 }}>
               Now Smarter with{" "}
               <span className="gradient-text fw-bold">
                 AI{" "}

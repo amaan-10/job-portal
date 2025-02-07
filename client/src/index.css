@@ -85,6 +85,10 @@ nav a span{
   color: blue;
 }
 
+.z-100 {
+  z-index: 100;
+}
+
 /* homepage */
 
 .div-conatiner{
@@ -1058,7 +1062,7 @@ label.valid {
     }
 
 
-#heading {
+#delay {
   opacity: 0;
   visibility: hidden;
   animation: fadeIn 0.5s ease-in-out 2.5s forwards;
@@ -1097,17 +1101,17 @@ label.valid {
 
 
 /* About Us Section */
-#about-us {
+.about-us {
   padding: 80px 0;
 }
 
-#about-us h2 {
+.about-us h2 {
   font-size: 2.5rem;
   color: #333;
   margin-bottom: 20px;
 }
 
-#about-us img {
+.about-us img {
   border-radius: 10px;
 }
 

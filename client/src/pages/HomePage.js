@@ -5,22 +5,45 @@ import lottie from "lottie-web";
 import { Row, Col, Carousel } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) setMatches(media.matches);
+
+    const listener = () => setMatches(media.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, [query, matches]);
+
+  return matches;
+};
+
 const HomePage = () => {
   const containerRef = useRef(null);
   const [animationData, setAnimationData] = useState(null); // Define animation data state
-  const [isTab, setIsTab] = useState(window.innerWidth < 992);
-  const [isSM, setIsMS] = useState(window.innerWidth < 576);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTab(window.innerWidth < 992);
-      setIsMS(window.innerWidth < 576);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isMobilePortrait = useMediaQuery(
+    "(max-width: 639px) and (max-height: 956px)"
+  );
+  // const isMobileLandscape = useMediaQuery(
+  //   "(max-width: 899px) and (max-height: 639px)"
+  // );
+  const isTabletPortrait = useMediaQuery(
+    "(min-width: 640px) and (max-width: 1023px) and (min-height: 900px) and (max-height: 1279px)"
+  );
+  // const isTabletLandscape = useMediaQuery(
+  //   "(min-width: 900px) and (max-width: 1279px) and (min-height: 640px) and (max-height: 1023px)"
+  // );
+  const isLaptop = useMediaQuery(
+    "(min-width: 1024px) and (max-width: 1279px) and (min-height: 768px) and (max-height: 1439px)"
+  );
+  const isDesktop = useMediaQuery(
+    "(min-width: 1280px) and (min-height: 900px)"
+  );
+  // const isDesktopLarge = useMediaQuery(
+  //   "(min-width: 1600px) and (min-height: 1440px)"
+  // );
 
   useEffect(() => {
     if (!containerRef.current || !animationData) return; // Check if animationData is loaded
@@ -53,36 +76,84 @@ const HomePage = () => {
         <header
           className="hero-section d-flex flex-column flex-lg-row justify-content-lg-end align-items-lg-center"
           style={{
-            paddingTop: isTab ? 100 : 120,
-            paddingBottom: isTab ? 75 : 100,
+            paddingTop: isMobilePortrait
+              ? "30vh"
+              : isTabletPortrait
+              ? "40vh"
+              : isLaptop
+              ? "35vh"
+              : isDesktop
+              ? "40vh"
+              : "30vh",
+            paddingBottom: isMobilePortrait
+              ? "30vh"
+              : isTabletPortrait
+              ? "25vh"
+              : isLaptop
+              ? "30vh"
+              : isDesktop
+              ? "30vh"
+              : "25vh",
           }}
         >
           <div
             ref={containerRef}
             style={{
               position: "absolute",
-              top: isSM ? -35 : isTab ? 0 : 50,
-              left: isSM ? 25 : isTab ? 50 : 100,
-              width: "90%", // Adjust the width as per your needs
-              height: isSM ? "60%" : isTab ? "80%" : "100%", // Adjust the height as per your needs
-              zIndex: -1, // Keep the animation behind content
+              top: isMobilePortrait
+                ? "8%"
+                : isTabletPortrait
+                ? "10%"
+                : isLaptop
+                ? "12%"
+                : isDesktop
+                ? "5%"
+                : "10%",
+              left: isMobilePortrait
+                ? 25
+                : isTabletPortrait
+                ? 50
+                : isLaptop
+                ? 100
+                : isDesktop
+                ? 100
+                : 100,
+              width: "90%",
+              height: isMobilePortrait
+                ? "70%"
+                : isTabletPortrait
+                ? "80%"
+                : isLaptop
+                ? "75%"
+                : "80%",
+              zIndex: -1,
               objectFit: "contain",
             }}
           ></div>
-          <div className="col-lg-4" style={{ height: isSM ? 50 : 100 }}>
+          <div
+            className="col-lg-4"
+            style={{ height: isMobilePortrait ? 50 : 100 }}
+          >
             .
           </div>
-          <div id="heading" className="pe-4 pe-sm-5 me-lg-5 text-end">
-            <h1 style={{ color: "#333333", fontSize: isSM ? 28 : 40 }}>
+          <div id="delay" className="pe-4 pe-sm-5 me-lg-5 text-end">
+            <h1
+              style={{ color: "#333333", fontSize: isMobilePortrait ? 28 : 40 }}
+            >
               Welcome to <h1 className="title-heading">Employ-Mee</h1>
             </h1>
-            <h6 className="phrase-text" style={{ fontSize: isSM ? 16 : 32 }}>
+            <h6
+              className="phrase-text"
+              style={{ fontSize: isMobilePortrait ? 16 : 32 }}
+            >
               "Connecting Dreams to Careers:
               <br />
               Your Gateway to
               <span className="text-primary"> Professional Success</span> !"
             </h6>
-            <h5 style={{ color: "#333333", fontSize: isSM ? 18 : 20 }}>
+            <h5
+              style={{ color: "#333333", fontSize: isMobilePortrait ? 18 : 20 }}
+            >
               Now Smarter with{" "}
               <span className="gradient-text fw-bold">
                 AI{" "}
@@ -98,7 +169,7 @@ const HomePage = () => {
         </header>
 
         {/* About Us Section */}
-        <section id="about-us" className=" p-5">
+        <section id="delay" className="p-5 about-us">
           <Row>
             <Col md={6}>
               <h2 className="fw-bold">About Us</h2>
@@ -149,7 +220,7 @@ const HomePage = () => {
 
         {/* Testimonials Section */}
 
-        <section className="py-5 bg-light">
+        <section className="p-5 bg-light">
           <h2 className="text-center fw-medium mb-5">What Our Users Say</h2>
           <Carousel className="pb-5">
             <Carousel.Item>

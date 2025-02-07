@@ -10,8 +10,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 mx-5 border-top">
-        <div className="col-md-4 d-flex align-items-center">
+      <footer className="d-flex justify-content-between align-items-center py-3 my-4 mx-5 border-top">
+        <div className=" d-flex align-items-center ">
           <a
             href="/"
             className="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
@@ -33,11 +33,11 @@ const Footer = () => {
               <circle cx="16.9857" cy="17.4857" r="12.0143" fill="#3575E2" />
             </svg>
           </a>
-          <span className="mb-3 mb-md-0 text-body-secondary">
-            © 2025 Employ-mee. All rights reserved.
+          <span className="mb-3 d-inline-flex flex-wrap w-auto gap-1 mb-md-0 text-body-secondary">
+            <span>© 2025 Employ-Mee. </span> <span> All rights reserved.</span>
           </span>
         </div>
-        <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
+        {/* <ul className="mb-3 nav justify-content-end list-unstyled d-flex">
           <li className="ms-3">
             <Link
               className="text-body-secondary"
@@ -71,7 +71,7 @@ const Footer = () => {
               </svg>
             </Link>
           </li>
-        </ul>
+        </ul> */}
       </footer>
     </div>
   );

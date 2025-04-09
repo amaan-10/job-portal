@@ -2,8 +2,20 @@ import React, { useState } from "react";
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 
-import { Row, Col, Carousel } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { faLinkedinIn, faXTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBuilding,
+  faChartLine,
+  faCheckCircle,
+  faClock,
+  faFilter,
+  faIndianRupeeSign,
+  faLocationDot,
+  faPenToSquare,
+  faQuoteLeft,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
@@ -68,6 +80,105 @@ const HomePage = () => {
       setAnimationData(data); // Set animation data dynamically (ensure path to your JSON file)
     });
   }, []);
+
+  const jobs = [
+    {
+      title: "Senior Frontend Developer",
+      company: "TechCorp Inc.",
+      location: "Bengaluru, IN",
+      salary: "INR 15 LPA",
+      tags: ["React", "TypeScript", "UI/UX"],
+      match: 98,
+      isNew: true,
+    },
+    {
+      title: "Product Manager",
+      company: "InnovateLabs",
+      location: "Pune, IN",
+      salary: "INR 6 LPA",
+      tags: ["Product Strategy", "Agile", "B2B"],
+      match: 92,
+      isNew: true,
+    },
+    {
+      title: "Data Scientist",
+      company: "DataDrive Analytics",
+      location: "Remote",
+      salary: "INR 8 LPA",
+      tags: ["Python", "Machine Learning", "SQL"],
+      match: 89,
+      isNew: false,
+    },
+  ];
+
+  const getMatchColor = (match) => {
+    if (match >= 95) return "bg-success";
+    if (match >= 85) return "bg-warning";
+    return "bg-primary";
+  };
+
+  const features = [
+    {
+      icon: faFilter,
+      title: "Advanced Filtering",
+      description:
+        "Filter jobs by salary, location, experience level, and more to find exactly what you're looking for.",
+    },
+    {
+      icon: faChartLine,
+      title: "Application Tracking",
+      description:
+        "Keep track of all your applications in one place and never miss an update or deadline.",
+    },
+    {
+      icon: faUsers,
+      title: "Recruiter Dashboard",
+      description:
+        "Post jobs, manage applications, and communicate with candidates all in one platform.",
+    },
+    {
+      icon: faPenToSquare,
+      title: "Job Management",
+      description:
+        "Easily post, edit, and delete job listings with our intuitive interface.",
+    },
+    {
+      icon: faCheckCircle,
+      title: "Applicant Status",
+      description:
+        "Toggle between rejected, shortlisted, and interviewed statuses to keep your hiring organized.",
+    },
+    {
+      icon: faClock,
+      title: "Real-time Updates",
+      description:
+        "Get instant notifications about application status changes and new job matches.",
+    },
+  ];
+
+  const testimonials = [
+    {
+      quote:
+        "The AI recommendations were spot on! I found my dream job within two weeks of signing up.",
+      author: "Sara J.",
+      role: "Software Engineer",
+      image: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      quote:
+        "As a recruiter, this platform has saved me countless hours. The applicant management system is intuitive and powerful.",
+      author: "Mahim T.",
+      role: "HR Manager",
+      image: "/placeholder.svg?height=80&width=80",
+    },
+    {
+      quote:
+        "The application tracking feature helped me stay organized during my job search. I highly recommend this platform!",
+      author: "Jay L.",
+      role: "Marketing Specialist",
+      image: "/placeholder.svg?height=80&width=80",
+    },
+  ];
 
   return (
     <>
@@ -168,98 +279,321 @@ const HomePage = () => {
           </div>
         </header>
 
-        {/* About Us Section */}
-        <section id="delay" className="p-5 about-us">
-          <Row>
-            <Col md={6}>
-              <h2 className="fw-bold">About Us</h2>
-              <h4>Unlock Your Future with Our Job Portal</h4>
-              <h6 className="description">
-                Our platform bridges the gap between ambitious job seekers and
-                leading employers around the globe. Whether you're looking to
-                take the next step in your career or find the perfect candidate,
-                we offer a seamless and efficient experience for both sides.
-              </h6>
-              <ul className="h6 description">
-                <li>
-                  <strong>Create your profile</strong> and get noticed by top
-                  employers.
-                </li>
-                <li>
-                  <strong>Apply for jobs</strong> that align with your skills
-                  and aspirations.
-                </li>
-                <li>
-                  <strong>Get hired</strong> and start your journey towards
-                  success.
-                </li>
-              </ul>
-              <h4>Where Aspiration Meets Opportunity</h4>
-              <h6 className="description">
-                Our job portal is your trusted partner on the path to
-                professional growth. We specialize in connecting talent with
-                diverse career opportunities, ensuring a smooth and effective
-                process for both job seekers and employers.
-              </h6>
-              <Link
-                className="btn-button btn-opacity-success fw-medium text-decoration-none"
-                to="/dashboard"
+        <div id="delay">
+          {/* Hero Section */}
+          <section className="position-relative overflow-hidden py-5 py-md-5 bg-white">
+            <div className="position-relative z-1">
+              <div
+                className="mx-auto text-center mb-5"
+                style={{ maxWidth: "768px" }}
               >
-                Let's Get Started &rarr;
-              </Link>
-            </Col>
-            <Col md={6}>
-              <img
-                src="/assets/images/Group171.svg"
-                alt="Job Portal"
-                className="img-fluid"
-              />
-            </Col>
-          </Row>
-        </section>
+                <h1 className="display-4 fw-bold mb-4">
+                  Find Your Dream Job With AI-Powered Recommendations
+                </h1>
+                <p className="lead text-muted mb-4">
+                  Connect with top employers and discover opportunities
+                  perfectly matched to your skills and experience.
+                </p>
+              </div>
+            </div>
+          </section>
 
-        {/* Testimonials Section */}
+          {/* AI Recommendations */}
+          <section className="py-5 bg-light">
+            <div className="">
+              <div className="text-center mb-5">
+                <span
+                  className="badge bg-primary mb-3"
+                  style={{ fontSize: 12 }}
+                >
+                  AI-Powered
+                </span>
+                <h2 className="h1 fw-bold mb-3">Recommended For You</h2>
+                <p className="text-muted mx-auto" style={{ maxWidth: "640px" }}>
+                  Our AI analyzes your profile and preferences to find the
+                  perfect job matches.
+                </p>
+              </div>
+              <div className="row gy-4 mx-5 py-4">
+                {jobs.map((job, idx) => (
+                  <div className="col-md-6 col-lg-4" key={idx}>
+                    <div className="card shadow-lg border-0 rounded-3 position-relative h-100">
+                      {job.isNew && (
+                        <span className="badge bg-success position-absolute top-0 end-0 m-3">
+                          New
+                        </span>
+                      )}
+                      <div
+                        className={`position-absolute top-0 start-0 w-100 rounded-top-3 ${getMatchColor(
+                          job.match
+                        )}`}
+                        style={{ height: "4px" }}
+                      />
+                      <div className="card-body p-4">
+                        <div className="d-flex justify-content-between align-items-start mb-1">
+                          <div>
+                            <h5 className="mt-2 mb-3 fw-bold">{job.title}</h5>
+                            <div className="text-muted d-flex align-items-center mb-1">
+                              <FontAwesomeIcon
+                                icon={faBuilding}
+                                className="me-2"
+                              />
+                              <span>{job.company}</span>
+                            </div>
+                            <div className="text-muted d-flex align-items-center mb-1">
+                              <FontAwesomeIcon
+                                icon={faLocationDot}
+                                className="me-2"
+                              />
+                              <span>{job.location}</span>
+                            </div>
+                          </div>
+                          <div
+                            className="rounded-circle bg-primary bg-opacity-10 d-flex justify-content-center align-items-center"
+                            style={{ width: "48px", height: "48px" }}
+                          >
+                            <span className="fw-bold text-primary">
+                              {job.match}%
+                            </span>
+                          </div>
+                        </div>
 
-        <section className="p-5 bg-light">
-          <h2 className="text-center fw-medium mb-5">What Our Users Say</h2>
-          <Carousel className="pb-5">
-            <Carousel.Item>
-              <blockquote className="blockquote text-center">
-                <p className="pb-4">
-                  "This platform helped me land my dream job in just two weeks!
-                  <br />
-                  The process was so smooth and easy to use."
+                        <div className="text-muted d-flex align-items-center mb-3">
+                          <FontAwesomeIcon
+                            icon={faIndianRupeeSign}
+                            className="me-2"
+                          />
+                          <span>{job.salary}</span>
+                        </div>
+
+                        <div className="d-flex flex-wrap gap-2 mb-3">
+                          {job.tags.map((tag, i) => (
+                            <span
+                              key={i}
+                              className="badge bg-light border text-secondary"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="card-footer bg-light d-flex justify-content-between p-3">
+                        <button className="btn btn-outline-secondary btn-sm">
+                          Save
+                        </button>
+                        <button className="btn btn-primary btn-sm">
+                          Apply Now
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="text-center mt-4">
+                <button
+                  className="btn btn-outline-secondary"
+                  onClick={() => {
+                    window.open("/dashboard", "_self");
+                  }}
+                >
+                  View All Recommendations
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Features Section */}
+          <section className="py-5 bg-white">
+            <div className="">
+              <div className="text-center mb-5">
+                <h2 className="h1 fw-bold mb-3">
+                  Powerful Features for Everyone
+                </h2>
+                <p className="text-muted mx-auto" style={{ maxWidth: "640px" }}>
+                  Whether you're looking for a job or hiring talent, we've got
+                  you covered.
                 </p>
-                <footer className="blockquote-footer">
-                  John Doe, <cite>Software Engineer</cite>
-                </footer>
-              </blockquote>
-            </Carousel.Item>
-            <Carousel.Item>
-              <blockquote className="blockquote text-center">
-                <p className="pb-4">
-                  "The platform is easy to use,
-                  <br />
-                  and the support team is amazing."
+              </div>
+              <div className="row gy-4 mx-5 my-4">
+                {features.map((feature, index) => (
+                  <div className="col-md-6 col-lg-4" key={index}>
+                    <div className="card h-100 border-1 shadow-sm transition-all">
+                      <div className="card-body p-4">
+                        <div className="mb-3">
+                          <FontAwesomeIcon
+                            icon={feature.icon}
+                            className=" fa-2x text-primary"
+                          />
+                        </div>
+                        <h5 className=" fw-bold">{feature.title}</h5>
+                        <p className=" text-muted">{feature.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* How It Works */}
+          <section className="py-5 px-5 bg-light">
+            <div className="">
+              <div className="text-center mb-5">
+                <h2 className="h1 fw-bold mb-3">How It Works</h2>
+                <p className="text-muted mx-auto" style={{ maxWidth: "640px" }}>
+                  Our platform makes job searching and recruiting simple and
+                  effective.
                 </p>
-                <footer className="blockquote-footer">
-                  Jane Smith, <cite>HR Manager</cite>
-                </footer>
-              </blockquote>
-            </Carousel.Item>
-            <Carousel.Item>
-              <blockquote className="blockquote text-center">
-                <p className="pb-4">
-                  "A fantastic platform with great job listings.
-                  <br />I love how easy it is to track my applications."
+              </div>
+              <div className="row g-4 align-items-center my-4">
+                <div className="col-md-6">
+                  <div className="vstack gap-4">
+                    {[1, 2, 3, 4].map((step, i) => (
+                      <div className="d-flex gap-3" key={i}>
+                        <div
+                          className="d-flex align-items-center justify-content-center p-2 rounded-circle bg-primary text-white fw-bold"
+                          style={{ width: "40px", height: "40px" }}
+                        >
+                          {step}
+                        </div>
+                        <div>
+                          <h5 className="fw-bold mb-1">
+                            {
+                              [
+                                "Create Your Profile",
+                                "Discover Opportunities",
+                                "Apply With Ease",
+                                "Track Your Progress",
+                              ][i]
+                            }
+                          </h5>
+                          <p className="text-muted mb-0">
+                            {
+                              [
+                                "Upload your resume and complete your profile to get personalized job recommendations.",
+                                "Browse AI-recommended jobs or search and filter to find your perfect match.",
+                                "One-click applications make it simple to apply to multiple jobs quickly.",
+                                "Monitor application statuses and receive updates from employers in real-time.",
+                              ][i]
+                            }
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="bg-white p-4 rounded-4 shadow">
+                    <img
+                      src="/assets/images/Group171.svg"
+                      alt="Job portal dashboard"
+                      className="img-fluid rounded-3 d-flex justify-content-center align-items-center"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Testimonials */}
+          <section className="py-5 bg-white">
+            <div className="">
+              <div className="text-center mb-5">
+                <h2 className="h1 fw-bold mb-3">What Our Users Say</h2>
+                <p className="text-muted mx-auto" style={{ maxWidth: "640px" }}>
+                  Join hundreds of satisfied job seekers and recruiters who
+                  found success on our platform.
                 </p>
-                <footer className="blockquote-footer">
-                  Mary Lee, <cite>Data Scientist</cite>
-                </footer>
-              </blockquote>
-            </Carousel.Item>
-          </Carousel>
-        </section>
+              </div>
+              <div className="row gy-4 mx-5 my-4">
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="col-12 col-md-6 col-lg-4">
+                    <div className="card h-100 shadow-sm">
+                      <div className="card-body">
+                        <FontAwesomeIcon
+                          icon={faQuoteLeft}
+                          className="text-primary mb-3 fs-3 opacity-25"
+                        />
+                        <p className="card-text fst-italic">
+                          "{testimonial.quote}"
+                        </p>
+                      </div>
+                      <div className="card-footer bg-white border-top-0 d-flex align-items-center">
+                        <div className="rounded-circle bg-secondary-subtle px-3 fw-semibold py-2 me-3">
+                          {testimonial.author.charAt(0).toUpperCase()}
+                        </div>
+                        <div>
+                          <p className="mb-0 fw-semibold">
+                            {testimonial.author}
+                          </p>
+                          <small className="text-muted">
+                            {testimonial.role}
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="py-5 bg-primary text-white text-center">
+            <div className="">
+              <h2 className="h1 fw-bold mb-4">
+                Ready to Find Your Perfect Job?
+              </h2>
+              <p
+                className=" text-white h6 opacity-75 mb-4 mx-auto"
+                style={{ maxWidth: "640px" }}
+              >
+                Join thousands of professionals who've found their dream careers
+                through our platform.
+              </p>
+              <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                <button
+                  className="btn btn-light text-black fw-medium"
+                  onClick={() => {
+                    window.open("/login", "_self");
+                  }}
+                >
+                  Sign Up Now
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Footer */}
+          <footer className="text-light px-5 pt-5">
+            <div className="">
+              <div className="row gy-4">
+                <div className="">
+                  <div className="d-flex align-items-center mb-1">
+                    <span className="h5 fw-bold text-black">Employ-Mee</span>
+                  </div>
+                  <div className="text-black-50 fw-semibold mb-3">
+                    Connecting talent with opportunity through AI-powered job
+                    matching.
+                  </div>
+                  <div className="d-flex gap-3">
+                    {/* Twitter */}
+                    <FontAwesomeIcon
+                      icon={faXTwitter}
+                      className="text-black fa-2xl"
+                    />
+                    {/* LinkedIn */}
+                    <FontAwesomeIcon
+                      icon={faLinkedinIn}
+                      className="text-black fa-2xl"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        </div>
       </div>
     </>
   );
